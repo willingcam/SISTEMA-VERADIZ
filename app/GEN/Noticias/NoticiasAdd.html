@@ -1,0 +1,95 @@
+﻿<div class="vista">
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li>
+                    <i class="disabled fa fa-newspaper-o"></i>
+                    <a>Noticias/Registro de noticias</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Agregar información de actualidad VERADIZ</h2>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content sin-desborde">
+                    <form role="form" name="NoticiasForm" class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Título
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="titulo" ng-model="titulo" required max="100" name="titulo" placeholder="Título de la noticia">
+                                <span class="error" ng-show="NoticiasForm.titulo.$dirty && !NoticiasForm.titulo.$valid">Debe ingresar un titulo</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Subtitulo
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="subtitulo" name="subtitulo" ng-model="subtitulo" required max="255" placeholder="Ingresar un subtitulo para la noticia a publicar">
+                                <span class="error" ng-show="NoticiasForm.subtitulo.$dirty && !NoticiasForm.subtitulo.$valid">Debe ingresar un subtitulo</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Descripción
+                                
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" ng-model="descripcion" max="255" placeholder="Ingrese el contenido de la noticia">
+                                <span class="error" ng-show="NoticiasForm.descripcion.$dirty && !NoticiasForm.descripcion.$valid">Debe ingresar el contenido de la noticia</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Url
+                                
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="url" name="url" ng-model="url" max="255" placeholder="Ingrese la url de referencia">
+                                <span class="error" ng-show="NoticiasForm.url.$dirty && !NoticiasForm.url.$valid">Debe ingresar la url de referencia</span>
+                            </div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <div class="">
+                                    <button type="submit" class="btn btn-success" ng-click="save()">
+
+                                        <i class="glyphicon glyphicon-saved"></i> Guardar
+                                    </button>
+                                    <button type="button" ui-sref="noticias" class="btn btn-primary">
+                                        <span class="fa fa-arrow-left"></span> Regresar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

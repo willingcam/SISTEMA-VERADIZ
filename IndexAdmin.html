@@ -1,0 +1,371 @@
+﻿<!DOCTYPE html>
+<html lang="es-mx" ng-app="veradizGEN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Administración del sistema</title>
+
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="Content/custom.css" rel="stylesheet">
+
+
+    <!--Mensajes Toastr-->
+    <link href="Content/toastr.css" rel="stylesheet" />
+
+    <!--Tablas responsivas-->
+    <link href="Content/EstilosPropios/jquery.dataTablesINEEL.css" rel="stylesheet" />
+    <link href="Content/DataTables/css/dataTables.responsive.css" rel="stylesheet" />
+
+    <!--Estilos propios-->
+    <link href="Content/EstilosPropios/StyleAuthorize.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/StyleModulos.css" rel="stylesheet" />
+
+    <!--Estilos propios del modulo-->
+    <link href="Content/angular-ui-tree/angular-ui-tree.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/ControlesEspeciales.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/fabForm.css" rel="stylesheet" />
+    <link href="Content/angular-block-ui.min.css" rel="stylesheet" />
+
+    <link href="Content/select2/select.min.css" rel="stylesheet" />
+    <link href="Content/select2/select2.css" rel="stylesheet" />
+    <link href="Content/select2/selectize.default.css" rel="stylesheet" />
+    <link href="Content/angucomplete-alt.css" rel="stylesheet" />
+    <link href="Content/multiple-select.min.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-2.1.0.min.js"></script>
+    <script src="Scripts/jquery-ui-1.11.3.min.js"></script>
+
+    <!-- <script src="Scripts/jquery-1.9.1.js"></script>-->
+    <script src="Scripts/bootstrap.js"></script>
+
+    <!-- plantilla -->
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="vendors/Flot/jquery.flot.js"></script>
+    <script src="vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="vendors/Flot/jquery.flot.time.js"></script>
+    <script src="vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+
+
+    <script src="Scripts/toastr.js"></script>
+
+
+
+    <!-- ANGULAR  -->
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/i18n/angular-locale_es-mx.js"></script>
+
+    <script src="Scripts/angular-block-ui.min.js"></script>
+
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+
+
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+
+    <!--Tablas-->
+    <script src="Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.js"></script>
+    <script src="Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+    <script src="Scripts/aes.js"></script>
+    <script src="Scripts/mdo-angular-cryptography.js"></script>
+
+
+    <script src="Scripts/DataTables/dataTables.responsive.min.js"></script>
+    <script src="Scripts/DataTables/dataTables.columnFilter.js"></script>
+
+    <script src="Scripts/angular-datatables/angular-datatables.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.util.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.options.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.instances.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.factory.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.renderer.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.directive.js"></script>
+
+
+    <script src="Scripts/angular-datatables/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="Scripts/angular-datatables/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+
+    <script src="Scripts/angular-datatables/accent-neutralise.js"></script>
+
+    <script src="Scripts/angular-ui-tree/angular-ui-tree.js"></script>
+
+    <script src="Scripts/select2/select.min.js"></script>
+    <script src="Scripts/angular-sanitize.js"></script>
+    <script src="Scripts/bootstrap-filestyle.min.js"></script>
+    <script src="Scripts/jquery.highlight.js"></script>
+    <script src="Scripts/dataTables.searchHighlight.min.js"></script>
+    <script src="Scripts/multiple-select.min.js"></script>
+
+    <script src="Scripts/angular-messages.min.js"></script>
+    <script src="Scripts/ng-fab-form.js"></script>
+    <script src="Scripts/ng-tags-input.js"></script>
+
+
+
+    <script src="Scripts/globales.js"></script>
+
+
+
+
+
+
+    <script src="app/_services/veradiz.services.js"></script>
+    <script src="app/_services/veradiz.controllers.js"></script>
+
+
+
+    <script src="app/GEN/appGEN.js"></script>
+    <script src="app/_services/factories/authService.js"></script>
+
+    <script src="app/_services/factories/menu.service.js"></script>
+
+
+    <script src="app/_services/factories/permisos.service.js"></script>
+    <script src="app/_services/factories/personas.service.js"></script>
+
+    <script src="app/_services/factories/authInterceptorService.js"></script>
+
+
+
+    <!-- SERVICIOS Y CONTROLADORES -->
+    <script src="app/GEN/_services/veradiz.GEN.services.js"></script>
+
+    <!-- Home -->
+    <script src="app/GEN/home/controllers/homeGEN.ctrl.js"></script>
+
+
+    <!-- USUARIOS -->
+    <script src="app/GEN/_services/Usuarios.GEN.service.js"></script>
+    <script src="app/GEN/Usuarios/controllers/UsuariosGet.ctrl.js"></script>
+    <script src="app/GEN/Usuarios/controllers/UsuariosAdd.ctrl.js"></script>
+    <script src="app/GEN/Usuarios/controllers/UsuariosEdit.ctrl.js"></script>
+
+    <!-- CLIENTES -->
+    <script src="app/GEN/Clientes/controllers/ClientesGet.ctrl.js"></script>
+    <script src="app/GEN/Clientes/controllers/ClientesAdd.ctrl.js"></script>
+    <script src="app/GEN/Clientes/controllers/ClientesEdit.ctrl.js"></script>
+
+
+    <!-- NOTICiAS -->
+    <script src="app/GEN/_services/Noticias.GEN.service.js"></script>
+    <script src="app/GEN/Noticias/controllers/NoticiasGet.ctrl.js"></script>
+    <script src="app/GEN/Noticias/controllers/NoticiasAdd.ctrl.js"></script>
+    <script src="app/GEN/Noticias/controllers/NoticiasEdit.ctrl.js"></script>
+
+
+    <!-- SERVICIOS -->
+    <script src="app/GEN/_services/Servicios.GEN.service.js"></script>
+    <script src="app/GEN/Servicios/controllers/ServiciosGet.ctrl.js"></script>
+    <script src="app/GEN/Servicios/controllers/ServiciosAdd.ctrl.js"></script>
+    <script src="app/GEN/Servicios/controllers/ServiciosEdit.ctrl.js"></script>
+
+
+</head>
+
+<body class="nav-md " data-ng-controller="homeGENCtrl">
+
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view bg-gradient-menuv">
+                    <div class="navbar nav_title bg-gradient-menuv" style="border: 0;">
+
+
+                        <a href="" class="site_title"> <span>VERADIZ</span></a>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <br />
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="{{authentication.foto}}" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido,</span>
+                            <h2>{{authentication.nombreCompleto}}</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>&nbsp;</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a ng-href="IndexAdmin.html#/usuarios">
+                                        <i class="fa fa-user"> </i>&nbsp;Administración de personal
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a ng-href="IndexAdmin.html#/clientes">
+                                        <i class="fa fa-building"> </i>&nbsp;Administración de clientes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-href="IndexAdmin.html#/servicios">
+                                        <i class="fa fa-tasks"> </i>&nbsp;Servicios
+                                    </a>
+                                </li>
+                                <li>
+                                    <a ng-href="IndexAdmin.html#/noticias">
+                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Noticias/Eventos
+                                    </a>
+                                </li>
+
+                                <li><a><i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="index.html">Cetes</a></li>
+                                        <li><a href="index2.html">TIIE</a></li>
+                                        <li><a href="index3.html">Dolar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+
+
+
+                            <!--funciones : {{funciones | json}}-->
+                        </div>
+
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                </div>
+            </div>
+
+
+            <!-- top navigation -->
+            <div class="top_nav ">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="hidden-xs nav navbar-nav navbar-left">
+                            <li class="">
+                                <a href="/IndexAdmin.html" class="btn-moduls   colorActivo  ">
+                                    <font class="whiteM">ADM</font>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/IndexSocio.html" class="btn-moduls   ">
+                                    <font class="whiteM">SOC</font>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/IndexCliente.html" class="btn-moduls   ">
+                                    <font class="whiteM">CLI</font>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/IndexTeso.html" class="btn-moduls   ">
+                                    <font class="whiteM">TSO</font>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/IndexDocumentos.html" class="btn-moduls   ">
+                                    <font class="whiteM">DOC</font>
+                                </a>
+                            </li>
+
+
+                        </ul>
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{authentication.foto}}" alt="..." /> &nbsp;{{authentication.nombreCompleto}}&nbsp;/&nbsp;{{rolDescripcion}}
+                                    <span class=" fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li><a href="" data-ng-click="logOut()"><i class="fa fa-sign-out pull-right"></i>Cerrar sesi&oacute;n</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div role="main" class="right_col">
+                <!-- top tiles -->
+                <div ui-view>
+
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    VERADIZ
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- Custom Theme Scripts -->
+    <script src="Scripts/custom.js"></script>
+    <!-- endPlantilla-->
+
+</body>
+
+</html>
