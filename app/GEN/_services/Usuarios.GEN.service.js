@@ -32,6 +32,22 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http.get(endPoint);
         }
 
+
+        // Get all registers
+        service.getAllSocios = function() {
+            var endPoint = API + "Repository/Usuarios/read_socios.php";
+            return $http.get(endPoint);
+        }
+
+
+        // Get all registers
+        service.getAllSociosAsignados = function(id) {
+            var endPoint = API + "Repository/EncargadoCuenta/read.php?id=" + id;
+            return $http.get(endPoint);
+        }
+
+
+
         // Get all registers
         service.getAllRoles = function() {
             var endPoint = API + "Repository/Roles/read.php";
@@ -52,6 +68,14 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             });
         };
 
+
+        service.AddEncargadoCuenta = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/EncargadoCuenta/create.php'
+            });
+        };
 
         service.Update = function(registro) {
             return $http({
@@ -76,6 +100,8 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
                 url: API + 'Repository/Usuarios/desactiva.php'
             });
         };
+
+
 
         return service;
 

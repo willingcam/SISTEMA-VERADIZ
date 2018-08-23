@@ -71,7 +71,7 @@ class Calendario{
 
 		// query to read single record
 		$query = "SELECT pago FROM " . $this->table_name . " 
-				WHERE  anio = ? AND mes = ? AND dia = ?
+				WHERE  anio = ? AND mes = ? AND pago >0  ORDER BY dia DESC
 				LIMIT 0,1";
 
 		// prepare query statement
@@ -80,7 +80,7 @@ class Calendario{
 		// bind id of product to be updated
 		$stmt->bindParam(1, $this->anio);
 		$stmt->bindParam(2, $this->mes);
-		$stmt->bindParam(3, $this->dia);
+		
 
 		// execute query
 		$stmt->execute();

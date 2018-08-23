@@ -223,6 +223,11 @@
                 templateUrl: "app/GEN/Clientes/ClientesEdit.html",
                 controller: "ClientesEditCtrl"
             })
+            .state("clientesResp", {
+                url: "/clientesResp/:id",
+                templateUrl: "app/GEN/Clientes/ClientesResp.html",
+                controller: "ClientesRespCtrl"
+            })
             .state("noticias", {
                 url: "/noticias",
                 templateUrl: "app/GEN/Noticias/NoticiasGet.html",

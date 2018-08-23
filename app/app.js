@@ -15,7 +15,7 @@
         //local               
         .constant('HOST', "localhost")
         //servidor
-        // .constant('HOST', 'veradiz.com.mx')
+        //.constant('HOST', 'veradiz.com.mx')
         .config(["$stateProvider", "$urlRouterProvider", RouterProvider])
         .run(function(DTDefaultOptions) {
             DTDefaultOptions.setLanguageSource('/Scripts/DataTables/i18n/Spanish.js');

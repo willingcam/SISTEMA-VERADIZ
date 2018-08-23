@@ -128,6 +128,21 @@ class Usuarios{
 
 
 	// read products
+	public function obtenSocios(){
+
+		// select all query
+		$query = "SELECT id, nombre, correo, usuario, claveacceso, telefono, extension, celular, imagen, ubicacion_imagen, tipoUsuarioId, activo, puesto, rol, rolID, contacto FROM usuarios WHERE  activo = 1  AND rolID = 2  AND tipoUsuarioId = 1 ";
+
+		// prepare query statement
+		$stmt = $this->conn->prepare($query);
+
+		// execute query
+		$stmt->execute();
+
+		return $stmt;
+	}
+
+	// read products
 	public function readClient(){
 
 			// select all query
@@ -273,7 +288,10 @@ class Usuarios{
 					celular = :celular,		
 					imagen = :imagen,
 					rolID = :rolID,
-					rol = :rol
+					rol = :rol,
+					contacto=:contacto,
+					usuario =:usuario,
+					claveacceso=:claveacceso
 				WHERE
 					id = :id";
 
@@ -290,7 +308,11 @@ class Usuarios{
 		$this->imagen=htmlspecialchars(strip_tags($this->imagen));
 		$this->rolID=htmlspecialchars(strip_tags($this->rolID));
 		$this->rol=htmlspecialchars(strip_tags($this->rol));
+		$this->contacto=htmlspecialchars(strip_tags($this->contacto));
+		$this->usuario=htmlspecialchars(strip_tags($this->usuario));
+		$this->claveacceso=htmlspecialchars(strip_tags($this->claveacceso));
 
+	
 
 		$this->id=htmlspecialchars(strip_tags($this->id));
 
@@ -304,6 +326,10 @@ class Usuarios{
 		$stmt->bindParam(':imagen', $this->imagen);
 		$stmt->bindParam(':rolID', $this->rolID);
 		$stmt->bindParam(':rol', $this->rol);
+		$stmt->bindParam(':contacto', $this->contacto);
+		$stmt->bindParam(':usuario', $this->usuario);
+		$stmt->bindParam(':claveacceso', $this->claveacceso);
+
 
 		
 		$stmt->bindParam(':id', $this->id);

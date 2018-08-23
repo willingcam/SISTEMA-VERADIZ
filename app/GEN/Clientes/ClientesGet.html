@@ -33,6 +33,11 @@
                                     <a class="btn btn-danger pull-right" ng-click="updateState(obj)" title="Eliminar">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
+
+                                    <a class="btn btn-success pull-right" ui-sref="clientesResp({id:obj.id})" title="Asignar responsables de atención">
+                                            <i class="fa fa-users"></i>
+                                    </a>
+                                   
                                 </div>
                                 <img class="img-rounded" style="height: 100px; width: 100px;" src="{{obj.urlImagenCompleta}}">
 
