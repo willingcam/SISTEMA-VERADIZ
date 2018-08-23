@@ -142,6 +142,7 @@ class Usuarios{
 		return $stmt;
 	}
 
+
 	// read products
 	public function readClient(){
 
@@ -157,6 +158,23 @@ class Usuarios{
 			return $stmt;
 	}
 		
+		// read products
+		public function readOnlyMyClient(){
+
+			// select all query
+			$query = "SELECT  P.idcliente, Q.nombre FROM encargado_cuenta P LEFT JOIN usuarios Q ON Q.id = P.idcliente WHERE P.idempleado = ? ";
+	
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+
+			// bind id of product to be updated
+			$stmt->bindParam(1, $this->id);
+	
+			// execute query
+			$stmt->execute();
+	
+			return $stmt;
+	}
 	
 
 	// used when filling up the update product form

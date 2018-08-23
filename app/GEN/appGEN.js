@@ -40,7 +40,7 @@
                 console.error(err);
             }
             $rootScope.go = function(authentication) {
-                console.log("hola11111!");
+               
                 if (!authentication.isAuth) {
                     window.location = "/indexApp.html#/login";
                 }

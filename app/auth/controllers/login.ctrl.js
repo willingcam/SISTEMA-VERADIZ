@@ -7,6 +7,7 @@
     function loginCtrl($scope, $state, AuthService, blockUI, $timeout) {
 
         $scope.btnClick = false;
+
         $scope.loginData = {
             userName: "",
             password: ""
@@ -18,20 +19,17 @@
 
             $scope.btnClick = true;
             blockUI.start({ message: "Espere..." });
-            //blockUI.message('Espere...');
+           
             AuthService.login($scope.loginData).then(
                 function(response) {
                     blockUI.stop();
-
                     $scope.btnClick = false;
                     if (response.data.id == null) {
                         $scope.message = "Problema al autentificar";
                         toastr.error($scope.message);
                     } else {
                         $state.go('cargardatos');
-
                     }
-
                 },
                 function(err) {
                     blockUI.stop();

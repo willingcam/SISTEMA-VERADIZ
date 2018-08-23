@@ -47,7 +47,10 @@ if($num>0){
 			"tipoDocumentoId" => $tipoDocumentoId,
 			"urlCompleta" => $ubicacion.$archivo,
 			"fechaRegistro" => $fechaRegistro,
-			"autorId" => $autorId
+			"autorId" => $autorId,
+			"estado" => $estado,
+			"cliente" => $nombre,
+			"tipodocumento" => $tipo_documento
 		);
 
 		array_push($obj_arr["records"], $obj_item);

@@ -12,12 +12,7 @@
         var _request = function(config) {
 
             config.headers = config.headers || {};
-
-
-
             var authData = localStorageService.get('authorizationData');
-
-
             if (authData && _logueadohoy(authData)) {
                 config.headers.Authorization = 'Bearer ' + authData.token;
                 try {
@@ -28,8 +23,6 @@
                             config.headers.userName = authData.userName
                         }
                     }
-
-
                 } catch (e) {
                     //console.log("errAch");
                     // console.log(e);
@@ -68,14 +61,14 @@
             } catch (e) {}
 
             if (rejection.data != null)
-            // console.log(rejection);
+            
                 if (rejection.status < 0) {
                     toastr.error("se ha negado la conexión", "Verificar la disponibilidad del servidor");
                 } else
             if (rejection.status === 401) {
                 window.location = "/indexApp.html#/login";
             } else if (rejection.status === 400) {
-                //console.log("400: " + rejection);
+              
             }
             return $q.reject(rejection);
         }

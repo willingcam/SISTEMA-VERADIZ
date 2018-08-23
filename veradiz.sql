@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-08-2018 a las 03:40:39
+-- Tiempo de generación: 24-08-2018 a las 01:24:41
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -289,9 +289,9 @@ INSERT INTO `calendario` (`id`, `anio`, `mes`, `dia`, `habil`, `fix`, `dof`, `pa
 (1209, 2018, 8, 18, 0, '', '', '19.010', 'SIST', '2018-08-19'),
 (1210, 2018, 8, 19, 0, '', '', '19.010', 'SIST', '2018-08-19'),
 (1211, 2018, 8, 20, 1, '19.0305', '', '19.010', 'SIST', '2018-08-19'),
-(1212, 2018, 8, 21, 1, '19.0305', '', '19.0615', 'SIST', '2018-08-19'),
-(1213, 2018, 8, 22, 1, '', '', '', 'SIST', '2018-08-19'),
-(1214, 2018, 8, 23, 1, '', '', '', 'SIST', '2018-08-19'),
+(1212, 2018, 8, 21, 1, '18.8784', '', '19.0615', 'SIST', '2018-08-19'),
+(1213, 2018, 8, 22, 1, '18.8176', '', '19.0305', 'SIST', '2018-08-19'),
+(1214, 2018, 8, 23, 1, '18.8672', '', '18.8784', 'SIST', '2018-08-19'),
 (1215, 2018, 8, 24, 1, '', '', '', 'SIST', '2018-08-19'),
 (1216, 2018, 8, 25, 0, '', '', '', 'SIST', '2018-08-19'),
 (1217, 2018, 8, 26, 0, '', '', '', 'SIST', '2018-08-19'),
@@ -2958,26 +2958,22 @@ CREATE TABLE `documentos` (
   `tipoAccesoId` int(11) DEFAULT NULL,
   `tipoDocumentoId` int(11) DEFAULT NULL,
   `fechaRegistro` date DEFAULT NULL,
-  `autorId` int(11) DEFAULT NULL
+  `autorId` int(11) DEFAULT NULL,
+  `estadodocumento` int(11) DEFAULT NULL,
+  `informedescargado` int(11) DEFAULT NULL,
+  `fechadescarga` date DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`id`, `descripcion`, `archivo`, `ubicacion`, `clienteId`, `tipoAccesoId`, `tipoDocumentoId`, `fechaRegistro`, `autorId`) VALUES
-(30, 'Archivo2', 'archivo2.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-16', NULL),
-(29, 'Archivo1', 'archivo1.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-16', 1),
-(35, 'Archivo7', 'archivo7.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, -1, 1, '2018-08-16', NULL),
-(31, 'Archivo3', 'archivo3.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-16', NULL),
-(32, 'Archivo4', 'archivo4.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-16', NULL),
-(33, 'Archivo5', 'archivo5.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-16', NULL),
-(39, 'Archivo11', '1534543082formacion academica faltantes de archivos.xlsx', '/api_veradiz/Repository/Upload/documentos/', 21, 1, 1, '2018-08-16', 1),
-(40, 'Estatus fiscal 1', 'fichacurricular.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 2, '2018-08-17', 1),
-(41, 'Archivo1', '1534475901directivos.pdf', '/api_veradiz/Repository/Upload/documentos/', 11, 1, 1, '2018-08-17', 1),
-(42, 'Claves fiscales 1', '1534477423directivos.pdf', '/api_veradiz/Repository/Upload/documentos/', 21, 1, 5, '2018-08-17', 1),
-(43, 'Editar software por Admin', '1534610609lider.pdf', '/api_veradiz/Repository/Upload/documentos/', 22, 1, 4, '2018-08-18', 1),
-(44, 'Archivo2', '1534611211miembros.pdf', '/api_veradiz/Repository/Upload/documentos/', 22, 1, 1, '2018-08-18', 1);
+INSERT INTO `documentos` (`id`, `descripcion`, `archivo`, `ubicacion`, `clienteId`, `tipoAccesoId`, `tipoDocumentoId`, `fechaRegistro`, `autorId`, `estadodocumento`, `informedescargado`, `fechadescarga`) VALUES
+(45, 'Informe de cliente 1 NADRO', '1534998530admin.pdf', '/api_veradiz/Repository/Upload/documentos/', 13, 1, 1, '2018-08-23', 1, 1, 0, '2018-08-23'),
+(46, 'Estatus fiscal 1 NADRO', '1534998613adminbecarios.pdf', '/api_veradiz/Repository/Upload/documentos/', 13, 1, 2, '2018-08-23', 1, 1, 0, '0000-00-00'),
+(47, 'Pago de impuestos 1 ceMIESol', '1534998657fichacurricular.pdf', '/api_veradiz/Repository/Upload/documentos/', 14, 1, 4, '2018-08-23', 1, 1, 0, '2018-08-23'),
+(48, 'Información financiera 1 Chantilly', '1534998724personal.pdf', '/api_veradiz/Repository/Upload/documentos/', 15, 1, 3, '2018-08-23', 1, 1, 0, '2018-08-23'),
+(49, 'Clave fiscal 1 Colegio Williams', '1534998928lider.pdf', '/api_veradiz/Repository/Upload/documentos/', 16, 1, 5, '2018-08-23', 1, 1, 0, '2018-08-23');
 
 -- --------------------------------------------------------
 
@@ -9187,6 +9183,51 @@ INSERT INTO `dolartemp` (`id`, `fecha`, `fix`, `dof`, `pagos`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `encargado_cuenta`
+--
+
+CREATE TABLE `encargado_cuenta` (
+  `id` int(11) NOT NULL,
+  `idcliente` int(11) DEFAULT NULL,
+  `idempleado` int(11) DEFAULT NULL,
+  `fechaasignacion` date DEFAULT NULL,
+  `fechadesaccionacion` date DEFAULT NULL,
+  `estatus` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `encargado_cuenta`
+--
+
+INSERT INTO `encargado_cuenta` (`id`, `idcliente`, `idempleado`, `fechaasignacion`, `fechadesaccionacion`, `estatus`) VALUES
+(1, 13, 2, '2018-08-23', '2018-08-23', 1),
+(2, 14, 8, '2018-08-23', '2018-08-23', 1),
+(3, 15, 10, '2018-08-23', '2018-08-23', 1),
+(4, 16, 8, '2018-08-23', '2018-08-23', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_documentos`
+--
+
+CREATE TABLE `estado_documentos` (
+  `id` int(11) NOT NULL,
+  `estado` varchar(32) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_documentos`
+--
+
+INSERT INTO `estado_documentos` (`id`, `estado`) VALUES
+(1, 'Edición'),
+(2, 'Revisión'),
+(3, 'Publicado');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `festivos`
 --
 
@@ -9385,6 +9426,21 @@ CREATE TABLE `precios_consumidor` (
   `valor` decimal(10,2) DEFAULT NULL,
   `tipoIndicador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `relacion_empleados`
+--
+
+CREATE TABLE `relacion_empleados` (
+  `id` int(11) NOT NULL,
+  `idjefe` int(11) DEFAULT NULL,
+  `idempleado` int(11) DEFAULT NULL,
+  `fechaasignacion` date DEFAULT NULL,
+  `fechadesaccionacion` date DEFAULT NULL,
+  `estatus` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -24935,16 +24991,33 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `usuario`, `claveacceso`, `telefono`, `celular`, `extension`, `puesto`, `imagen`, `ubicacion_imagen`, `activo`, `tipoUsuarioId`, `rolID`, `rol`, `contacto`) VALUES
 (1, 'Administrador', 'demo@correo.com', 'adm', 'adm', '7772677696', '7772677696', '444', 'Puesto', 'stats-bg.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 1, 'Administrador', NULL),
-(2, 'Socio', 'demo@correo.com', 'cont', 'cont', '7772677696', '7772677696', '444', 'Puesto', 'stats-bg.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', NULL),
-(10, 'Empleado', 'correo@demo.com', 'emp', 'emp', '7772677696', '7772677696', '444', 'Puesto', 'client-1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', NULL),
-(11, 'NADRO', 'correo@demo.com', 'cliente', 'cliente', '7772677696', '7772677696', '444', 'Puesto', 'img4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Contacto1'),
-(12, 'Tesorería', 'correo@demo.com', 'teso', 'teso', '7772677696', '7772677696', '444', 'Puesto', 'client-2.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 5, 'Tesorería', NULL),
-(21, 'Chantilly', 'demo@correo.com', 'demo', 'test', '7772677696', '7772677696', '777', 'Puesto', 'c3.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 2, 'Cliente', 'Contacto'),
-(22, 'De la Riva Group', 'demo@correo.com', 'demo', 'test', '7772677696', '7772677696', '777', 'Puesto', 'c13.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 2, 'Cliente', 'Contacto'),
-(23, 'nombre', '2', '3', '4', '5', '6', '7', '8', '9', '10', 1, 1, 1, '', ''),
-(24, 'nombre', '2', '3', '4', '5', '6', '7', '8', '9', '10', 1, 1, 1, '', ''),
-(25, 'nombre', '2', '3', '4', '5', '6', '7', '8', '9', '10', 1, 1, 1, '', ''),
-(26, 'nombre', '2', '3', '4', '5', '6', '7', '8', '9', '10', 1, 1, 1, '', '');
+(2, 'C.P.C. ANTONIO VERA SALAZAR', 'tonovera@veradiz.com', 'tonovera', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Dirección general', 'team-1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(3, 'BEATRIZ EUGENIA ROCHA VALENCIA', 'direccion@veradiz.com', 'direccion', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Asistente de la dirección', 'client-3.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(4, 'L.C. ISAIAS GUTIERREZ GARCIA', 'isaiasgu@veradiz.com', 'isaiasgu', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Socio Director Contabilidad', 'team-3.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(5, 'C.P. ARTURO NIETO CASTELLANOS', 'contabil@veradiz.com', 'contabil', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Supervisor de Contabilidad', 'NIETO-2014-01-20.JPG', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(6, 'L.C. RAUL CANO VELASCO', 'contabili1@veradiz.com', 'contabili1', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'SUBGERENTE DE CONTABILIDAD', 'RCANO-2014-01-20.JPG', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(7, 'CAROLINA MOHZO RAMIREZ', 'cobranzas@veradiz.com', 'cobranzas', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Tesorería', 'CARO-2014-01-20.JPG', 'api_veradiz/Repository/Upload/images/', 1, 1, 5, 'Tesorería', ''),
+(8, 'C.P.C. ROSA MARIA COTERA MORA', 'romacove@veradiz.com', 'romacove', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Consultor fiscal', 'team-2.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(9, 'L.C. TERESA MARTINEZ GONZALE', 'auditoria@veradiz.com', 'auditoria', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Socio Auditoría', 'team-5.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(10, 'L.C. CECILIO GARCIA CERVANTES', 'auditoria1@veradiz.com', 'auditoria1', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Socio auditoría', 'team-4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(11, 'L.C. MIGUEL CAMACHO GONZALEZ', 'auditoria2@veradiz.com', 'auditoria2', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Socio auditoría', 'team-6.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
+(12, 'EVA MARTINEZ GALICIA', 'imss@veradiz.com', 'imss', 'test', '(55)5563 7499', '(55)5563 7499', '111', 'Supervisor', 'EVA-2014-01-21.JPG', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(13, 'NADRO', 'nadro@demo.com', 'nadro', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Laura Esquivel'),
+(14, 'ceMIESol', 'cemiesol@demo.com', 'sol', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c2.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Clara Estevez'),
+(15, 'Chantilly', 'chantilly@demo.com', 'crema', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c3.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Jennifer Williams'),
+(16, 'Colegio Williams', 'williams@demo.com', 'william', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Leslie Williams'),
+(17, 'Conferencia Nal. de Gobernadores', 'conago@demo.com', 'gober', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c5.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Patricio Rodriguez'),
+(18, 'HAMSA', 'hamsa@correo.com', 'hamsa', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c6.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Juan Dominguez'),
+(19, 'Honda', 'Honda@correo.com', 'honda', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c7.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Tomas Narvarte'),
+(20, 'farmatodo', 'farmatodo@correo.com', 'farma', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c8.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Diana Damaris'),
+(21, 'AT&T', 'att@corre.com', 'att', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c9.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Karen Samuels'),
+(22, 'CDI', 'cdi@correo.com', 'cdi', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c10.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Gustavo Alfaro'),
+(23, 'Bellavista Golf', 'golf@correo.com', 'golf', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c11.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Jaime Jimenez'),
+(24, 'Centro de inv. y doc. de la casa', 'casa@correo.com', 'casa', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c12.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Karla Jimenez'),
+(25, 'De la Riva Group', 'riva@correo.com', 'riva', 'test', '(55) 555 555', '(55) 555 555', '1', 'Contabilidad', 'c13.jpg', 'api_veradiz/Repository/Upload/images/', 1, 2, 4, 'Cliente', 'Laura Espinoza'),
+(26, 'Sebastian Montero', 'montero@correo.com', 'montero', 'test', '(55)5563 7499', '(55) 555 555', '1', 'Encargado de cuentas', 'client-1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(27, 'Melissa Castillo', 'melissa@correo.com', 'melissa', 'test', '(55)5563 7499', '(55)5563 7499', '1', 'Encargado de cuenta', 'team-img1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(28, 'Carolina  Ibarra', 'caro@correo.com', 'caro', 'test', '(55)5563 7499', '(55)5563 7499', '1', 'Encargado de cuenta', 'team-img4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', '');
 
 --
 -- Índices para tablas volcadas
@@ -24999,6 +25072,18 @@ ALTER TABLE `dolartemp`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `encargado_cuenta`
+--
+ALTER TABLE `encargado_cuenta`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `estado_documentos`
+--
+ALTER TABLE `estado_documentos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `festivos`
 --
 ALTER TABLE `festivos`
@@ -25050,6 +25135,12 @@ ALTER TABLE `otras_monedas`
 -- Indices de la tabla `precios_consumidor`
 --
 ALTER TABLE `precios_consumidor`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `relacion_empleados`
+--
+ALTER TABLE `relacion_empleados`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -25156,7 +25247,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT de la tabla `dolar`
@@ -25169,6 +25260,18 @@ ALTER TABLE `dolar`
 --
 ALTER TABLE `dolartemp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+
+--
+-- AUTO_INCREMENT de la tabla `encargado_cuenta`
+--
+ALTER TABLE `encargado_cuenta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `estado_documentos`
+--
+ALTER TABLE `estado_documentos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `festivos`
@@ -25216,6 +25319,12 @@ ALTER TABLE `otras_monedas`
 -- AUTO_INCREMENT de la tabla `precios_consumidor`
 --
 ALTER TABLE `precios_consumidor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `relacion_empleados`
+--
+ALTER TABLE `relacion_empleados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -25282,7 +25391,7 @@ ALTER TABLE `udis`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

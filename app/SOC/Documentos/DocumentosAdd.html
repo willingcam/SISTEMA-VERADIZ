@@ -3,7 +3,7 @@
     <div class="page-title">
         <div class="title_left">
             <ol class="breadcrumb miga">
-                <li><i class="disabled fa fa-tasks"></i> <a>Informes de clientes/Agregar</a></li>
+                <li><i class="disabled fa fa-info-circle"></i> <a>Informes de clientes/Agregar</a></li>
             </ol>
         </div>
     </div>
@@ -25,10 +25,10 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                               Tipo de acceso <span class="required">*</span>
+                              Tipo de documento <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <select ng-model="tipoAccesoId" ng-options="tipo.id as tipo.descripcion for tipo in TiposAccesos" class="form-control"></select>
+                                <select ng-model="documentoSeleccionado" ng-options="tipos.id as tipos.tipo for tipos in tipodocumento" class="form-control"></select>
                             </div>
                         </div>
 

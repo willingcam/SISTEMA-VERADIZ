@@ -15,6 +15,15 @@ class Documentos{
 	public $tipoDocumentoId;
 	public $fechaRegistro;
 	public $autorId;
+	public $estadodocumento;
+	public $informedescargado;
+	public $fechadescarga;
+
+
+	public $descripcionTipoDoc;
+	public $nombreCliente;
+	public $descripcionEstadoDoc;
+
 
 	// constructor with $db as database connection
 	public function __construct($db){
@@ -38,7 +47,8 @@ class Documentos{
 
 		// query to insert record
 		$query = "INSERT INTO	" . $this->table_name . "
-				SET descripcion=:descripcion, archivo=:archivo, ubicacion=:ubicacion, clienteId=:clienteId, tipoAccesoId=:tipoAccesoId, tipoDocumentoId=:tipoDocumentoId, autorId=:autorId, fechaRegistro=:fechaRegistro  ";
+				SET descripcion=:descripcion, archivo=:archivo, ubicacion=:ubicacion, clienteId=:clienteId, tipoAccesoId=:tipoAccesoId, 
+				tipoDocumentoId=:tipoDocumentoId, autorId=:autorId, fechaRegistro=:fechaRegistro, estadodocumento=:estadodocumento, informedescargado=:informedescargado, fechadescarga=:fechadescarga  ";
 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
@@ -54,6 +64,10 @@ class Documentos{
 		$this->autorId=strip_tags($this->autorId);
 		$this->fechaRegistro=strip_tags($this->fechaRegistro);	
 
+		$this->estadodocumento=strip_tags($this->estadodocumento);	
+		$this->informedescargado=strip_tags($this->informedescargado);	
+		$this->fechadescarga=strip_tags($this->fechadescarga);	
+
 		// bind values
 		$stmt->bindParam(":descripcion", $this->descripcion);
 		$stmt->bindParam(":archivo", $this->archivo);
@@ -65,6 +79,10 @@ class Documentos{
 	
 		$stmt->bindParam(":autorId", $this->autorId);
 		$stmt->bindParam(":fechaRegistro", $this->fechaRegistro);	
+
+		$stmt->bindParam(":estadodocumento", $this->estadodocumento);	
+		$stmt->bindParam(":informedescargado", $this->informedescargado);	
+		$stmt->bindParam(":fechadescarga", $this->fechadescarga);	
 
 		// execute query
 		if($stmt->execute()){
@@ -82,7 +100,10 @@ class Documentos{
 	public function read(){
 
 		// select all query
-		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId FROM documentos ";
+		$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.tipoAccesoId, P.clienteId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga, Q.estado, R.tipo_documento, U.nombre FROM documentos P 
+				   LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
+				   LEFT JOIN tipo_documento  R  ON R.id = P.tipoDocumentoId
+				   LEFT JOIN usuarios   U ON U.id = P.clienteId";
 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -96,8 +117,14 @@ class Documentos{
 		// read products
 	public function read_client(){
 
-		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId FROM " . $this->table_name . " WHERE  clienteId = ?";
+		///$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId, estadodocumento, informedescargado, fechadescarga FROM " . $this->table_name . " WHERE  clienteId = ?";
 	
+
+		$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.tipoAccesoId, P.clienteId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga, Q.estado, R.tipo_documento, U.nombre FROM documentos P 
+		LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
+		LEFT JOIN tipo_documento  R  ON R.id = P.tipoDocumentoId
+		LEFT JOIN usuarios   U ON U.id = P.clienteId  WHERE  P.clienteId = ?  ";
+
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);
 
@@ -113,7 +140,7 @@ class Documentos{
 
 	public function read_client_type(){
 
-		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId FROM " . $this->table_name . " WHERE  clienteId = ? AND tipoDocumentoId = ?";
+		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId, estadodocumento, informedescargado, fechadescarga FROM " . $this->table_name . " WHERE  clienteId = ? AND tipoDocumentoId = ?";
 	
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);
@@ -131,7 +158,7 @@ class Documentos{
 
 	public function verify_document(){
 
-		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId FROM " . $this->table_name . " WHERE clienteId = :cli AND tipoDocumentoId = :tip AND descripcion LIKE  :foo ";
+		$query = "SELECT id, descripcion, ubicacion, archivo, tipoAccesoId, clienteId, tipoDocumentoId, fechaRegistro, autorId, estadodocumento, informedescargado, fechadescarga FROM " . $this->table_name . " WHERE clienteId = :cli AND tipoDocumentoId = :tip AND descripcion LIKE  :foo ";
 	
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);
@@ -142,11 +169,8 @@ class Documentos{
 
             $likeString = "%$this->descripcion%";
 
-
             $stmt->bindParam(':foo',  $likeString ,  PDO::PARAM_STR);
 
-		
-	
 			// execute query
 			$stmt->execute();
 	
@@ -158,8 +182,8 @@ class Documentos{
 	function readOne(){
 
 		// query to read single record
-		$query = "SELECT id, descripcion, ubicacion, archivo, clienteId, tipoAccesoId, tipoDocumentoId, fechaRegistro, autorId FROM " . $this->table_name . " 
-				WHERE  id = ?
+		$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.clienteId, P.tipoAccesoId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga FROM " . $this->table_name . " P LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
+				WHERE  P.id = ?
 				LIMIT 0,1";
 
 		// prepare query statement
@@ -184,12 +208,13 @@ class Documentos{
 		$this->tipoDocumentoId = $row['tipoDocumentoId'];
 		$this->fechaRegistro = $row['fechaRegistro'];
 		$this->autorId = $row['autorId'];
+
+		$this->estadodocumento = $row['estadodocumento'];
+		$this->informedescargado = $row['informedescargado'];
+		$this->fechadescarga = $row['fechadescarga'];
 	}
 	
-	
-
-
-	
+		
 	// update the product
 	function update(){
 
@@ -203,8 +228,10 @@ class Documentos{
 					clienteId = :clienteId,
 					tipoDocumentoId = :tipoDocumentoId,
 					fechaRegistro = :fechaRegistro,
-					autorId = :autorId
-										
+					autorId = :autorId,
+					estadodocumento=:estadodocumento,
+					informedescargado=:informedescargado,
+					fechadescarga=:fechadescarga				
 				WHERE
 					id = :id";
 
@@ -220,6 +247,10 @@ class Documentos{
 		$this->tipoDocumentoId=strip_tags($this->tipoDocumentoId);
 		$this->fechaRegistro=strip_tags($this->fechaRegistro);
 		$this->autorId=strip_tags($this->autorId);
+
+		$this->estadodocumento=strip_tags($this->estadodocumento);
+		$this->informedescargado=strip_tags($this->informedescargado);
+		$this->fechadescarga=strip_tags($this->fechadescarga);
 		
 		$this->id=htmlspecialchars(strip_tags($this->id));
 
@@ -231,7 +262,11 @@ class Documentos{
 		$stmt->bindParam(':clienteId', $this->clienteId);
 		$stmt->bindParam(':tipoDocumentoId', $this->tipoDocumentoId);
 		$stmt->bindParam(':fechaRegistro', $this->fechaRegistro);
-     	$stmt->bindParam(':autorId', $this->autorId);
+		$stmt->bindParam(':autorId', $this->autorId);
+		 
+		$stmt->bindParam(':estadodocumento', $this->estadodocumento);
+	    $stmt->bindParam(':informedescargado', $this->informedescargado);
+		$stmt->bindParam(':fechadescarga', $this->fechadescarga);
 				
 		$stmt->bindParam(':id', $this->id);
 

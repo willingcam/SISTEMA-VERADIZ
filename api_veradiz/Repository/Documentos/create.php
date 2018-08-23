@@ -33,7 +33,11 @@ if(	isset($data->descripcion) ){
 	$obj->tipoDocumentoId = $data->tipoDocumentoId;
 
 	$obj->fechaRegistro = $data->fechaRegistro;
-    $obj->autorId = $data->autorId;
+	$obj->autorId = $data->autorId;
+	
+	$obj->estadodocumento = $data->estadodocumento;
+	$obj->informedescargado = $data->informedescargado;
+	$obj->fechadescarga = $data->fechadescarga;
 
 	// create the obj
 	if($obj->create()){
