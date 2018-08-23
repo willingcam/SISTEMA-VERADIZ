@@ -5,7 +5,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 (function() {
     "use strict";
     angular
-        .module("veradizDOC")
+        .module("veradizdDOC")
         .controller("DocumentosEditCtrl", ['AuthService', '$scope', 'DocumentosService', 'globalGet', '$state', '$stateParams', '$http', DocumentosEditCtrl]);
 
     function DocumentosEditCtrl(AuthService, $scope, DocumentosService, globalGet, $state, $stateParams, $http) {

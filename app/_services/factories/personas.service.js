@@ -15,31 +15,21 @@
             var q = $q.defer();
             var url = API + '/Repository/Usuarios/user_data.php?id=' + id;
 
-            debugger;
+           
             try {
-                //console.log("ach:");
-                //console.log(API + 'Personas/GetByRU/' + username);
-
-
-
+               
                 $http.get(url)
                     .success(function(response) {
                         if (response != null) {
 
-                            debugger;
-
                             AuthService.authentication.nombreCompleto = response.nombre;
-                            //AuthService.authentication.userprofile = response;
+                        
                             AuthService.authentication.rol = response.rol;
                             AuthService.authentication.idrol = response.rolId;
-
-
                             AuthService.authentication.idUsuario = response.id;
-
                             AuthService.authentication.foto = response.ubicacion_imagen + response.imagen;
-
                             var authData = localStorageService.get('authorizationData');
-                            //authData.userprofile = AuthService.authentication.userprofile;
+                          
                             authData.nombreCompleto = AuthService.authentication.nombreCompleto;
                             authData.foto = response.ubicacion_imagen + response.imagen;
                             authData.rol = AuthService.authentication.rol;

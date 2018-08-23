@@ -9,18 +9,13 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
     function DocumentosGetCtrl($scope, DocumentosService) {
 
-        //Variables de carga
+
         $scope.loading = true;
-        //Obtener los servicios de autenticacion
-        //$scope.authentication = AuthService.authentication;
-        //obtener registros
 
         $scope.clienteActual = "";
         $scope.clienteSeleccionado = "";
 
         $scope.clientes = {};
-
-
 
         $scope.clientes = function() {
             DocumentosService.getAllClients().then(

@@ -107,14 +107,16 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 'clienteId': $scope.clienteSeleccionado,
                 'tipoDocumentoId': $scope.documentoSeleccionado,
                 "fechaRegistro": new Date(),
-                "autorId": AuthService.authentication.idUsuario
+                "autorId": AuthService.authentication.idUsuario,
+                "estadodocumento": 1,
+                "informedescargado": 0,
+                "fechadescarga": new Date()
+
             }
 
 
             DocumentosService.verifyDocument(registo).then(
                 function(result) {
-
-                    console.log(result.data.records);
 
                     if (result.data.records != undefined) {
                         toastr.success("Ya existe un documento registrado con el mismo nombre y el mismo cliente y tipo de documento seleccionado");

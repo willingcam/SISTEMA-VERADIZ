@@ -69,7 +69,7 @@
             AuthService.logOut();
             console.log("$scope.logOut: logOut()");
             //$location.path('/home');
-            window.location = "/indexApp.html#/login";
+            window.location = "/indexApp.html";
         }
 
 

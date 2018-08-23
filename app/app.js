@@ -28,33 +28,14 @@
             ]);
             DTDefaultOptions.setDisplayLength(5);
         })
-        .filter('BlackListOC', function() {
-            return function(oCsRolesBlackList, idRol) {
-
-                if (idRol == undefined || oCsRolesBlackList == undefined || oCsRolesBlackList == null || oCsRolesBlackList.length < 1) {
-                    return false;
-                }
-                try {
-                    var dentro = false;
-                    for (var i = 0; i < oCsRolesBlackList.length; i++) {
-                        if (oCsRolesBlackList[i].rolId == idRol) {
-                            dentro = true;
-                            break;
-                        }
-                    }
-                    return dentro;
-                } catch (e) { return false; }
-
-                return false;
-            };
-        })
+        
         .run(function($rootScope, MenuService, $window) {
             $rootScope.go = function(authentication) {
                 if (!authentication.isAuth) {
                     window.location = "/indexApp.html#/login";
                 }
-
             }
+            
             $rootScope.anioActual = anioActual();
 
             $rootScope.globalRegresar = function() {

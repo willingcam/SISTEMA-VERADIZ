@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="title_left">
             <ol class="breadcrumb miga">
-                <li><i class="disabled fa fa-folder-open-o"></i> <a>Informes de clientes</a></li>
+                <li><i class="disabled fa fa-info-circle"></i> <a>Informes de clientes</a></li>
             </ol>
         </div>
     </div>
@@ -40,14 +40,43 @@
                         <thead>
                             <tr>
                                 <th data-priority="1">Documento</th>
+                                <th data-priority="2">Tipo de documento</th>
+                                <th data-priority="3">Cliente</th>
+                                <th data-priority="4">Estado</th>
+                                <th data-priority="5">Opciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
-                                    <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a></td>
+                                    <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
+                                </td>
 
+                                <td>
+                                    {{obj.tipodocumento}}
+                                </td>
+
+                                <td>
+                                    {{obj.cliente}}
+                                </td>
+
+                                <td>
+                                    {{obj.estado}}
+                                </td>
+
+                                <td class="text-center">
+
+
+                                    <a class="btn btn-warning" ui-sref="documentosEdit({id:obj.id})" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+
+                                    <a class="btn btn-danger" ng-click="eliminarDocumento(obj.id, obj.archivo)" title=" Eliminar ">
+                                        <i class="glyphicon glyphicon-trash "></i>
+                                    </a>
+
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -60,10 +89,10 @@
 
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <button type="button" ui-sref="documentosAdd" class="btn btn-success">
-                <span class="glyphicon glyphicon-plus"></span> Agregar
+    <div class="row ">
+        <div class="col-xs-12 ">
+            <button type="button " ui-sref="documentosAdd " class="btn btn-success ">
+                <span class="glyphicon glyphicon-plus "></span> Agregar
             </button>
         </div>
     </div>

@@ -40,16 +40,32 @@
                         <thead>
                             <tr>
                                 <th data-priority="1">Documento</th>
-                                <th data-priority="2">Opciones</th>
+                                <th data-priority="2">Tipo de documento</th>
+                                <th data-priority="3">Cliente</th>
+                                <th data-priority="4">Estado</th>
+                                <th data-priority="5">Opciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
-                                <td style="width:80%">
+                                <td>
                                     <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
                                 </td>
-                                <td class="text-center" style="width:20%">
+
+                                <td>
+                                    {{obj.tipodocumento}}
+                                </td>
+
+                                <td>
+                                    {{obj.cliente}}
+                                </td>
+
+                                <td>
+                                    {{obj.estado}}
+                                </td>
+
+                                <td class="text-center">
 
 
                                     <a class="btn btn-warning" ui-sref="documentosEdit({id:obj.id})" title="Editar">

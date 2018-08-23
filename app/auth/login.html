@@ -12,7 +12,7 @@
                                 <div class="inputContainer">
                                     <label><span><i class="sg-1x5 glyphicon glyphicon-user"></i></span></label>
                                     <div>
-                                        <input type="text" id="usuario" name="usuario" title="Usuario" ng-minlength="3" ng-maxlength="3" class="form-control" placeholder="Usuario" ng-required="true" data-ng-model="loginData.userName" />
+                                        <input type="text" id="usuario" name="usuario" title="Usuario" ng-minlength="3" ng-maxlength="10" class="form-control" placeholder="Usuario" ng-required="true" data-ng-model="loginData.userName" />
                                     </div>
                                 </div>
                                 <br/>
@@ -23,21 +23,11 @@
 
                                 <div class="clearfix"></div>
 
-
-
-
                                 <div class="separator">
                                     <button type="submit" id="entrar" class="btn btn-lg btn-success btn-block" ng-disabled="btnClick">
                                         Entrar
                                     </button>
-                                    <!-- <a class="reset_pass title linkTabla ng-binding" id="olvido"
-                                       ui-sref="recupearapassword">Olvidaste tu contrase&ntilde;a&quest; </a> -->
-                                    <!--<a class="title linkTabla ng-binding" ui-sref="recupearapassword">Olvid&eacute; mi contraseña</a>-->
-                                    <!--<div ng-hide="message == ''" class="alert alert-danger">
-                                        {{message}}
-                                    </div>-->
-
-                                </div>
+                                 </div>
                             </form>
 
                         </section>

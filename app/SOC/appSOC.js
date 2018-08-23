@@ -143,22 +143,21 @@
                 url: "/home",
                 templateUrl: "app/SOC/home/homeSOC.html",
                 controller: 'homeSOCCtrl'
-            }).state("documentos", {
+            })
+            .state("documentos", {
                 url: "/documentos",
-                templateUrl: "app/SOC/documentos/DocumentosGet.html",
+                templateUrl: "app/SOC/Documentos/DocumentosGet.html",
                 controller: "DocumentosGetCtrl"
-            }).state("documentosAdd", {
+            })
+            .state("documentosAdd", {
                 url: "/documentosAdd",
                 templateUrl: "app/SOC/Documentos/DocumentosAdd.html",
                 controller: "DocumentosAddCtrl"
-            }).state("reportes", {
-                url: "/reportes",
-                templateUrl: "app/SOC/Reportes/ReportesGet.html",
-                controller: "ReportesGetCtrl"
-            }).state("reportesAdd", {
-                url: "/ReportesAdd",
-                templateUrl: "app/SOC/Reportes/ReportesAdd.html",
-                controller: "ReportesAddCtrl"
+            })
+            .state("documentosEdit", {
+                url: "/documentosEdit/:id",
+                templateUrl: "app/SOC/Documentos/DocumentosEdit.html",
+                controller: "DocumentosEditCtrl"
             })
 
     };

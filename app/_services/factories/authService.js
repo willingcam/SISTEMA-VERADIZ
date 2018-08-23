@@ -23,8 +23,6 @@
 
         };
 
-
-
         var _verificaSesion = function() {
             var q = $q.defer();
             var datos = localStorageService.get('authorizationData');
@@ -32,17 +30,12 @@
             return q.promise;
         };
 
-
-
-
         var _login = function(loginData) {
 
             var consulta = "Repository/Usuarios/login.php?usuario=" + loginData.userName + "&claveacceso=" + loginData.password;
-            debugger;
+            
             return $http.post(globalGet.get("api") + consulta, loginData).then(
                 function(response) {
-
-                    debugger;
                     if (response.data.id != null) {
                         var authData = { token: "123", nombreCompleto: response.data.nombre, idUsuario: response.data.id, userName: loginData.userName, ultimologin: new Date(), rol: "", idRol: "", foto: response.data.ubicacion_imagen + response.data.imagen, tipoUsuarioId: response.data.tipoUsuarioId };
                         localStorageService.set('authorizationData', authData);
@@ -55,10 +48,7 @@
                         _authentication.nombreCompleto = response.data.nombre;
                         _authentication.foto = response.data.ubicacion_imagen + response.data.imagen;
                         _authentication.tipoUsuarioId = response.data.tipoUsuarioId;
-
                     } else {
-
-
                         var authData = { token: "", nombreCompleto: null, userName: null, ultimologin: null };
                         localStorageService.set('authorizationData', authData);
 
