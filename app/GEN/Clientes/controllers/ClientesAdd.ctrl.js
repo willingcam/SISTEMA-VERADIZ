@@ -79,7 +79,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 'ubicacion_imagen': $scope.ubicacion,
                 'activo': 1,
                 'tipoUsuarioId': 2,
-                'rolID': 2,
+                'rolID': 4,
                 'rol': 'Cliente',
                 'contacto': $scope.contacto
 
@@ -87,6 +87,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
             UsuariosService.Add(registo).then(
                 function(result) {
+
                     toastr.success("Cliente registrado exitosamente");
                     $state.go("clientes");
                 },

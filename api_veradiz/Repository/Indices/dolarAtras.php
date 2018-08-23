@@ -23,11 +23,11 @@ $fecha =  date("Y-m-d");
 
 $year = date("Y",strtotime($fecha)); 
 $month = date("m",strtotime($fecha)); 
-$day = date("d",strtotime($fecha));
+
 
 
 // set ID property of record to read
-$obj->dia = $day;
+
 $obj->mes = $month;
 $obj->anio = $year;
 

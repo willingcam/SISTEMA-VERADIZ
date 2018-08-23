@@ -42,6 +42,7 @@
             IndicadoresService.getDolar2Atras().then(
                 function(exito) {
                     $scope.dolarAtras = exito.data.valor;
+                    console.log(exito.data.valor);
 
                 },
                 function(error) {

@@ -35,7 +35,8 @@ $obj->rolID = $data->rolID;
 $obj->rol = $data->rol;
 $obj->contacto = $data->contacto;
 
-
+$obj->usuario = $data->usuario;
+$obj->claveacceso = $data->claveacceso;
 
 // update the obj
 if($obj->update()){

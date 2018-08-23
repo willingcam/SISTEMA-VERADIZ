@@ -24,7 +24,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                     $scope.loading = false;
                     $scope.usuariosGet = result.data.records;
 
-                    console.log($scope.usuariosGet);
+
                 },
                 function(err) {
                     toastr.error("No se han podido cargar la información del personal que tenemos registrada");

@@ -126,6 +126,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
             UsuariosService.Add(registo).then(
                 function(result) {
+
                     toastr.success("Usuario registrado exitosamente");
                     $state.go("usuarios");
                 },
