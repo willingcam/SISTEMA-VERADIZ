@@ -33,8 +33,6 @@ $obj->celular = $data->celular;
 $obj->imagen = $data->imagen;
 $obj->rolID = $data->rolID;
 $obj->rol = $data->rol;
-$obj->usuario = $data->usuario;
-$obj->claveacceso = $data->claveacceso;
 
 
 

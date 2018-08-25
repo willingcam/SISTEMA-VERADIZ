@@ -58,7 +58,7 @@ class Roles{
 	public function read(){
 
 		// select all query
-		$query = "SELECT id, rol  FROM " . $this->table_name . " where id <> 4 ";
+		$query = "SELECT id, rol  FROM " . $this->table_name . " ";
 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
