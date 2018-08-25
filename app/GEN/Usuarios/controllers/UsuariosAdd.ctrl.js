@@ -37,7 +37,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
             UsuariosService.getAllRoles().then(
                 function(result) {
                     $scope.roles = result.data.records;
-                    $scope.roles.splice(3, 1);
+                    //$scope.roles.splice(3, 1);
 
                 },
                 function(err) {
@@ -100,16 +100,16 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 $scope.nombreRol = "Tesorería";
 
 
-            var cadena = $scope.correo.split('@');
-            var cuentaUsuario = cadena[0];
+            //var cadena = $scope.correo.split('@');
+            //var cuentaUsuario = cadena[0];
 
 
 
             var registo = {
                 'nombre': $scope.nombre,
                 'correo': $scope.correo,
-                'usuario': cuentaUsuario,
-                'claveacceso': 'test',
+                'usuario': $scope.usuario,
+                'claveacceso': $scope.claveacceso,
                 'telefono': $scope.telefono,
                 'celular': $scope.celular,
                 'extension': $scope.extension,
