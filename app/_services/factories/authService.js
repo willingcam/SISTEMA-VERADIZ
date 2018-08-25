@@ -12,10 +12,9 @@
 
         var _authentication = {
             isAuth: false,
-
+            userName: "",
             ultimologin: "",
             nombreCompleto: "",
-            userName: "",
             rol: "",
             idrol: "",
             idUsuario: "",
@@ -34,38 +33,23 @@
         var _login = function(loginData) {
 
             var consulta = "Repository/Usuarios/login.php?usuario=" + loginData.userName + "&claveacceso=" + loginData.password;
-
+            
             return $http.post(globalGet.get("api") + consulta, loginData).then(
                 function(response) {
-
-                    if (response.data != "null") {
-                        var authData = {
-                            token: "123",
-                            nombreCompleto: response.data.nombre,
-                            idUsuario: response.data.id,
-                            ultimologin: new Date(),
-                            rol: response.data.rol,
-                            idrol: response.data.rolID,
-                            userName: loginData.userName,
-                            foto: response.data.ubicacion_imagen + response.data.imagen,
-                            tipoUsuarioId: response.data.tipoUsuarioId
-                        };
-
+                    if (response.data.id != null) {
+                        var authData = { token: "123", nombreCompleto: response.data.nombre, idUsuario: response.data.id, userName: loginData.userName, ultimologin: new Date(), rol: "", idRol: "", foto: response.data.ubicacion_imagen + response.data.imagen, tipoUsuarioId: response.data.tipoUsuarioId };
                         localStorageService.set('authorizationData', authData);
-                        localStorageService.set('descripcionRol', response.data.rol);
-                        localStorageService.set('rolId', response.data.rolID);
 
                         _authentication.isAuth = true;
                         _authentication.userName = loginData.userName;
-                        _authentication.idrol = response.data.rolID;
-                        _authentication.rol = response.data.rol;
-                        _authentication.userName = loginData.userName;
+                        _authentication.idrol = "";
+                        _authentication.rol = "";
                         _authentication.idUsuario = response.data.id;
                         _authentication.nombreCompleto = response.data.nombre;
                         _authentication.foto = response.data.ubicacion_imagen + response.data.imagen;
                         _authentication.tipoUsuarioId = response.data.tipoUsuarioId;
                     } else {
-                        var authData = { token: null, id: null, nombreCompleto: null, userName: null, ultimologin: null };
+                        var authData = { token: "", nombreCompleto: null, userName: null, ultimologin: null };
                         localStorageService.set('authorizationData', authData);
 
                         _authentication.isAuth = false;
@@ -74,7 +58,6 @@
                         _authentication.rol = null;
                         _authentication.idUsuario = null;
                         _authentication.nombreCompleto = null;
-                        _authentication.userName = null;
                         _authentication.foto = "";
                         _authentication.tipoUsuarioId = "";
 
@@ -86,18 +69,17 @@
         };
 
         var _logOut = function() {
-
             //toastr.warning("cerrando sesi&oacute;n");
             localStorageService.remove('authorizationData');
             localStorageService.remove('descripcionRol');
-            localStorageService.remove('rolId');
+            localStorageService.remove('MenuListADM');
 
             localStorage.clear(); //importante para remover todo incluyendo MenuService._setVariable
             _authentication.isAuth = false;
+            _authentication.userName = "";
             _authentication.nombreCompleto = "";
             _authentication.rol = "";
             _authentication.idrol = "";
-            _authentication.userName = null;
             _authentication.idUsuario = null;
             _authentication.foto = "";
             _authentication.tipoUsuarioId = "";
@@ -106,12 +88,11 @@
 
         var authData = localStorageService.get('authorizationData');
         if (authData) {
-
             _authentication.isAuth = true;
             _authentication.userName = authData.userName;
             _authentication.nombreCompleto = authData.nombreCompleto;
             _authentication.rol = authData.rol;
-            _authentication.idrol = authData.idrol;
+            _authentication.idrol = "";
             _authentication.idUsuario = authData.idUsuario;
             _authentication.ultimologin = authData.ultimologin;
             _authentication.foto = authData.foto;
@@ -119,20 +100,20 @@
         }
 
         var _fillAuthData = function() {
-
             var authData = localStorageService.get('authorizationData');
             if (authData) {
+
                 _authentication.isAuth = true;
                 _authentication.userName = authData.userName;
                 _authentication.nombreCompleto = authData.nombreCompleto;
                 _authentication.rol = authData.rol;
-                _authentication.idrol = authData.idrol;
-                _authentication.userName = null;
+                _authentication.idrol = "";
                 _authentication.idUsuario = authData.idUsuario;
                 _authentication.ultimologin = authData.ultimologin;
                 _authentication.foto = authData.foto;
                 _authentication.tipoUsuarioId = authData.tipoUsuarioId;
             } else {
+
                 _authentication.isAuth = false;
             }
         };

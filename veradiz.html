@@ -115,13 +115,14 @@
 
     <script src="Scripts/ng-tags-input.js"></script>
 
+    <script src="app/_services/veradiz.services.js"></script>
+    <script src="app/_services/veradiz.controllers.js"></script>
+
+
 
 
     <script src="Scripts/angular-datatables/accent-neutralise.js"></script>
     <script src="Scripts/globales.js"></script>
-
-
-    <script src="app/_services/veradiz.services.js"></script>
 
     <script src="app/app.js"></script>
     <script src="Scripts/switch/bsSwitch.js"></script>
@@ -133,53 +134,22 @@
     <script src="app/_services/factories/personas.service.js"></script>
     <script src="app/_services/factories/menu.service.js"></script>
 
+
+
     <script src="Scripts/node_modules/angular-chart.js/node_modules/chart.js/dist/Chart.min.js"></script>
     <script src="Scripts/node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
 
     <script src="app/auth/controllers/indexController.js"></script>
     <script src="app/auth/controllers/login.ctrl.js"></script>
 
+
     <script src="app/home/controllers/homeAuthorize.ctrl.js"></script>
+    <script src="app/home/controllers/cargardatosAnonimo.ctrl.js"></script>
+    <script src="app/home/controllers/cargardatos.ctrl.js"></script>
 
 
-    <!-- USUARIOS -->
-    <script src="app/_services/Usuarios.service.js"></script>
-    <script src="app/Usuarios/controllers/UsuariosGet.ctrl.js"></script>
-    <script src="app/Usuarios/controllers/UsuariosAdd.ctrl.js"></script>
-    <script src="app/Usuarios/controllers/UsuariosEdit.ctrl.js"></script>
 
-    <!-- CLIENTES -->
-    <script src="app/Clientes/controllers/ClientesGet.ctrl.js"></script>
-    <script src="app/Clientes/controllers/ClientesAdd.ctrl.js"></script>
-    <script src="app/Clientes/controllers/ClientesEdit.ctrl.js"></script>
-    <script src="app/Clientes/controllers/ClientesResp.ctrl.js"></script>
-    <script src="app/Clientes/controllers/PersonalGet.ctrl.js"></script>
-
-    <!-- NOTICiAS -->
-    <script src="app/_services/Noticias.service.js"></script>
-    <script src="app/Noticias/controllers/NoticiasGet.ctrl.js"></script>
-    <script src="app/Noticias/controllers/NoticiasAdd.ctrl.js"></script>
-    <script src="app/Noticias/controllers/NoticiasEdit.ctrl.js"></script>
-
-
-    <!-- SERVICIOS -->
-    <script src="app/_services/Servicios.service.js"></script>
-    <script src="app/Servicios/controllers/ServiciosGet.ctrl.js"></script>
-    <script src="app/Servicios/controllers/ServiciosAdd.ctrl.js"></script>
-    <script src="app/Servicios/controllers/ServiciosEdit.ctrl.js"></script>
-
-
-    <!-- INFORMES -->
-    <script src="app/_services/Informes.service.js"></script>
-    <script src="app/Informes/controllers/InformesGet.ctrl.js"></script>
-    <script src="app/Informes/controllers/InformesAdd.ctrl.js"></script>
-    <script src="app/Informes/controllers/InformesEdit.ctrl.js"></script>
-
-    <script src="app/Informessoc/controllers/InformesSocGet.ctrl.js"></script>
-    <script src="app/Informessoc/controllers/InformesSocAdd.ctrl.js"></script>
-    <script src="app/Informessoc/controllers/InformesSocEdit.ctrl.js"></script>
-
-    <script src="app/Informescli/controllers/informesCliGet.ctrl.js"></script>
 
     <!-- endinject -->
     <!-- endbuild -->
@@ -196,7 +166,6 @@
 
 
                         <a href="" class="site_title"> <span>VERADIZ</span></a>
-
 
                     </div>
                     <div class="clearfix"></div>
@@ -215,71 +184,17 @@
                     <!-- /menu profile quick info -->
                     <br />
 
+
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
 
                             <ul class="nav side-menu">
+                                <li class="gen">
 
-                                <li ng-show="authentication.idrol == 1">
-                                    <a>
-                                        <i class="fa fa-wrench"></i>Administración sistema <span class="fa fa-chevron-down"></span>
-                                    </a>
-                                    <ul class="nav child_menu">
-
-                                        <li>
-                                            <a ng-href="veradiz.html#/usuarios">
-                                                <i class="fa fa-user"> </i>&nbsp;Personal
-                                            </a>
-
-                                        </li>
-                                        <li>
-                                            <a ng-href="veradiz.html#/clientes">
-                                                <i class="fa fa-building"> </i>&nbsp;Clientes
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="veradiz.html#/servicios">
-                                                <i class="fa fa-tasks"> </i>&nbsp;Servicios
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="veradiz.html#/noticias">
-                                                <i class="fa fa-newspaper-o"> </i>&nbsp;Noticias/Eventos
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                    Seleccione un módulo<span class="glyphicon glyphicon-menu-right"></span>
 
 
-
-                                <li ng-show="authentication.idrol == 3">
-                                    <a ng-href="veradiz.html#/informes">
-                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Registro de informes
-                                    </a>
-                                </li>
-
-                                <li ng-show="authentication.idrol == 2">
-                                    <a ng-href="veradiz.html#/informess">
-                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Revisión de informes
-                                    </a>
-                                </li>
-
-                                <li ng-show="authentication.idrol == 4">
-                                    <a ng-href="veradiz.html#/clientesinformes">
-                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Consulta de informes
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a>
-                                        <i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span>
-                                    </a>
-                                    <ul class="nav child_menu">
-                                        <li><a href="index.html">Cetes</a></li>
-                                        <li><a href="index2.html">TIIE</a></li>
-                                        <li><a href="index3.html">Dolar</a></li>
-                                    </ul>
                                 </li>
 
                             </ul>
