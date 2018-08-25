@@ -1,0 +1,84 @@
+﻿<div class="vista">
+
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li><i class="disabled fa fa-building"></i> <a>Administración de clientes</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div class="row">
+
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content sin-desborde">
+                    <div class="x_title">
+                        <h2>Clientes VERADIZ</h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+
+
+                    <div ng-repeat="obj in usuariosGet" class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="x_panel">
+                            <div style="height:220px;">
+                                <div class="pull-right">
+                                    <a class="btn btn-warning" ui-sref="clientesEdit({id:obj.id})" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger pull-right" ng-click="updateState(obj)" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+
+                                    <a class="btn btn-success pull-right" ui-sref="clientesResp({id:obj.id})" title="Asignar responsables de atención">
+                                            <i class="fa fa-users"></i>
+                                    </a>
+                                   
+                                </div>
+                                <img class="img-rounded" style="height: 100px; width: 100px;" src="{{obj.urlImagenCompleta}}">
+
+                                <div style="text-overflow: clip; overflow-wrap: break-word">
+                                    <label style="color: #1ABB9C; font-size: 10px; font-size: medium; margin-bottom: 0px;">
+                                    <i>{{obj.nombre}}</i>
+                                </label>
+                                    <br/>
+                                    <label style="font-size: 10px; font-size: small; margin-bottom: 0px; text-justify: distribute; text-overflow: clip">
+                                  <i>{{obj.contacto}}</i>
+                                </label>
+                                    <br/>
+                                    <label style="font-size: 10px; font-size: small; margin-bottom: 0px; text-justify: distribute; text-overflow: clip">
+                              <i>{{obj.puesto}}</i>
+                            </label>
+                                </div>
+                                <div>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fa fa-envelope">&nbsp;</i>{{obj.correo}}</li>
+                                        <li><i class="fa fa-phone">&nbsp;</i> Teléfono #: {{obj.telefono}} Ext #: {{obj.extension}}</li>
+                                        <li><i class="fa fa-mobile-phone">&nbsp;</i> Móvil #: {{obj.celular}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" ui-sref="clientesAdd" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span> Agregar
+                </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
