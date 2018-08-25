@@ -13,14 +13,16 @@
 
             config.headers = config.headers || {};
             var authData = localStorageService.get('authorizationData');
+
             if (authData && _logueadohoy(authData)) {
                 config.headers.Authorization = 'Bearer ' + authData.token;
                 try {
-                    if (typeof authData.userprofile != "undefined") {
-                        if (authData.userprofile != null) {
-                            config.headers.UsuarioId = authData.userprofile.clavePersona;
-                            config.headers.NombreCompleto = authData.userprofile.nombreCompleto;
-                            config.headers.userName = authData.userName
+
+                    if (typeof authData.idusuario != "undefined" || authData.idusuario != "null") {
+                        if (authData.idusuario != null) {
+                            config.headers.UsuarioId = authData.id;
+                            config.headers.NombreCompleto = authData.nombre;
+                            config.headers.userName = authData.nombre
                         }
                     }
                 } catch (e) {
@@ -30,67 +32,51 @@
             }
             return config;
         }
-        var _requestServerSide = function() {
-            var headers = {
-                "Authorization": 'BearerFOO',
-                "UsuarioId": "Anonimo",
-                "NombreCompleto": "Anonimo"
-            };
-            var authData = localStorageService.get('authorizationData');
-            if (authData && _logueadohoy(authData)) {
-                headers.Authorization = 'Bearer ' + authData.token;
-                try {
-                    if (typeof authData.userprofile != "undefined") {
-                        if (authData.userprofile != null) {
-                            headers.UsuarioId = authData.userprofile.clavePersona;
-                            headers.NombreCompleto = authData.userprofile.nombreCompleto;
-                        }
-                    }
-                } catch (e) {}
-            }
-            return headers;
-        }
+
 
         var _responseError = function(rejection) {
             try {
+
                 if (rejection.status == 401) {
                     toastr.error("No autorizado", "autenticación inválida o caducada");
                     localStorageService.remove('authorizationData');
-                    window.location = "/indexApp.html#/login";
+                    //window.location = "/indexApp.html#/login";
                 }
             } catch (e) {}
 
             if (rejection.data != null)
-            
+
                 if (rejection.status < 0) {
                     toastr.error("se ha negado la conexión", "Verificar la disponibilidad del servidor");
                 } else
             if (rejection.status === 401) {
-                window.location = "/indexApp.html#/login";
+                // window.location = "/indexApp.html#/login";
             } else if (rejection.status === 400) {
-              
+
             }
             return $q.reject(rejection);
         }
 
         var _logueadohoy = function(authData) {
+
             if (authData !== null && authData.ultimologin !== undefined) {
                 var ultimologin = new Date(authData.ultimologin);
                 var today = new Date();
                 if (ultimologin.toDateString() !== today.toDateString()) {
                     localStorageService.remove('authorizationData');
-                    window.location = "/indexApp.html#/login";
+
                 }
                 return true;
             } else {
                 localStorageService.remove('authorizationData');
-                window.location = "/indexApp.html#/login";
+
             }
         }
 
+
         authInterceptorServiceFactory.request = _request;
         authInterceptorServiceFactory.responseError = _responseError;
-        authInterceptorServiceFactory.requestServerSide = _requestServerSide;
+
 
         return authInterceptorServiceFactory;
     }

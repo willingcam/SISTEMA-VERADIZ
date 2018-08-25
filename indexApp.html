@@ -113,14 +113,18 @@
 
     <script src="Scripts/ng-tags-input.js"></script>
 
-    <script src="app/_services/veradiz.services.js"></script>
-    <script src="app/_services/veradiz.controllers.js"></script>
+
 
     <script src="Scripts/angular-datatables/accent-neutralise.js"></script>
 
 
 
     <script src="Scripts/globales.js"></script>
+
+
+    <script src="app/_services/veradiz.services.js"></script>
+
+
     <script src="app/app.js"></script>
 
 
@@ -139,7 +143,7 @@
     <script src="app/auth/controllers/indexController.js"></script>
     <script src="app/auth/controllers/login.ctrl.js"></script>
 
-    <script src="app/home/controllers/cargardatos.ctrl.js"></script>
+
     <script src="app/home/controllers/homeAuthorize.ctrl.js"></script>
 
 
@@ -163,9 +167,6 @@
                     <br />
 
                     <div class="clearfix"></div>
-
-
-
 
                     <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -200,14 +201,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.isAuth">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <img src="{{authentication.foto}}" alt="..."> &nbsp;{{authentication.nombreCompleto}}&nbsp;/&nbsp;{{authentication.rol}}
 
-                                </a>
-                            </li>
-                        </ul>
 
                     </nav>
                 </div>
@@ -228,7 +222,7 @@
             <!-- footer content -->
 
             <footer class="contentFooter">
-                <div ng-include="'app/vistasGenericas/footer.html'"></div>
+
             </footer>
 
             <!-- /footer content -->

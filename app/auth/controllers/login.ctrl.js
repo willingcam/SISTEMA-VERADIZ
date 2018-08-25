@@ -2,9 +2,9 @@
     "use strict";
     angular
         .module("veradiz")
-        .controller("loginCtrl", ["$scope", "$state", "AuthService", "blockUI", "$timeout", loginCtrl]);
+        .controller("loginCtrl", ["$scope", "$state", "AuthService", "blockUI", 'MenuService', "$timeout", loginCtrl]);
 
-    function loginCtrl($scope, $state, AuthService, blockUI, $timeout) {
+    function loginCtrl($scope, $state, AuthService, blockUI, MenuService, $timeout) {
 
         $scope.btnClick = false;
 
@@ -13,22 +13,30 @@
             password: ""
         };
 
+
         $scope.message = "";
 
         $scope.login = function() {
 
             $scope.btnClick = true;
             blockUI.start({ message: "Espere..." });
-           
+
             AuthService.login($scope.loginData).then(
                 function(response) {
+
                     blockUI.stop();
                     $scope.btnClick = false;
-                    if (response.data.id == null) {
-                        $scope.message = "Problema al autentificar";
+                    if (response.data == "null") {
+                        $scope.message = "Usuario y clave de acceso no validos";
                         toastr.error($scope.message);
                     } else {
-                        $state.go('cargardatos');
+
+                        MenuService.setRolDescripcion(response.data.rol);
+                        MenuService.setRolId(response.data.idrol);
+
+                        AuthService.idrol = response.data.idrol;
+
+                        window.location = "/veradiz.html#/homeAuthorize";
                     }
                 },
                 function(err) {
