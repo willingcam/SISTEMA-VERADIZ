@@ -68,6 +68,15 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             });
         };
 
+
+        service.cambioestado = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Documentos/cambioestado.php'
+            });
+        };
+
         service.Add = function(registro) {
             return $http({
                 method: 'POST',

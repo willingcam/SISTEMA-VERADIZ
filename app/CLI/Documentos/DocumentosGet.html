@@ -4,13 +4,10 @@
     <div class="page-title">
         <div class="title_left">
             <ol class="breadcrumb miga">
-                <li><i class="disabled fa fa-tasks"></i> <a>Informes financieros</a></li>
+                <li><i class="disabled fa fa-info-circle"></i> <a>Mis informes</a></li>
             </ol>
         </div>
     </div>
-
-
-
 
 
 
@@ -24,13 +21,24 @@
                         <thead>
                             <tr>
                                 <th data-priority="1">Documento</th>
+                                <th data-priority="2">Tipo de documento</th>
+
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
-                                    <a href="http://localhost/api_veradiz/Repository/Upload/images/{{obj.archivo}}" target="_blank">{{obj.descripcion}}</a></td>
+                                    <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
+                                </td>
+
+                                <td>
+                                    {{obj.tipodocumento}}
+                                </td>
+
+
+
+
 
                             </tr>
                         </tbody>

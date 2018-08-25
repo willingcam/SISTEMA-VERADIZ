@@ -108,7 +108,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 'tipoDocumentoId': $scope.documentoSeleccionado,
                 "fechaRegistro": new Date(),
                 "autorId": AuthService.authentication.idUsuario,
-                "estadodocumento": 1,
+                "estadodocumento": 3,
                 "informedescargado": 0,
                 "fechadescarga": new Date()
 

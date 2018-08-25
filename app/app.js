@@ -13,9 +13,9 @@
         ])
         // DEFINICION DEL SERVIDOR 
         //local               
-        //.constant('HOST', "localhost")
+        .constant('HOST', "localhost")
         //servidor
-        .constant('HOST', 'veradiz.com.mx')
+        //.constant('HOST', 'www.veradiz.com')
         .config(["$stateProvider", "$urlRouterProvider", RouterProvider])
         .run(function(DTDefaultOptions) {
             DTDefaultOptions.setLanguageSource('/Scripts/DataTables/i18n/Spanish.js');
@@ -28,25 +28,25 @@
             ]);
             DTDefaultOptions.setDisplayLength(5);
         })
-        
-        .run(function($rootScope, MenuService, $window) {
-            $rootScope.go = function(authentication) {
-                if (!authentication.isAuth) {
-                    window.location = "/indexApp.html#/login";
-                }
-            }
-            
-            $rootScope.anioActual = anioActual();
 
-            $rootScope.globalRegresar = function() {
-                $window.history.back();
-                MenuService.removeGlobalID();
-                MenuService.removeGlobalID2();
+    .run(function($rootScope, MenuService, $window) {
+        $rootScope.go = function(authentication) {
+            if (!authentication.isAuth) {
+                window.location = "/indexApp.html#/login";
             }
-            $rootScope.$on('$locationChangeStart', function(event) {
+        }
 
-            });
-        })
+        $rootScope.anioActual = anioActual();
+
+        $rootScope.globalRegresar = function() {
+            $window.history.back();
+            MenuService.removeGlobalID();
+            MenuService.removeGlobalID2();
+        }
+        $rootScope.$on('$locationChangeStart', function(event) {
+
+        });
+    })
 
     .config(function($httpProvider) {
         $httpProvider.interceptors.push('authInterceptorService');

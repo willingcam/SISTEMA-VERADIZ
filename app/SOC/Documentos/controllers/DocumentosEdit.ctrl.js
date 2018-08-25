@@ -39,6 +39,9 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         DocumentosService.getById(id).then(
             function(result) {
                 // $scope.registro = result.data.records;
+
+                console.log(result.data);
+
                 $scope.registro = result.data;
                 $scope.clienteActual = $scope.registro.clienteId;
                 $scope.clienteSeleccionado = $scope.registro.clienteId;
@@ -153,6 +156,24 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
             $scope.urlCompleta = $scope.ubicacion + $scope.archivo;
 
+        }
+
+
+        //Guardar Cambios
+        $scope.publica = function() {
+            var registro = {
+                "estadodocumento": 3,
+                "id": $scope.registro.id
+            }
+            DocumentosService.cambioestado(registro).then(
+                function(result) {
+                    toastr.success("Informe publicado  ");
+                    $state.go("documentos");
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
         }
 
 

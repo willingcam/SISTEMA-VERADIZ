@@ -146,14 +146,10 @@
             })
             .state("documentos", {
                 url: "/documentos",
-                templateUrl: "app/CLI/documentos/DocumentosGet.html",
+                templateUrl: "app/CLI/Documentos/DocumentosGet.html",
                 controller: "DocumentosGetCtrl"
             })
-            .state("reportes", {
-                url: "/reportes",
-                templateUrl: "app/CLI/Reportes/ReportesGet.html",
-                controller: "ReportesGetCtrl"
-            })
+
 
 
     };

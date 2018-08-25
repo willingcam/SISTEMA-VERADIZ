@@ -5,7 +5,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 (function() {
     "use strict";
     angular
-        .module("veradizdDOC")
+        .module("veradizDOC")
         .controller("DocumentosEditCtrl", ['AuthService', '$scope', 'DocumentosService', 'globalGet', '$state', '$stateParams', '$http', DocumentosEditCtrl]);
 
     function DocumentosEditCtrl(AuthService, $scope, DocumentosService, globalGet, $state, $stateParams, $http) {
@@ -182,6 +182,81 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                     toastr.error('Se presento un error en la carga del archivo a la nube');
                 });
         };
+
+
+
+        //Guardar Cambios
+        $scope.update = function() {
+
+            if ($scope.archivo == "") {
+                toastr.error("Debe seleccionar un archivo para actualizar el registro ");
+                return;
+            }
+
+            var registro = {
+                'descripcion': $scope.registro.descripcion,
+                'archivo': $scope.archivo,
+                'ubicacion': $scope.ubicacion,
+                'tipoAccesoId': 1,
+                'clienteId': $scope.clienteSeleccionado,
+                'tipoDocumentoId': $scope.documentoSeleccionado,
+                "fechaRegistro": $scope.registro.fechaRegistro,
+                "autorId": AuthService.authentication.idUsuario,
+                "id": $scope.registro.id
+            }
+
+            DocumentosService.Update(registro).then(
+                function(result) {
+
+                    if ($scope.regFile == false) {
+                        var registro = {
+                            "archivo": $scope.documentoEliminado
+                        };
+
+                        DocumentosService.deleteOnlyDocument(registro).then(
+                            function(result) {
+                                toastr.success("Archivo eliminado exitosamente ");
+                            },
+                            function(err) {
+                                toastr.error("Se presento un problema al alimnar el archivo ");
+                            }
+                        );
+                    }
+
+
+                    $state.go("documentos");
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+        }
+
+
+
+
+        //Guardar Cambios
+        $scope.EnviaRevision = function() {
+            var registro = {
+                "estadodocumento": 2,
+                "id": $scope.registro.id
+            }
+            DocumentosService.cambioestado(registro).then(
+                function(result) {
+                    toastr.success("Informe enviado a revisión ");
+                    $state.go("documentos");
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+        }
+
+
+
+
+
+
 
     }
 })();

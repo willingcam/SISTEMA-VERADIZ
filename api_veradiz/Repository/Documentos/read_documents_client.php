@@ -14,9 +14,11 @@ $db = $database->getConnection();
 // initialize object
 $obj = new Documentos($db);
 
+$obj->autorId = isset($_GET['empleado']) ? $_GET['empleado'] : die();
+$obj->clienteId = isset($_GET['cliente']) ? $_GET['cliente'] : die();
 
 // query products
-$stmt = $obj->read();
+$stmt = $obj->read_documents_client();
 $num  = $stmt->rowCount();
 
 
@@ -37,21 +39,14 @@ if($num>0){
 		extract($row);
 
 		$obj_item=array(
-			"id" => $id,
+			"idcliente" => $idcliente,
 			"descripcion" => $descripcion,
 			"archivo" => $archivo,
 			"ubicacion" => $ubicacion,
-			"tipoAccesoId" => $tipoAccesoId,
-			"clienteId" => $clienteId,
 			"tipoDocumentoId" => $tipoDocumentoId,
 			"urlCompleta" => $ubicacion.$archivo,
-			"fechaRegistro" => $fechaRegistro,
-			"autorId" => $autorId,
-			"estado" => $estado,
-			"cliente" => $nombre,
-			"tipodocumento" => $tipo_documento,
-			"estadoId" => $estadodocumento
-
+			"id" => $id
+			
 		);
 
 		array_push($obj_arr["records"], $obj_item);
