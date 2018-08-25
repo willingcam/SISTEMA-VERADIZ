@@ -131,6 +131,54 @@
 
                 });
             });
+            $rootScope.$on('$viewContentLoaded', function(event, viewName, viewContent) {
+                $(":file").addClass("filestyle");
+                $('.filestyle').each(function() {
+                    var $this = $(this),
+                        options = {
+                            'input': $this.attr('data-input') === 'false' ? false : true,
+                            'icon': $this.attr('data-icon') === 'false' ? false : true,
+                            'buttonBefore': $this.attr('data-buttonBefore') === 'true' ? true : false,
+                            'disabled': $this.attr('data-disabled') === 'true' ? true : false,
+                            'size': $this.attr('data-size'),
+                            'buttonText': $this.attr('data-buttonText'),
+                            'buttonName': $this.attr('data-buttonName'),
+                            'iconName': $this.attr('data-iconName'),
+                            'badge': $this.attr('data-badge') === 'false' ? false : true,
+                            'placeholder': $this.attr('data-placeholder')
+                        };
+                    $this.filestyle(options);
+                });
+
+                // Panel toolbox
+                $(document).ready(function() {
+                    $('.collapse-link').on('click', function() {
+                        var $BOX_PANEL = $(this).closest('.x_panel'),
+                            $ICON = $(this).find('i'),
+                            $BOX_CONTENT = $BOX_PANEL.find('.x_content');
+
+                        // fix for some div with hardcoded fix class
+                        if ($BOX_PANEL.attr('style')) {
+                            $BOX_CONTENT.slideToggle(200, function() {
+                                $BOX_PANEL.removeAttr('style');
+                            });
+                        } else {
+                            $BOX_CONTENT.slideToggle(200);
+                            $BOX_PANEL.css('height', 'auto');
+                        }
+
+                        $ICON.toggleClass('fa-chevron-up fa-chevron-down');
+                    });
+
+                    $('.close-link').click(function() {
+                        var $BOX_PANEL = $(this).closest('.x_panel');
+
+                        $BOX_PANEL.remove();
+                    });
+                });
+                window.scrollTo(0, 0);
+            }); //Fin de $viewContentLoaded
+
         });
 
     function RouterProvider($stateProvider, $urlRouterProvider) {

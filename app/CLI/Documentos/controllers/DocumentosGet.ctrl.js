@@ -5,29 +5,32 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradizCLI");
-    app.controller("DocumentosGetCtrl", ["$scope", "DocumentosService", DocumentosGetCtrl]);
+    app.controller("DocumentosGetCtrl", ["$scope", "DocumentosService", "AuthService", DocumentosGetCtrl]);
 
-    function DocumentosGetCtrl($scope, DocumentosService) {
+    function DocumentosGetCtrl($scope, DocumentosService, AuthService) {
 
-        //Variables de carga
+
         $scope.loading = true;
-        //Obtener los servicios de autenticacion
-        //$scope.authentication = AuthService.authentication;
-        //obtener registros
 
 
-        DocumentosService.getAll().then(
-            function(result) {
 
-                $scope.loading = false;
-                $scope.documentosGet = result.data.records;
+        $scope.documentos = function() {
+            DocumentosService.getAllOnlyMisDocumentsClient(AuthService.authentication.idUsuario).then(
+                function(result) {
+                    $scope.loading = false;
+                    $scope.documentosGet = result.data.records;
 
 
-            },
-            function(err) {
-                toastr.error("No se han podido cargar los roles registrados en el sistema");
-            }
-        );
+                },
+                function(err) {
+                    toastr.error("Se presento un error en la carga de los datos");
+                }
+            );
+        }
+
+
+
+        $scope.documentos();
 
 
 

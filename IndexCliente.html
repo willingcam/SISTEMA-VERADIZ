@@ -185,10 +185,8 @@
     <!-- DOCUMENTOS -->
     <script src="app/CLI/_services/Documentos.CLI.service.js"></script>
     <script src="app/CLI/Documentos/controllers/DocumentosGet.ctrl.js"></script>
-
-    <!-- REPORTES -->
-    <script src="app/CLI/_services/Reportes.CLI.service.js"></script>
-    <script src="app/CLI/Reportes/controllers/ReportesGet.ctrl.js"></script>
+    <script src="app/CLI/Documentos/controllers/DocumentosAdd.ctrl.js"></script>
+    <script src="app/CLI/Documentos/controllers/DocumentosEdit.ctrl.js"></script>
 
 
 
@@ -230,25 +228,11 @@
                             <ul class="nav side-menu">
 
                                 <li>
-                                    <a ng-href="">
-                                        <i class="fa fa-check-square-o"> </i>&nbsp;Estatus fiscal
+                                    <a ng-href="IndexCliente.html#/documentos">
+                                        <i class="fa fa-check-square-o"> </i>&nbsp;Mis informes
                                     </a>
                                 </li>
-                                <li>
-                                    <a ng-href="">
-                                        <i class="fa fa-institution"> </i>&nbsp;Información financiera
-                                    </a>
-                                </li>
-                                <li>
-                                    <a ng-href="">
-                                        <i class="fa fa-legal"> </i>&nbsp;Pagos de impuestos
-                                    </a>
-                                </li>
-                                <li>
-                                    <a ng-href="">
-                                        <i class="fa fa-key"> </i>&nbsp;Claves fiscales
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a ng-href="">
                                         <i class="fa fa-pie-chart"> </i>&nbsp;Estadísticas
@@ -257,9 +241,9 @@
 
                                 <li><a><i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Cetes</a></li>
-                                        <li><a href="index2.html">TIIE</a></li>
-                                        <li><a href="index3.html">Dolar</a></li>
+                                        <li><a href="">Cetes</a></li>
+                                        <li><a href="">TIIE</a></li>
+                                        <li><a href="">Dolar</a></li>
                                     </ul>
                                 </li>
 

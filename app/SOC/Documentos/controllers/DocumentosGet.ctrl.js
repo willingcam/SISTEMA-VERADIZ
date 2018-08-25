@@ -5,9 +5,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradizSOC");
-    app.controller("DocumentosGetCtrl", ["$scope", "DocumentosService", DocumentosGetCtrl]);
+    app.controller("DocumentosGetCtrl", ["$scope", "DocumentosService", "AuthService", DocumentosGetCtrl]);
 
-    function DocumentosGetCtrl($scope, DocumentosService) {
+    function DocumentosGetCtrl($scope, DocumentosService, AuthService) {
 
 
         $scope.loading = true;
@@ -18,7 +18,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         $scope.clientes = {};
 
         $scope.clientes = function() {
-            DocumentosService.getOnlyMyClient().then(
+            DocumentosService.getOnlyMyClient(AuthService.authentication.idUsuario).then(
                 function(result) {
                     $scope.clientes = result.data.records;
                 },
@@ -29,10 +29,11 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         }
 
         $scope.documentos = function() {
-            DocumentosService.getAll().then(
+            DocumentosService.getAllMyClientsDocuments(AuthService.authentication.idUsuario).then(
                 function(result) {
                     $scope.loading = false;
                     $scope.documentosGet = result.data.records;
+
 
                 },
                 function(err) {
@@ -42,7 +43,13 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         }
 
         $scope.filtraDocumentos = function() {
-            DocumentosService.getByClient($scope.clienteSeleccionado).then(
+
+            var registro = {
+                "empleado": AuthService.authentication.idUsuario,
+                "cliente": $scope.clienteSeleccionado,
+            };
+
+            DocumentosService.getAllMyDocumentsByClient(registro).then(
                 function(result) {
                     $scope.documentosGet = result.data.records;
 
