@@ -203,7 +203,7 @@
                 controller: "InformesAddCtrl"
             })
             .state("informesEdit", {
-                url: "iInformesEdit/:id",
+                url: "/informesEdit/:id",
                 templateUrl: "app/Informes/InformesEdit.html",
                 controller: "InformesEditCtrl"
             })
@@ -218,7 +218,7 @@
                 controller: "InformesSocAddCtrl"
             })
             .state("informessEdit", {
-                url: "iInformessEdit/:id",
+                url: "/InformessEdit/:id",
                 templateUrl: "app/Informessoc/InformesSocEdit.html",
                 controller: "InformesSocEditCtrl"
             })
