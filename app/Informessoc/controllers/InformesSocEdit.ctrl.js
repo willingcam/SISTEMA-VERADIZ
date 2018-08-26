@@ -168,7 +168,23 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
             InformesService.cambioestado(registro).then(
                 function(result) {
                     toastr.success("Informe publicado  ");
-                    $state.go("documentos");
+                    $state.go("informess");
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+        }
+        //Regresa a Cambios del empleado
+        $scope.RegresaEdicion = function() {
+            var registro = {
+                "estadodocumento": 1,
+                "id": $scope.registro.id
+            }
+            InformesService.cambioestado(registro).then(
+                function(result) {
+                    toastr.success("Informe regresado a edición  ");
+                    $state.go("informess");
                 },
                 function(err) {
                     console.error(err);
