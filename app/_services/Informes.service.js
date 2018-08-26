@@ -24,6 +24,10 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http.get(endPoint);
         }
 
+        service.getAllDocumentsByAuthor = function(id) {
+            var endPoint = API + "Repository/Documentos/read_documents_by_author.php?id=" + id;
+            return $http.get(endPoint);
+        }
         service.getAllClients = function() {
             var endPoint = API + "Repository/Usuarios/read_clientes.php";
             return $http.get(endPoint);

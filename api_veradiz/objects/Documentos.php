@@ -114,6 +114,21 @@ class Documentos{
 		return $stmt;
 	}
 
+//read documentos por creador o autor en estado de edición
+public function read_documents_by_author(){
+	$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.tipoAccesoId, P.clienteId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga, Q.estado, R.tipo_documento, U.nombre FROM documentos P 
+				   LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
+				   LEFT JOIN tipo_documento  R  ON R.id = P.tipoDocumentoId
+				   LEFT JOIN usuarios   U ON U.id = P.clienteId
+				   WHERE  P.autorid = ? ";
+		// prepare query statement
+		$stmt = $this->conn->prepare($query);
+		// bind id of product to be readed
+		$stmt->bindParam(1, $this->id);
+		// execute query
+		$stmt->execute();
+		return $stmt;
+}
 		// read products
 	public function read_client(){
 

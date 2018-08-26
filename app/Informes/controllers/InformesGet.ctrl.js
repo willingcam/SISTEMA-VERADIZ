@@ -5,9 +5,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradiz");
-    app.controller("InformesGetCtrl", ["$scope", "InformesService", InformesGetCtrl]);
+    app.controller("InformesGetCtrl", ["$scope", "InformesService",'AuthService', InformesGetCtrl]);
 
-    function InformesGetCtrl($scope, InformesService) {
+    function InformesGetCtrl($scope, InformesService,AuthService) {
 
 
         $scope.loading = true;
@@ -29,7 +29,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         }
 
         $scope.documentos = function() {
-            InformesService.getAll().then(
+            InformesService.getAllDocumentsByAuthor(AuthService.authentication.idUsuario).then(
                 function(result) {
                     $scope.loading = false;
                     $scope.documentosGet = result.data.records;
@@ -41,6 +41,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             );
         }
 
+ 
         $scope.filtraDocumentos = function() {
             InformesService.getByClient($scope.clienteSeleccionado).then(
                 function(result) {
