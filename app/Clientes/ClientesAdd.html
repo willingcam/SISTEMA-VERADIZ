@@ -1,0 +1,179 @@
+﻿<SCRIPT language=Javascript>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+</SCRIPT>
+<div class="vista">
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li>
+                    <i class="disabled fa fa-building"></i>
+                    <a>Administración de clientes/Registro de clientes</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Datos generales</h2>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content sin-desborde">
+                    <form role="form" name="UsuariosForm" class="form-horizontal">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Nombre
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="nombre" ng-model="nombre" required max="100" name="nombre" placeholder="Nombre">
+                                <span class="error" ng-show="UsuariosForm.nombre.$dirty && !UsuariosForm.nombre.$valid">Debe ingresar el nombre completo del usuario</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Correo electrónico
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="email" class="form-control" id="correo" name="correo" ng-model="correo" required max="150" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$" placeholder="Correo eléctronico de la oficina por ejem : micorreo@oficina.com">
+                                <span class="error" ng-show="UsuariosForm.correo.$dirty && !UsuariosForm.correo.$valid">Debe ingresar un correo electrónico válido</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                               Contacto                             
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="contacto" name="contacto" ng-model="contacto" max="150" placeholder="Nombre del contacto o representante de la empresa">
+                                <span class="error" ng-show="UsuariosForm.contacto.$dirty && !UsuariosForm.contacto.$valid">Ingrese el nombre del representante o contacto de la empresa</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Puesto                              
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="puesto" name="puesto" ng-model="puesto" max="150" placeholder="Nombre del puesto que ocupa">
+                                <span class="error" ng-show="UsuariosForm.puesto.$dirty && !UsuariosForm.puesto.$valid">Ingrese el puesto del usuario</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Teléfono de la oficina
+                               
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="telefono" name="telefono" ng-model="telefono" max="30" placeholder="Número de teléfono de la oficina por ejem : 777 888 8888">
+                                <span class="error" ng-show="UsuariosForm.telefono.$dirty && !UsuariosForm.telefono.$valid">Ingrese el número teléfonico de la oficina</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Extensión
+                                </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="extension" name="extension" ng-model="extension" max="8" placeholder="Número de extensión por ejem : 7777 ">
+                                <span class="error" ng-show="UsuariosForm.extension.$dirty && !UsuariosForm.extension.$valid">Ingrese la extensión telefonica</span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                               Teléfono móvil
+                               
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="celular" name="celular" ng-model="celular" max="30" placeholder="Número de teléfono móvil por ejem : 777 888 8888">
+                                <span class="error" ng-show="UsuariosForm.celular.$dirty && !UsuariosForm.celular.$valid">Ingrese el número de teléfono móvil</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Foto
+                                </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input class="input-file form-control col-md-7 col-xs-12" type="file" name="filesGral" id="filesGral" data-buttonName="btn-success" ng-click="saveIG();" ng-model="filesGral" onchange="angular.element(this).scope().getFileDetails(this);" />
+                            </div>
+                        </div>
+
+                        <!-- 
+                        <div class="x_title">
+                            <h2>Datos para la cuenta de acceso </h2>
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Nombre de la cuenta
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="usuario" name="usuario" ng-model="usuario" required max="255">
+                                <span class="error" ng-show="UsuariosForm.usuario.$dirty && !UsuariosForm.usuario.$valid">Debe ingresar un usuario de cuenta</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Clave de acceso/Contraseña
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <input type="text" class="form-control" id="claveacceso" name="claveacceso" ng-model="claveacceso" required>
+                                <span class="error" ng-show="UsuariosForm.claveacceso.$dirty && !UsuariosForm.claveacceso.$valid">Debe ingresar su clave de acceso</span>
+
+                            </div>
+                        </div>
+
+                        -->
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <div class="">
+                                    <button type="submit" class="btn btn-success" ng-click="save()">
+
+                                        <i class="glyphicon glyphicon-saved"></i> Guardar
+                                    </button>
+                                    <button type="button" ui-sref="clientes" class="btn btn-primary">
+                                        <span class="fa fa-arrow-left"></span> Regresar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

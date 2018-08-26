@@ -1,0 +1,26 @@
+﻿<ul class="hidden-xs nav navbar-nav navbar-left" data-ng-hide="!authentication.isAuth || !isModulo">
+    <li class="" ng-repeat="mod in modulos">
+        <a href="" title="ADM" class="btn-moduls colorActivo">
+            <font class="whiteM">ADM</font>
+        </a>
+    </li>
+</ul>
+
+<ul class="hidden-xs nav navbar-nav navbar-left">
+    <li>
+        <a style="cursor:default" class="titLogo">Oficina virtual </a>
+    </li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+    <li class="">
+        <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <img src="{{authentication.foto}}" alt="..."> &nbsp;{{authentication.nombreCompleto}}&nbsp;
+            <font class="hidden-xs">/&nbsp;{{authentication.rol}}</font>
+            <span class=" fa fa-angle-down"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-usermenu pull-right">
+            <li><a href="" data-ng-click="logOut()"><i class="fa fa-sign-out pull-right"></i>Cerrar sesi&oacute;n</a></li>
+        </ul>
+    </li>
+</ul>
