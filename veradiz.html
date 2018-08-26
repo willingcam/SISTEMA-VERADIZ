@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="es-mx" ng-app="veradiz">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>VERADIZ</title>
+
+
+    <!-- build:css Content/stylesSIGCO.min.css -->
+    <!-- inject:css -->
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Content/bootstrap-tour.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-progressbar -->
+    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="Content/custom.css" rel="stylesheet">
+
+    <!--Mensajes Toastr-->
+    <link href="Content/toastr.css" rel="stylesheet" />
+    <!--Tablas responsivas-->
+    <link href="Content/EstilosPropios/jquery.dataTablesINEEL.css" rel="stylesheet" />
+    <link href="Content/DataTables/css/dataTables.responsive.css" rel="stylesheet" />
+    <!--Estilos propios-->
+    <link href="Content/EstilosPropios/StyleAuthorize.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/StyleModulos.css" rel="stylesheet" />
+    <!--Estilos propios del modulo-->
+    <link href="Content/angular-ui-tree/angular-ui-tree.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/ControlesEspeciales.css" rel="stylesheet" />
+    <link href="Content/EstilosPropios/fabForm.css" rel="stylesheet" />
+    <link href="Content/angular-block-ui.min.css" rel="stylesheet" />
+
+    <link href="Content/select2/select.min.css" rel="stylesheet" />
+    <link href="Content/select2/select2.css" rel="stylesheet" />
+    <link href="Content/select2/selectize.default.css" rel="stylesheet" />
+    <link href="Content/multiple-select.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.0.min.js"></script>
+
+    <script src="Scripts/jquery-ui-1.11.3.min.js"></script>
+
+    <!-- <script src="Scripts/jquery-1.9.1.js"></script>-->
+    <script src="Scripts/bootstrap.js"></script>
+
+    <script src="Scripts/bootstrap-tour.min.js"></script>
+    <script src="Scripts/toastr.js"></script>
+
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/i18n/angular-locale_es-mx.js"></script>
+
+    <script src="Scripts/angular-block-ui.min.js"></script>
+
+    <script src="Scripts/angular-animate.min.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+
+
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.js"></script>
+    <script src="Scripts/angular-local-storage.min.js"></script>
+
+    <!--Tablas-->
+    <script src="Scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.js"></script>
+    <script src="Scripts/DataTables/dataTables.bootstrap.js"></script>
+
+    <script src="Scripts/aes.js"></script>
+    <script src="Scripts/mdo-angular-cryptography.js"></script>
+
+
+    <script src="Scripts/DataTables/dataTables.responsive.min.js"></script>
+
+    <script src="Scripts/angular-datatables/angular-datatables.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.util.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.options.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.instances.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.factory.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.renderer.js"></script>
+    <script src="Scripts/angular-datatables/angular-datatables.directive.js"></script>
+
+    <script src="Scripts/DataTables/dataTables.columnFilter.js"></script>
+    <script src="Scripts/angular-datatables/plugins/columnfilter/angular-datatables.columnfilter.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="Content/sb-admin-2/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="Content/sb-admin-2/dist/js/sb-admin-2.js"></script>
+    <script src="Scripts/jquery.motionCaptcha.0.2.js"></script>
+
+    <script src="Scripts/angular-ui-tree/angular-ui-tree.js"></script>
+    <script src="Scripts/angular-datatables/plugins/fixedcolumns/angular-datatables.fixedcolumns.js"></script>
+    <script src="scripts/globales.js"></script>
+    <script src="Scripts/select2/select.min.js"></script>
+    <script src="Scripts/angular-sanitize.js"></script>
+    <script src="Scripts/bootstrap-filestyle.min.js"></script>
+    <script src="Scripts/jquery.highlight.js"></script>
+    <script src="Scripts/dataTables.searchHighlight.min.js"></script>
+    <script src="Scripts/multiple-select.min.js"></script>
+
+    <script src="Scripts/angular-messages.min.js"></script>
+    <script src="Scripts/ng-fab-form.js"></script>
+
+    <script src="Scripts/ng-tags-input.js"></script>
+
+
+
+    <script src="Scripts/angular-datatables/accent-neutralise.js"></script>
+    <script src="Scripts/globales.js"></script>
+
+
+    <script src="app/_services/veradiz.services.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="Scripts/switch/bsSwitch.js"></script>
+
+
+    <script src="app/_services/factories/authService.js"></script>
+    <script src="app/_services/factories/authInterceptorService.js"></script>
+
+    <script src="app/_services/factories/personas.service.js"></script>
+    <script src="app/_services/factories/menu.service.js"></script>
+
+    <script src="Scripts/node_modules/angular-chart.js/node_modules/chart.js/dist/Chart.min.js"></script>
+    <script src="Scripts/node_modules/angular-chart.js/dist/angular-chart.min.js"></script>
+
+    <script src="app/auth/controllers/indexController.js"></script>
+    <script src="app/auth/controllers/login.ctrl.js"></script>
+
+    <script src="app/home/controllers/homeAuthorize.ctrl.js"></script>
+
+
+    <!-- USUARIOS -->
+    <script src="app/_services/Usuarios.service.js"></script>
+    <script src="app/Usuarios/controllers/UsuariosGet.ctrl.js"></script>
+    <script src="app/Usuarios/controllers/UsuariosAdd.ctrl.js"></script>
+    <script src="app/Usuarios/controllers/UsuariosEdit.ctrl.js"></script>
+
+    <!-- CLIENTES -->
+    <script src="app/Clientes/controllers/ClientesGet.ctrl.js"></script>
+    <script src="app/Clientes/controllers/ClientesAdd.ctrl.js"></script>
+    <script src="app/Clientes/controllers/ClientesEdit.ctrl.js"></script>
+    <script src="app/Clientes/controllers/ClientesResp.ctrl.js"></script>
+    <script src="app/Clientes/controllers/PersonalGet.ctrl.js"></script>
+
+    <!-- NOTICiAS -->
+    <script src="app/_services/Noticias.service.js"></script>
+    <script src="app/Noticias/controllers/NoticiasGet.ctrl.js"></script>
+    <script src="app/Noticias/controllers/NoticiasAdd.ctrl.js"></script>
+    <script src="app/Noticias/controllers/NoticiasEdit.ctrl.js"></script>
+
+
+    <!-- SERVICIOS -->
+    <script src="app/_services/Servicios.service.js"></script>
+    <script src="app/Servicios/controllers/ServiciosGet.ctrl.js"></script>
+    <script src="app/Servicios/controllers/ServiciosAdd.ctrl.js"></script>
+    <script src="app/Servicios/controllers/ServiciosEdit.ctrl.js"></script>
+
+
+    <!-- INFORMES -->
+    <script src="app/_services/Informes.service.js"></script>
+    <script src="app/Informes/controllers/InformesGet.ctrl.js"></script>
+    <script src="app/Informes/controllers/InformesAdd.ctrl.js"></script>
+    <script src="app/Informes/controllers/InformesEdit.ctrl.js"></script>
+
+    <script src="app/Informessoc/controllers/InformesSocGet.ctrl.js"></script>
+    <script src="app/Informessoc/controllers/InformesSocAdd.ctrl.js"></script>
+    <script src="app/Informessoc/controllers/InformesSocEdit.ctrl.js"></script>
+
+    <script src="app/Informescli/controllers/informesCliGet.ctrl.js"></script>
+
+    <!-- endinject -->
+    <!-- endbuild -->
+
+</head>
+
+<body class="nav-md" data-ng-controller="indexController">
+
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view bg-gradient-menuv">
+                    <div class="navbar nav_title bg-gradient-menuv" style="border: 0;">
+
+
+                        <a href="" class="site_title"> <span>VERADIZ</span></a>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <br />
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="{{authentication.foto}}" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Bienvenido,</span>
+                            <h2>{{authentication.nombreCompleto}}</h2>
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+
+                            <ul class="nav side-menu">
+
+                                <li ng-show="authentication.idrol == 1">
+                                    <a>
+                                        <i class="fa fa-wrench"></i>Administración sistema <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+
+                                        <li>
+                                            <a ng-href="veradiz.html#/usuarios">
+                                                <i class="fa fa-user"> </i>&nbsp;Personal
+                                            </a>
+
+                                        </li>
+                                        <li>
+                                            <a ng-href="veradiz.html#/clientes">
+                                                <i class="fa fa-building"> </i>&nbsp;Clientes
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ng-href="veradiz.html#/servicios">
+                                                <i class="fa fa-tasks"> </i>&nbsp;Servicios
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ng-href="veradiz.html#/noticias">
+                                                <i class="fa fa-newspaper-o"> </i>&nbsp;Noticias/Eventos
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+
+
+                                <li ng-show="authentication.idrol == 3">
+                                    <a ng-href="veradiz.html#/informes">
+                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Registro de informes
+                                    </a>
+                                </li>
+
+                                <li ng-show="authentication.idrol == 2">
+                                    <a ng-href="veradiz.html#/informess">
+                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Revisión de informes
+                                    </a>
+                                </li>
+
+                                <li ng-show="authentication.idrol == 4">
+                                    <a ng-href="veradiz.html#/clientesinformes">
+                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Consulta de informes
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a>
+                                        <i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="index.html">Cetes</a></li>
+                                        <li><a href="index2.html">TIIE</a></li>
+                                        <li><a href="index3.html">Dolar</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+
+                    </div>
+                    <!-- /sidebar menu -->
+
+                </div>
+            </div>
+
+            <!-- top navigation -->
+            <div class="top_nav ">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <div ng-include="'app/vistasGenericas/header/profileNotification.html'"></div>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+
+
+            <!-- page content -->
+            <div role="main" class="right_col">
+                <!-- top tiles -->
+                <div class="clearfix"></div>
+                <div ui-view>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Custom Theme Scripts -->
+    <script src="Scripts/custom.js"></script>
+    <!-- endPlantilla-->
+    <script>
+        $('#sidebar-menu').find('li').removeClass('active active-sm');
+    </script>
+</body>
+
+</html>
