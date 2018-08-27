@@ -47,6 +47,7 @@ if(
 	$obj->contacto = $data->contacto;
 
 	
+
 	
 
 	// create the obj
@@ -62,5 +63,6 @@ if(
 			echo '"message": "Se presento un problema al registrar la informacion."';
 		echo '}';
 	}
+	
 }
 ?>

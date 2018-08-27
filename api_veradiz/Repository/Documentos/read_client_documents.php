@@ -44,6 +44,9 @@ if($num>0){
 			"ubicacion" => $ubicacion,
 			"tipoDocumentoId" => $tipoDocumentoId,
 			"urlCompleta" => $ubicacion.$archivo,
+			"estado" => $estado,
+			"tipodocumento" => $tipo_documento,
+			"cliente" => $nombre,
 			"id" => $id
 			
 		);

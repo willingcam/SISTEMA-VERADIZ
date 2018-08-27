@@ -26,7 +26,8 @@
 
                     blockUI.stop();
                     $scope.btnClick = false;
-                    if (response.data == "null") {
+
+                    if (response == null) {
                         $scope.message = "Usuario y clave de acceso no validos";
                         toastr.error($scope.message);
                     } else {

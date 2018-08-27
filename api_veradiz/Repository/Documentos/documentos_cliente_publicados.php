@@ -18,7 +18,7 @@ $obj->autorId = isset($_GET['empleado']) ? $_GET['empleado'] : die();
 $obj->clienteId = isset($_GET['cliente']) ? $_GET['cliente'] : die();
 
 // query products
-$stmt = $obj->read_documents_client();
+$stmt = $obj->documentos_cliente_publicado();
 $num  = $stmt->rowCount();
 
 
