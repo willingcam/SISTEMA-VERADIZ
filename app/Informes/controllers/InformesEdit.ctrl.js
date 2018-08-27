@@ -13,12 +13,12 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         //Variable API
         var API = globalGet.get("api");
 
-
         var id = $stateParams.id;
 
         $scope.regFile = false;
 
         $scope.registro = {};
+
 
         $scope.descripcion = "";
         $scope.archivo = "";
@@ -200,9 +200,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 'tipoAccesoId': 1,
                 'clienteId': $scope.clienteSeleccionado,
                 'tipoDocumentoId': $scope.documentoSeleccionado,
-                "fechaRegistro": $scope.registro.fechaRegistro,
-                "autorId": AuthService.authentication.idUsuario,
-                "id": $scope.registro.id
+                'id': $scope.registro.id
             }
 
             InformesService.Update(registro).then(

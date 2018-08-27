@@ -36,16 +36,36 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             var endPoint = API + "Repository/Usuarios/read_client_us.php?id=" + id;
             return $http.get(endPoint);
         }
+
+
         service.getAllMyClientsDocuments = function(id) {
             var endPoint = API + "Repository/Documentos/read_client_documents.php?id=" + id;
             return $http.get(endPoint);
         }
+
+        service.getAllDocumentosPublicados = function(id) {
+            var endPoint = API + "Repository/Documentos/documentos_publicados.php?id=" + id;
+            return $http.get(endPoint);
+        }
+
         service.getAllOnlyMisDocumentsClient = function(id) {
             var endPoint = API + "Repository/Documentos/read_client.php?id=" + id;
             return $http.get(endPoint);
         }
+
+        service.getDocumentosClienteYaPublicados = function(id) {
+            var endPoint = API + "Repository/Documentos/read_client_docs_pub.php?id=" + id;
+            return $http.get(endPoint);
+        }
+
+
         service.getAllMyDocumentsByClient = function(registro) {
             var endPoint = API + "Repository/Documentos/read_documents_client.php?empleado=" + registro.empleado + "&cliente=" + registro.cliente;
+            return $http.get(endPoint);
+        }
+
+        service.getAllDocumentosPublicadosCliente = function(registro) {
+            var endPoint = API + "Repository/Documentos/documentos_cliente_publicado.php?empleado=" + registro.empleado + "&cliente=" + registro.cliente;
             return $http.get(endPoint);
         }
 
@@ -96,6 +116,18 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
                 url: API + 'Repository/Documentos/cambioestado.php'
             });
         };
+
+
+
+        service.descargado = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Documentos/descargado.php'
+            });
+        };
+
+
 
         service.Add = function(registro) {
             return $http({

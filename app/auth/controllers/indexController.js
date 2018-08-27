@@ -8,7 +8,6 @@
 
 
         $scope.authentication = AuthService.authentication;
-        debugger;
 
         if (AuthService.authentication.userName != undefined) {
             $scope.userName = AuthService.authentication.userName;

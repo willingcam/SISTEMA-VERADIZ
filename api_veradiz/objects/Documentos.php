@@ -114,7 +114,7 @@ class Documentos{
 		return $stmt;
 	}
 
-//read documentos por creador o autor en estado de edición
+//read documentos por creador o autor en estado de ediciï¿½n
 public function read_documents_by_author(){
 	$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.tipoAccesoId, P.clienteId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga, Q.estado, R.tipo_documento, U.nombre FROM documentos P 
 				   LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
@@ -153,8 +153,11 @@ public function read_documents_by_author(){
 		// read products
 	public function read_clients_documents(){
 
-			$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id FROM encargado_cuenta P 
+			$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre FROM encargado_cuenta P 
 			RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
+			LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
+			LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
+			LEFT JOIN usuarios   U ON U.id = P.idcliente
 			WHERE  P.idempleado = ?  ";
 	
 				// prepare query statement
@@ -169,6 +172,27 @@ public function read_documents_by_author(){
 				return $stmt;
 	}
 
+
+	public function documentos_publicados(){
+
+		$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre FROM encargado_cuenta P 
+		RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 3
+		LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
+		LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
+		LEFT JOIN usuarios   U ON U.id = P.idcliente
+		WHERE  P.idempleado = ?  ";
+
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+
+			// bind id of product to be updated
+			$stmt->bindParam(1, $this->id);
+	
+			// execute query
+			$stmt->execute();
+	
+			return $stmt;
+}
 
 
 			// read products
@@ -190,11 +214,36 @@ public function read_documents_by_author(){
 					return $stmt;
 		}
 
+
+			// read products
+			public function read_client_docs_pub(){
+
+				$query = "SELECT Q.clienteId, Q.descripcion, Q.archivo, Q.ubicacion, Q.id, R.tipo_documento FROM Documentos Q 
+				 LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
+				 WHERE  Q.clienteId = ? AND Q.estadodocumento = 3 ";
+		
+					// prepare query statement
+					$stmt = $this->conn->prepare($query);
+		
+					// bind id of product to be updated
+					$stmt->bindParam(1, $this->id);
+			
+					// execute query
+					$stmt->execute();
+			
+					return $stmt;
+		}
+
+
+
 			// read products
 			public function read_documents_client(){
 
-				$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id FROM encargado_cuenta P 
+				$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado, R.tipo_documento, U.nombre FROM encargado_cuenta P 
 				RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
+				LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
+		        LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
+		        LEFT JOIN usuarios   U ON U.id = P.idcliente
 				WHERE  P.idempleado = ? AND P.idcliente = ? ";
 		
 					// prepare query statement
@@ -209,6 +258,31 @@ public function read_documents_by_author(){
 			
 					return $stmt;
 		}
+
+
+			// read products
+			public function documentos_cliente_publicado(){
+
+				$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado, R.tipo_documento, U.nombre FROM encargado_cuenta P 
+				RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
+				LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
+		        LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
+		        LEFT JOIN usuarios   U ON U.id = P.idcliente
+				WHERE  P.idempleado = ? AND P.idcliente = ? ";
+		
+					// prepare query statement
+					$stmt = $this->conn->prepare($query);
+		
+					// bind id of product to be updated
+					$stmt->bindParam(1, $this->autorId);
+					$stmt->bindParam(2, $this->clienteId);
+			
+					// execute query
+					$stmt->execute();
+			
+					return $stmt;
+		}
+
 
 	public function read_client_type(){
 
@@ -298,12 +372,7 @@ public function read_documents_by_author(){
 					ubicacion = :ubicacion,
 					tipoAccesoId = :tipoAccesoId,
 					clienteId = :clienteId,
-					tipoDocumentoId = :tipoDocumentoId,
-					fechaRegistro = :fechaRegistro,
-					autorId = :autorId,
-					estadodocumento=:estadodocumento,
-					informedescargado=:informedescargado,
-					fechadescarga=:fechadescarga				
+					tipoDocumentoId = :tipoDocumentoId					
 				WHERE
 					id = :id";
 
@@ -317,12 +386,7 @@ public function read_documents_by_author(){
 		$this->tipoAccesoId=htmlspecialchars(strip_tags($this->tipoAccesoId));
 		$this->clienteId=htmlspecialchars(strip_tags($this->clienteId));
 		$this->tipoDocumentoId=strip_tags($this->tipoDocumentoId);
-		$this->fechaRegistro=strip_tags($this->fechaRegistro);
-		$this->autorId=strip_tags($this->autorId);
-
-		$this->estadodocumento=strip_tags($this->estadodocumento);
-		$this->informedescargado=strip_tags($this->informedescargado);
-		$this->fechadescarga=strip_tags($this->fechadescarga);
+	
 		
 		$this->id=htmlspecialchars(strip_tags($this->id));
 
@@ -333,9 +397,7 @@ public function read_documents_by_author(){
 		$stmt->bindParam(':tipoAccesoId', $this->tipoAccesoId);
 		$stmt->bindParam(':clienteId', $this->clienteId);
 		$stmt->bindParam(':tipoDocumentoId', $this->tipoDocumentoId);
-		$stmt->bindParam(':fechaRegistro', $this->fechaRegistro);
-		$stmt->bindParam(':autorId', $this->autorId);
-		 			
+				 			
 		$stmt->bindParam(':id', $this->id);
 
 		// execute the query
@@ -380,6 +442,51 @@ public function read_documents_by_author(){
 			return false;
 		}
 	}
+
+
+
+
+	function fueDescargado(){
+
+		// update query
+		$query = "UPDATE " . $this->table_name . "
+				SET
+				  informedescargado=:informedescargado,
+                  fechadescarga = now()
+				WHERE
+					id = :id";
+
+		// prepare query statement
+		$stmt = $this->conn->prepare($query);
+
+		// sanitize
+		
+
+		$this->informedescargado=strip_tags($this->informedescargado);
+		//$this->fechadescarga=strip_tags($this->fechadescarga);
+		
+		
+		$this->id=strip_tags($this->id);
+
+		// bind new values
+		
+		$stmt->bindParam(':informedescargado', $this->informedescargado);
+		//$stmt->bindParam(':fechadescarga', $this->fechadescarga);
+	   			
+		$stmt->bindParam(':id', $this->id);
+
+		// execute the query
+		if($stmt->execute()){
+			return true;
+		}else{
+			echo "<pre>";
+				print_r($stmt->errorInfo());
+			echo "</pre>";
+
+		}
+	}
+
+
 
 	// delete the product
 	function delete(){
