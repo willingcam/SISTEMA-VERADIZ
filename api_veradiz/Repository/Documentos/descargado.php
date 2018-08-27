@@ -25,11 +25,14 @@ $obj->id = $data->id;
 
 // set obj property values
 $obj->informedescargado = $data->informedescargado;
-$obj->fechadescarga = $data->fechadescarga;
+$obj->fechadescarga = date("Y-m-d");
 $obj->id = $data->id;
 
 // update the obj
-if($obj->cambioestado()){
+
+
+
+if($obj->fueDescargado()){
 	echo '{';
 		echo '"message": "El registro fue actualizado exitosamente."';
 	echo '}';
@@ -41,4 +44,5 @@ else{
 		echo '"message": "Fallo la actualización del registro."';
 	echo '}';
 }
+
 ?>

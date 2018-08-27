@@ -31,9 +31,10 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                 "informedescargado": 1
             };
 
+
             InformesService.descargado(registro).then(
                 function(result) {
-
+                    console.log(result);
                 },
                 function(err) {
 
