@@ -452,7 +452,7 @@ public function read_documents_by_author(){
 		$query = "UPDATE " . $this->table_name . "
 				SET
 				  informedescargado=:informedescargado,
-                  fechadescarga =: fechadescarga
+                  fechadescarga = now()
 				WHERE
 					id = :id";
 
@@ -463,7 +463,7 @@ public function read_documents_by_author(){
 		
 
 		$this->informedescargado=strip_tags($this->informedescargado);
-		$this->fechadescarga=strip_tags($this->fechadescarga);
+		//$this->fechadescarga=strip_tags($this->fechadescarga);
 		
 		
 		$this->id=strip_tags($this->id);
@@ -471,7 +471,7 @@ public function read_documents_by_author(){
 		// bind new values
 		
 		$stmt->bindParam(':informedescargado', $this->informedescargado);
-		$stmt->bindParam(':fechadescarga', $this->fechadescarga);
+		//$stmt->bindParam(':fechadescarga', $this->fechadescarga);
 	   			
 		$stmt->bindParam(':id', $this->id);
 
@@ -479,7 +479,10 @@ public function read_documents_by_author(){
 		if($stmt->execute()){
 			return true;
 		}else{
-			return false;
+			echo "<pre>";
+				print_r($stmt->errorInfo());
+			echo "</pre>";
+
 		}
 	}
 
