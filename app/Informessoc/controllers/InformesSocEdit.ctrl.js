@@ -138,7 +138,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                     }
 
 
-                    $state.go("documentos");
+                    $state.go("informess");
                 },
                 function(err) {
                     console.error(err);
@@ -161,21 +161,21 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
         //Guardar Cambios
         $scope.publica = function() {
-            var registro = {
-                "estadodocumento": 3,
-                "id": $scope.registro.id
-            }
-            InformesService.cambioestado(registro).then(
-                function(result) {
-                    toastr.success("Informe publicado  ");
-                    $state.go("informess");
-                },
-                function(err) {
-                    console.error(err);
+                var registro = {
+                    "estadodocumento": 3,
+                    "id": $scope.registro.id
                 }
-            );
-        }
-        //Regresa a Cambios del empleado
+                InformesService.cambioestado(registro).then(
+                    function(result) {
+                        toastr.success("Informe publicado  ");
+                        $state.go("informess");
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+            }
+            //Regresa a Cambios del empleado
         $scope.RegresaEdicion = function() {
             var registro = {
                 "estadodocumento": 1,

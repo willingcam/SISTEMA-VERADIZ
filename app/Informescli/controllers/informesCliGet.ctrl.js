@@ -12,7 +12,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         $scope.loading = true;
 
         $scope.documentos = function() {
-            InformesService.getAllOnlyMisDocumentsClient(AuthService.authentication.idUsuario).then(
+            InformesService.getDocumentosClienteYaPublicados(AuthService.authentication.idUsuario).then(
                 function(result) {
                     $scope.loading = false;
                     $scope.documentosGet = result.data.records;
@@ -22,6 +22,25 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                 }
             );
         }
+
+
+        $scope.actualizaFechaDescarga = function(id) {
+            var registro = {
+                "id": id,
+                "fechadescarga": new Date(),
+                "informedescargado": 1
+            };
+
+            InformesService.descargado(registro).then(
+                function(result) {
+
+                },
+                function(err) {
+
+                }
+            );
+        }
+
 
         $scope.documentos();
 

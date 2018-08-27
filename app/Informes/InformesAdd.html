@@ -54,7 +54,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Documento adjunto
+                                Documento adjunto <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <input class="input-file form-control col-md-7 col-xs-12" type="file" name="filesGral" id="filesGral" data-buttonName="btn-success" ng-click="saveIG();" ng-model="filesGral" onchange="angular.element(this).scope().getFileDetails(this);" />
@@ -65,13 +65,10 @@
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                 <div class="">
-                                    <button type="submit" class="btn btn-success" ng-click="save()">
-                                
-                                        <i class="glyphicon glyphicon-saved"></i> Guardar
+                                    <button type="submit" class="btn btn-success" ng-click="save()">                                
+                                       <i class="glyphicon glyphicon-saved"></i> Guardar
                                     </button>
-                                    <button type="button" ui-sref="informes" class="btn btn-primary">
-                                        <span class="fa fa-arrow-left"></span> Regresar
-                                    </button>
+
                                 </div>
                             </div>
                         </div>
@@ -79,6 +76,10 @@
                     </form>
                 </div>
             </div>
+            <button type="button" ui-sref="informes" class="btn btn-primary">
+                <span class="fa fa-arrow-left"></span> Regresar
+            </button>
         </div>
+
     </div>
 </div>

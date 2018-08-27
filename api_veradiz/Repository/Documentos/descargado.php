@@ -24,16 +24,12 @@ $data = json_decode(file_get_contents("php://input"));
 $obj->id = $data->id;
 
 // set obj property values
-
-$obj->descripcion = $data->descripcion;
-$obj->archivo = $data->archivo;
-$obj->ubicacion = $data->ubicacion;
-$obj->tipoAccesoId = $data->tipoAccesoId;
-$obj->clienteId = $data->clienteId;
-$obj->tipoDocumentoId = $data->tipoDocumentoId;
+$obj->informedescargado = $data->informedescargado;
+$obj->fechadescarga = $data->fechadescarga;
+$obj->id = $data->id;
 
 // update the obj
-if($obj->update()){
+if($obj->cambioestado()){
 	echo '{';
 		echo '"message": "El registro fue actualizado exitosamente."';
 	echo '}';
