@@ -5,8 +5,14 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="">
-    <meta name="author" content="">
+
+    <meta name="author" content="VERA, DIZ Y CIA., S.C.">
+
+
+    <!-- Basic SEO -->
+    <meta name="description" content="Asesores financieros y contables">
+    <meta name="keywords" content="Auditorias externas, asesoría fiscal, consultoria en administración y finanzas, asesoría en el área judicial, consultoria en planeación de negocios ">
+
 
     <title>VERADIZ</title>
 
@@ -178,6 +184,7 @@
     <script src="app/Informessoc/controllers/InformesSocGet.ctrl.js"></script>
     <script src="app/Informessoc/controllers/InformesSocAdd.ctrl.js"></script>
     <script src="app/Informessoc/controllers/InformesSocEdit.ctrl.js"></script>
+    <script src="app/Informessoc/controllers/InformesEnvGet.ctrl.js"></script>
 
     <script src="app/Informescli/controllers/informesCliGet.ctrl.js"></script>
 
@@ -265,6 +272,13 @@
                                     </a>
                                 </li>
 
+
+                                <li ng-show="authentication.idrol == 2">
+                                    <a ng-href="veradiz.html#/informesenviados">
+                                        <i class="fa fa-newspaper-o"> </i>&nbsp;Informes publicados
+                                    </a>
+                                </li>
+
                                 <li ng-show="authentication.idrol == 4">
                                     <a ng-href="veradiz.html#/clientesinformes">
                                         <i class="fa fa-newspaper-o"> </i>&nbsp;Consulta de informes
@@ -276,9 +290,9 @@
                                         <i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span>
                                     </a>
                                     <ul class="nav child_menu">
-                                        <li><a href="index.html">Cetes</a></li>
-                                        <li><a href="index2.html">TIIE</a></li>
-                                        <li><a href="index3.html">Dolar</a></li>
+                                        <li><a href="">Cetes</a></li>
+                                        <li><a href="">TIIE</a></li>
+                                        <li><a href="">Dolar</a></li>
                                     </ul>
                                 </li>
 

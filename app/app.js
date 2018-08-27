@@ -31,11 +31,11 @@
             DTDefaultOptions.setDisplayLength(5);
         })
         .run(function($rootScope, MenuService, $window) {
-            debugger;
+
             $rootScope.go = function(authentication) {
 
                 if (!authentication.isAuth) {
-                    debugger;
+
                     window.location = "/indexApp.html#/login";
                 }
             }
@@ -104,6 +104,7 @@
     function RouterProvider($stateProvider, $urlRouterProvider) {
 
         $urlRouterProvider.otherwise("/homeAuthorize");
+
 
         $stateProvider
             .state("home", {
@@ -222,11 +223,17 @@
                 templateUrl: "app/Informessoc/InformesSocEdit.html",
                 controller: "InformesSocEditCtrl"
             })
+            .state("informesenviados", {
+                url: "/informesenviados",
+                templateUrl: "app/Informessoc/InformesEnvGet.html",
+                controller: "InformesEnvGetCtrl"
+            })
             .state("clientesinformes", {
                 url: "/clientesinformes",
                 templateUrl: "app/Informescli/InformesCliGet.html",
                 controller: "InformesCliGetCtrl"
             })
+
 
     };
 }());

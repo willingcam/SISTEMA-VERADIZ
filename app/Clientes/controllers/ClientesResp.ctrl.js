@@ -59,7 +59,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
             $scope.empleados = {};
             var modalInstance = $uibModal.open({
                 size: 'lg',
-                templateUrl: 'app/GEN/Clientes/PersonalGet.html',
+                templateUrl: 'app/Clientes/PersonalGet.html',
                 controller: 'PersonalGetCtrl',
                 resolve: {
                     empleado: function() {

@@ -499,5 +499,57 @@ class Usuarios{
 		}
 	}
 
+
+
+
+	public function verify_correo(){
+
+		$query = "SELECT id, nombre, correo FROM " . $this->table_name . " WHERE activo = 1 AND upper(correo) LIKE :correo ";
+	
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+			
+			//$upperNombre = strtoupper($strNombre);
+			$upperCorreo = strtoupper($this->correo);
+
+			//$likeStringNombre = "%$upperNombre%";
+			$likeStringCorreo = "%$upperCorreo%";
+
+			//$stmt->bindParam(':nombre',  $likeStringNombre ,  PDO::PARAM_STR);
+            $stmt->bindParam(':correo',  $likeStringCorreo ,  PDO::PARAM_STR);
+
+			// execute query
+			$stmt->execute();
+	
+			return $stmt;
+	}
+
+
+	public function verify_nombre(){
+
+		$query = "SELECT id, nombre, correo FROM " . $this->table_name . " WHERE activo = 1 AND nombre LIKE :nombre ";
+	
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+			
+			//$strNombre=preg_replace('/\s+/', '', $this->nombre);
+			//$strCorreo=preg_replace('/\s+/', '', $this->correo);
+
+			//$upperNombre = strtoupper($strNombre);
+			//$upperCorreo = strtoupper($strCorreo);
+
+			$likeStringNombre = "%$this->nombre%";
+			//$likeStringCorreo = "%$upperCorreo%";
+
+			//$stmt->bindParam(':nombre',  $likeStringNombre ,  PDO::PARAM_STR);
+            $stmt->bindParam(':correo',  $likeStringCorreo ,  PDO::PARAM_STR);
+
+			// execute query
+			$stmt->execute();
+	
+			return $stmt;
+	}
+
+
 }
 ?>

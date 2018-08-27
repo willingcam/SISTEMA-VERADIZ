@@ -5,20 +5,22 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/Documentos.php';
+include_once '../../objects/Usuarios.php';
 
 // instantiate database and obj object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$obj = new Documentos($db);
+$obj = new Usuarios($db);
 
-$obj->autorId = isset($_GET['empleado']) ? $_GET['empleado'] : die();
-$obj->clienteId = isset($_GET['cliente']) ? $_GET['cliente'] : die();
+
+
+$obj->nombre = isset($_GET['nombre']) ? $_GET['nombre'] : die();
+
 
 // query products
-$stmt = $obj->read_documents_client();
+$stmt = $obj->verify_nombre();
 $num  = $stmt->rowCount();
 
 
@@ -39,17 +41,10 @@ if($num>0){
 		extract($row);
 
 		$obj_item=array(
-			"idcliente" => $idcliente,
-			"descripcion" => $descripcion,
-			"archivo" => $archivo,
-			"ubicacion" => $ubicacion,
-			"tipoDocumentoId" => $tipoDocumentoId,
-			"urlCompleta" => $ubicacion.$archivo,
-			"estado" => $estado,
-			"tipodocumento" => $tipo_documento,
-			"cliente" => $nombre,
-			"id" => $id
-			
+			"id" => $id,
+			"nombre" => $nombre,
+			"correo" => $correo,
+
 		);
 
 		array_push($obj_arr["records"], $obj_item);

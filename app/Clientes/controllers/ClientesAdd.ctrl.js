@@ -24,6 +24,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
         $scope.celular = "";
         $scope.imagen = "";
         $scope.puesto = "";
+        $scope.contacto = "";
         $scope.archivo = "";
         $scope.ubicacion = "api_veradiz/Repository/Upload/images/";
 
@@ -66,6 +67,14 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
             var cadena = $scope.correo.split('@');
             var cuentaUsuario = cadena[0];
 
+
+            if ($scope.correo == "") {
+                toastr.error("Ingrese la cuenta de correo del contacto o del cliente ");
+                return false;
+            }
+
+
+
             var registo = {
                 'nombre': $scope.nombre,
                 'correo': $scope.correo,
@@ -85,10 +94,12 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
             }
 
+
+
             UsuariosService.Add(registo).then(
                 function(result) {
 
-                    toastr.success("Cliente registrado exitosamente");
+                    toastr.success(result);
                     $state.go("clientes");
                 },
                 function(err) {
