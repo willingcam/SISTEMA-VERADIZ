@@ -65,6 +65,16 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
 
                 $scope.urlCompleta = $scope.ubicacion + $scope.archivo;
+
+                
+                if($scope.registro.autorId == AuthService.authentication.idUsuario)
+                {
+                    $scope.socioIgualCreador=1;
+                }
+                else{
+                    $scope.socioIgualCreador=0;
+                }
+                
             },
             function(err) {
                 console.error(err);
@@ -135,6 +145,10 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                                 toastr.error("Se presento un problema al alimnar el archivo ");
                             }
                         );
+                    }
+                    else{
+                        toastr.success("Registro actualizado exitosamente");
+                    
                     }
 
 

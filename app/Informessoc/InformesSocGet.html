@@ -51,6 +51,8 @@
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
                                     <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
+                                    <br>Creado por: {{obj.nombreCreador}}
+                                    <br>Fecha: {{obj.fechaRegistro}}
                                 </td>
 
                                 <td>
@@ -88,7 +90,8 @@
 
 
     </div>
-
+<!-- {{ documentosGet | json }} -->
+    
     <div class="row ">
         <div class="col-xs-12 ">
             <button type="button " ui-sref="informessAdd " class="btn btn-success ">
@@ -96,4 +99,5 @@
             </button>
         </div>
     </div>
+    
 </div>

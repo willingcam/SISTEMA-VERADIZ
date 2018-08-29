@@ -153,8 +153,14 @@ public function read_documents_by_author(){
 		// read products
 	public function read_clients_documents(){
 
-			$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre FROM encargado_cuenta P 
-			RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
+			$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre, Q.fechaRegistro,Q.autorId,P.idempleado as socioId,Q.nombreCreador FROM encargado_cuenta P 
+			RIGHT JOIN 
+            (
+              SELECT D.id as idDocumento,U.id as idCreador,U.nombre as nombreCreador,D.clienteId,D.estadodocumento,
+             D.descripcion, D.archivo, D.ubicacion, D.tipoDocumentoId, D.id,D.fechaRegistro,D.autorId
+            FROM documentos D Left JOIN usuarios U on D.autorId=U.id
+               ) Q
+            ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
 			LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
 			LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
 			LEFT JOIN usuarios   U ON U.id = P.idcliente
@@ -414,7 +420,8 @@ public function read_documents_by_author(){
 		// update query
 		$query = "UPDATE " . $this->table_name . "
 				SET
-					estadodocumento=:estadodocumento							
+					estadodocumento=:estadodocumento,
+					fecharegistro=NOW()							
 				WHERE
 					id = :id";
 
