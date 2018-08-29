@@ -47,7 +47,11 @@ if($num>0){
 			"estado" => $estado,
 			"tipodocumento" => $tipo_documento,
 			"cliente" => $nombre,
-			"id" => $id
+			"id" => $id,
+			"fechaRegistro" => $fechaRegistro,
+			"autorId" => $autorId,
+			"socioId" => $socioId,
+			"nombreCreador" => $nombreCreador
 			
 		);
 
