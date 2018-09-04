@@ -23,6 +23,20 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             );
         }
 
+        $scope.documentos = function() {
+            InformesService.getDocumentosClienteYaPublicadosTotalNuevos(AuthService.authentication.idUsuario).then(
+                function(result) {
+                    $scope.loading = false;
+                    $scope.documentosGetContadores = result.data.records;
+                },
+                function(err) {
+                    toastr.error("Se presento un error en la carga de los datos");
+                }
+            );
+        }
+
+        
+
 
         $scope.actualizaFechaDescarga = function(id) {
             var registro = {

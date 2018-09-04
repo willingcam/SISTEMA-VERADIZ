@@ -58,6 +58,11 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http.get(endPoint);
         }
 
+        service.getDocumentosClienteYaPublicadosTotalNuevos = function(id) {
+            var endPoint = API + "Repository/Documentos/read_client_docs_total_news.php?id=" + id;
+            return $http.get(endPoint);
+        }
+
 
         service.getAllMyDocumentsByClient = function(registro) {
             var endPoint = API + "Repository/Documentos/read_documents_client.php?empleado=" + registro.empleado + "&cliente=" + registro.cliente;
