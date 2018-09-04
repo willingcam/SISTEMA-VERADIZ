@@ -14,35 +14,96 @@
             <div class="x_panel">
                 <div class="x_content sin-desborde">
 
+                    <div class="">
+                        <div class="row top_tiles">
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[0].total }}</div>
+                                    <h3>{{ documentosGetContadores[0].descripcion }}</h3>
+                                    <span class="badge bg-green">{{ documentosGetContadores[0].nuevos }}</span>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-comments-o"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[1].total }}</div>
+                                    <h3>{{ documentosGetContadores[1].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[1].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[2].total }}</div>
+                                    <h3>{{ documentosGetContadores[2].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[2].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-check-square-o"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[3].total }}</div>
+                                    <h3>{{ documentosGetContadores[3].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[3].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-calculator"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[4].total }}</div>
+                                    <h3>{{ documentosGetContadores[4].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[4].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-binoculars"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[5].total }}</div>
+                                    <h3>{{ documentosGetContadores[5].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[5].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-bank"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[6].total }}</div>
+                                    <h3>{{ documentosGetContadores[6].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[6].nuevos }}</p>
+                                </div>
+                            </div>
+                            <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="tile-stats">
+                                    <div class="icon"><i class="fa fa-area-chart"></i></div>
+                                    <div class="count"> {{ documentosGetContadores[7].total }}</div>
+                                    <h3>{{ documentosGetContadores[7].descripcion }}</h3>
+                                    <p>{{ documentosGetContadores[7].nuevos }}</p>
+                                </div>
+                            </div>
 
-                    <table id="documentosGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
-                        <thead>
-                            <tr>
-                                <th data-priority="1">Documento</th>
-                                <th data-priority="2">Tipo de documento</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="obj in documentosGet">
-                                <td>
-                                    <a href="{{obj.urlCompleta}}" ng-click="actualizaFechaDescarga(obj.id)" target="_blank">{{obj.descripcion}}</a>
-                                </td>
 
-                                <td>
-                                    {{obj.tipodocumento}}
-                                </td>
+                        </div>
+                        <!--
+                    {{ documentosGetContadores[0] | json}}
+                    {{ documentosGetContadores[0].total | json}}
+                    {{ documentosGetContadores[0].nuevos | json}}
 
-                            </tr>
-                        </tbody>
-                    </table>
+                    {{ documentosGetContadores[1] | json}}
+                    {{ documentosGetContadores[2] | json}}
+                    {{ documentosGetContadores[3] | json}}
+                    {{ documentosGetContadores[4] | json}}
+                    {{ documentosGetContadores[5] | json}}
+                    {{ documentosGetContadores[6] | json}}
+                    {{ documentosGetContadores[7] | json}}
+                    -->
 
 
+                    </div>
                 </div>
             </div>
+
+
         </div>
 
 
     </div>
-
-
-</div>
