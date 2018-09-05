@@ -66,15 +66,13 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
                 $scope.urlCompleta = $scope.ubicacion + $scope.archivo;
 
-                
-                if($scope.registro.autorId == AuthService.authentication.idUsuario)
-                {
-                    $scope.socioIgualCreador=1;
+
+                if ($scope.registro.autorId == AuthService.authentication.idUsuario) {
+                    $scope.socioIgualCreador = 1;
+                } else {
+                    $scope.socioIgualCreador = 0;
                 }
-                else{
-                    $scope.socioIgualCreador=0;
-                }
-                
+
             },
             function(err) {
                 console.error(err);
@@ -82,6 +80,19 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         );
 
 
+        $scope.clientes = function() {
+            InformesService.getOnlyMyClient(AuthService.authentication.idUsuario).then(
+                function(result) {
+                    $scope.clientes = result.data.records;
+                },
+                function(err) {
+
+                }
+            );
+        }
+
+
+        /*
         $scope.clientes = function() {
             InformesService.getAllClients().then(
                 function(result) {
@@ -92,6 +103,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 }
             );
         }
+        */
 
         $scope.clientes();
 
@@ -145,10 +157,9 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                                 toastr.error("Se presento un problema al alimnar el archivo ");
                             }
                         );
-                    }
-                    else{
+                    } else {
                         toastr.success("Registro actualizado exitosamente");
-                    
+
                     }
 
 
