@@ -35,9 +35,6 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             );
         }
 
-        
-
-
         $scope.actualizaFechaDescarga = function(id) {
             var registro = {
                 "id": id,
