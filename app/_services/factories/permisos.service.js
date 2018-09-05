@@ -7,32 +7,24 @@
 
     function PermisosService($http, $q, globalGet, AuthService, localStorageService, MenuService) {
         var service = {};
-        var listafuncionesadmin = MenuService.getMenuAdmin();
-
-        var listafunciones = null;
+        var listafuncionesMenu = MenuService.getMenu();
 
 
 
-        service.verificaPermisos = function(siguiente, modulo) {
+
+        service.verificaPermisos = function(siguiente) {
 
 
-            switch (modulo) {
-                case 'ADM':
-                    listafunciones = listafuncionesadmin;
-                    break;
 
 
-                default:
-                    break;
-            }
             var q = $q.defer();
             try {
                 var next = siguiente.replace(':id', '').replace(':seccion', '').replace('/:id2', '');
 
                 var permitir = false;
-                listafunciones.forEach(function(element) {
-                    if (typeof element.funcion.url !== undefined) {
-                        var r = element.funcion.url.split('#');
+                listafuncionesMenu.forEach(function(element) {
+                    if (typeof element.url_referencia !== undefined) {
+                        var r = element.url_referencia.split('#');
                         if (r[1] != null) {
                             if (r[1].indexOf(next) >= 0 || next === '/home') {
                                 permitir = true;

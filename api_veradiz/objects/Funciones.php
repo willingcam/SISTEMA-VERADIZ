@@ -8,7 +8,7 @@ class Funciones{
 	// object properties
 	public $id;
 	public $descripcion;
-	public $url;
+	public $url_referencia;
 	public $nivel;
 	public $secuencia;
 	public $estado;
@@ -17,6 +17,7 @@ class Funciones{
 	public $nombre;
 	public $clase_icono;
 	public $campo_state;
+	public $rol;
 
 	// constructor with $db as database connection
 	public function __construct($db){
@@ -87,11 +88,13 @@ class Funciones{
 	public function read(){
 
 		// select all query
-		$query = "SELECT id, descripcion, url,  nivel, secuencia, estado, idPadre, idModulo, nombre, clase_icono, campo_state FROM " . $this->table_name . " ";
+		$query = "SELECT id, descripcion,  url_referencia,  nivel, secuencia, estado, idPadre, idModulo, nombre, clase_icono, campo_state, rol FROM " . $this->table_name . " WHERE estado = 1 AND rol = ?";
 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
 
+		// bind id of product to be updated
+		$stmt->bindParam(1, $this->rol);
 		// execute query
 		$stmt->execute();
 
