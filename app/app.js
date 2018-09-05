@@ -8,7 +8,8 @@
             'veradiz.services',
             'blockUI',
             'Globales',
-            'ngSanitize'
+            'ngSanitize',
+            'textAngular'
         ])
         // DEFINICION DEL SERVIDOR 
         //local               
@@ -17,6 +18,19 @@
         //.constant('HOST', 'www.veradiz.com.mx')
         .config(function($httpProvider) {
             $httpProvider.interceptors.push('authInterceptorService');
+        })
+        .config(function($provide) {
+            // this demonstrates how to register a new tool and add it to the default toolbar
+            $provide.decorator('taOptions', ['taRegisterTool', '$delegate', function(taRegisterTool, taOptions) { // $delegate is the taOptions we are decorating
+                taOptions.toolbar = [
+                    ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre', 'quote'],
+                    ['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo', 'clear'],
+                    ['justifyLeft', 'justifyCenter', 'justifyRight', 'indent', 'outdent']
+
+
+                ];
+                return taOptions;
+            }]);
         })
         .config(["$stateProvider", "$urlRouterProvider", RouterProvider])
         .run(function(DTDefaultOptions) {
@@ -30,15 +44,15 @@
             ]);
             DTDefaultOptions.setDisplayLength(5);
         })
-        .run(function($rootScope, MenuService, $window) {
+        .run(function($rootScope, MenuService, $window, $location, AuthService, PermisosService, $state) {
 
             $rootScope.go = function(authentication) {
 
                 if (!authentication.isAuth) {
-
                     window.location = "/indexApp.html#/login";
                 }
             }
+
 
             $rootScope.globalRegresar = function() {
                 $window.history.back();
@@ -46,6 +60,71 @@
                 MenuService.removeGlobalID2();
             }
             $rootScope.$on('$locationChangeStart', function(event) {
+
+            });
+            $rootScope.$on('$stateChangeStart', function(event, to, toParams, from, fromParams) {
+
+                var continuar = false;
+                $rootScope.nameState = to.name;
+                $rootScope.toState = to;
+                $rootScope.fromState = from;
+
+
+
+                $rootScope.usuarioLogueado = false;
+                AuthService.verificaSesion().then(function(res) {
+
+                    if (res != null) {
+                        $rootScope.usuarioLogueado = true;
+                    }
+
+                    if ($rootScope.usuarioLogueado == false) {
+                        try {
+                            to.url = to.url.replace(":id2", toParams.id2);
+                            to.url = to.url.replace(":id", toParams.id);
+                        } catch (ex) {
+
+                        }
+
+
+                        event.preventDefault();
+
+                        if (to.name != "login") {
+                            window.location = "/indexApp.html";
+                            event.preventDefault();
+
+                        }
+
+                        ///$location.path('/login')
+                        // window.location = "/indexApp.html";
+
+
+                    } else {
+                        debugger;
+
+                        var next = "";
+                        if (typeof to.views === "object") {
+                            for (var obj in to.views) {
+                                next = to.views[obj].url;
+                                break;
+                            }
+                        }
+                        if (typeof to.url === "string") {
+                            next = to.url;
+                        }
+
+                        if (to.name != "homeAuthorize") {
+                            var permitir = PermisosService.verificaPermisos(next);
+
+                            if (!permitir.$$state.value) {
+                                toastr.error('Intento acceder a una página no autorizada para su rol');
+                                // $state.go("noautorizado")
+                                window.location = "veradiz.html#/noautorizado";
+                                event.preventDefault();
+                            }
+                        }
+                    }
+                });
 
             });
             $rootScope.$on('$viewContentLoaded', function(event, viewName, viewContent) {
@@ -106,13 +185,16 @@
         $urlRouterProvider.otherwise("/homeAuthorize");
 
 
+
         $stateProvider
-            .state("home", {
-                url: "/home",
-                templateUrl: "app/home/home.html",
-                controller: "cargardatosAnonimo"
-            })
-            .state("homeAuthorize", {
+
+            .state("noautorizado", {
+            url: "/noautorizado",
+            templateUrl: "app/home/noAuthorize.html",
+            controller: "noAuthorizeCtrl"
+        })
+
+        .state("homeAuthorize", {
                 url: "/homeAuthorize",
                 templateUrl: "app/home/homeAuthorize.html",
                 controller: "homeauthorizeCtrl"
@@ -122,11 +204,7 @@
                 templateUrl: "app/auth/login.html",
                 controller: "loginCtrl"
             })
-            .state("cargardatos", {
-                url: "/",
-                templateUrl: "app/home/cargardatos.html",
-                controller: "cargardatosCtrl"
-            })
+
 
         .state("usuarios", {
                 url: "/usuarios",

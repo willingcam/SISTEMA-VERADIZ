@@ -38,32 +38,33 @@
             return $http.post(globalGet.get("api") + consulta, loginData).then(
                 function(response) {
 
-                    if (response.data != "null") {
+                    if (response.data.usuario.id != "null") {
                         var authData = {
                             token: "123",
-                            nombreCompleto: response.data.nombre,
-                            idUsuario: response.data.id,
+                            nombreCompleto: response.data.usuario.nombre,
+                            idUsuario: response.data.usuario.id,
                             ultimologin: new Date(),
-                            rol: response.data.rol,
-                            idrol: response.data.rolID,
+                            rol: response.data.usuario.rol,
+                            idrol: response.data.usuario.rolID,
                             userName: loginData.userName,
-                            foto: response.data.ubicacion_imagen + response.data.imagen,
-                            tipoUsuarioId: response.data.tipoUsuarioId
+                            foto: response.data.usuario.ubicacion_imagen + response.data.usuario.imagen,
+                            tipoUsuarioId: response.data.usuario.tipoUsuarioId
                         };
 
                         localStorageService.set('authorizationData', authData);
-                        localStorageService.set('descripcionRol', response.data.rol);
-                        localStorageService.set('rolId', response.data.rolID);
+                        localStorageService.set('descripcionRol', response.data.usuario.rol);
+                        localStorageService.set('rolId', response.data.usuario.rolID);
+                        localStorageService.set('Menu', response.data.funciones);
 
                         _authentication.isAuth = true;
                         _authentication.userName = loginData.userName;
-                        _authentication.idrol = response.data.rolID;
-                        _authentication.rol = response.data.rol;
-                        _authentication.userName = loginData.userName;
-                        _authentication.idUsuario = response.data.id;
-                        _authentication.nombreCompleto = response.data.nombre;
-                        _authentication.foto = response.data.ubicacion_imagen + response.data.imagen;
-                        _authentication.tipoUsuarioId = response.data.tipoUsuarioId;
+                        _authentication.idrol = response.data.usuario.rolID;
+                        _authentication.rol = response.data.usuario.rol;
+
+                        _authentication.idUsuario = response.data.usuario.id;
+                        _authentication.nombreCompleto = response.data.usuario.nombre;
+                        _authentication.foto = response.data.usuario.ubicacion_imagen + response.data.usuario.imagen;
+                        _authentication.tipoUsuarioId = response.data.usuario.tipoUsuarioId;
                     } else {
                         var authData = { token: null, id: null, nombreCompleto: null, userName: null, ultimologin: null };
                         localStorageService.set('authorizationData', authData);
@@ -80,7 +81,7 @@
 
                         response = null;
                     }
-                    return response;
+                    return response.data;
 
                 });
         };
@@ -91,6 +92,7 @@
             localStorageService.remove('authorizationData');
             localStorageService.remove('descripcionRol');
             localStorageService.remove('rolId');
+            localStorageService.remove('Menu');
 
             localStorage.clear(); //importante para remover todo incluyendo MenuService._setVariable
             _authentication.isAuth = false;

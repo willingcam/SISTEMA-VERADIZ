@@ -27,15 +27,15 @@
                     blockUI.stop();
                     $scope.btnClick = false;
 
-                    if (response == null) {
+                    if (response.usuario == null) {
                         $scope.message = "Usuario y clave de acceso no validos";
                         toastr.error($scope.message);
                     } else {
 
-                        MenuService.setRolDescripcion(response.data.rol);
-                        MenuService.setRolId(response.data.idrol);
-
-                        AuthService.idrol = response.data.idrol;
+                        MenuService.setRolDescripcion(response.usuario.rol);
+                        MenuService.setRolId(response.usuario.rolID);
+                        MenuService.setMenu(response.funciones);
+                        AuthService.idrol = response.usuario.rolID;
 
                         window.location = "/veradiz.html#/homeAuthorize";
                     }

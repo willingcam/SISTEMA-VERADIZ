@@ -315,9 +315,9 @@
     }
     /* Tab active state */
     .r-tabs-accordion-title.r-tabs-state-active a {
-        color: #f4c613;
+        color: #520a0a;
         font-weight: 700;
-        border-bottom: 3px solid #f4c613;
+        border-bottom: 3px solid #520a0a;
         padding-bottom: 5px;
         -webkit-transition: border-color 300ms linear;
         transition: border-color 300ms linear;
