@@ -1,27 +1,25 @@
 <?php
 // required headers
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: access");
-header("Access-Control-Allow-Methods: GET");
-header("Access-Control-Allow-Credentials: true");
-header('Content-Type: application/json');
+header("Content-Type: application/json; charset=UTF-8");
 
-// include database and object files
+// get database connection
 include_once '../../config/database.php';
-include_once '../../objects/Funciones.php';
 
-// instantiate database and product object
+// instantiate news object
+include_once '../../objects/Noticias.php';
+
+// instantiate database and obj object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$obj = new Funciones($db);
-// set ID property of record to read
-$obj->rol = isset($_GET['rol']) ? $_GET['rol'] : die();
+$obj = new Noticias($db);
 
 // query products
-$stmt = $obj->read();
+$stmt = $obj->read_last();
 $num  = $stmt->rowCount();
+
 
 // check if more than 0 record found
 if($num>0){
@@ -40,13 +38,15 @@ if($num>0){
 		extract($row);
 
 		$obj_item=array(
-			"id" => $id,
-			"rol" => $rol,
-			"nombre" => $nombre,
+			"titulo" => $titulo,
+			"subtitulo" => $subtitulo,
+			"descripcion" => $descripcion,
 			"url_referencia" => $url_referencia,
-			"campo_state" => $campo_state
-			
-		
+			"fecha" =>   date("d/m/Y", strtotime($fecha)),
+			"imagen" => $imagen,
+			"ubicacion" => $ubicacion_imagen,
+			"urlcompleta" => $ubicacion_imagen.$imagen,
+			"autor" => $nombre
 		);
 
 		array_push($obj_arr["records"], $obj_item);
@@ -57,7 +57,7 @@ if($num>0){
 
 else{
     echo json_encode(
-		array("message" => "No hay registros disponibles.")
+		array("message" => "No hay registros diponibles.")
 	);
 }
 ?>

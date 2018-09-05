@@ -488,8 +488,8 @@ button:focus {
 
 .meta__avatar {
     display: block;
-    border-radius: 50%;
-    margin: 2em auto;
+    border-radius: 60%;
+    margin: 0.5em auto;
 }
 
 .meta--preview .meta__avatar {
@@ -628,9 +628,7 @@ button:focus {
     left: 0;
     width: 100%;
     pointer-events: none;
-    height: 0;
     /* Avoid second scroll bar in Chrome! */
-    visibility: hidden;
     z-index: 400;
     overflow: hidden;
 }
@@ -659,20 +657,15 @@ button:focus {
 /* single content item */
 
 .content__item {
-    position: absolute;
     top: 0;
     width: 100%;
     overflow: hidden;
-    height: 0;
-    opacity: 0;
-    padding: 60px 60px 80px 60px;
+    padding: 20px 60px 60px 60px;
     pointer-events: none;
     font-size: 0.85em;
 }
 
 .content__item p {
-    max-width: 1200px;
-    margin: 1em auto;
     text-align: justify;
 }
 
@@ -703,7 +696,7 @@ button:focus {
 }
 
 .meta--full {
-    font-size: 1em;
+    font-size: 2em;
     margin: 0 auto 2em;
     max-width: 1200px;
 }
@@ -712,7 +705,7 @@ button:focus {
     display: block;
     text-align: center;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .meta--full .meta__author::before {
@@ -741,11 +734,11 @@ button:focus {
 .meta--full .meta__author,
 .meta--full .meta__date,
 .meta--full .meta__reading-time {
-    opacity: 0;
+    opacity: 1;
 }
 
 .content__item p {
-    opacity: 0;
+    opacity: 1;
 }
 
 .category--full,
@@ -817,21 +810,12 @@ button:focus {
     border: none;
     background: none;
     margin: 0;
-    z-index: 100;
     top: 0;
     right: 0;
     font-size: 18px;
     color: #ddd;
     cursor: pointer;
-    pointer-events: none;
     padding: 20px 30px;
-    opacity: 0;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
     -webkit-transition: opacity 0.3s;
     transition: opacity 0.3s;
 }

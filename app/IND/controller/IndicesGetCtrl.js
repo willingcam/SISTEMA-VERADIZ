@@ -13,8 +13,23 @@
 
         $scope.dolarAtras = "";
 
+        $scope.TodasNoticias = {};
+        $scope.UltimasNoticias = {};
 
+        $scope.IsVisibleGrid = true;
+        $scope.IsVisibleContenido = false;
 
+        $scope.tituloSel = "";
+        $scope.subtituloSel = "";
+        $scope.descripcionSel = "";
+        $scope.autorSel = "";
+        $scope.imagenSel = "";
+        $scope.fechaSel = "";
+        $scope.nombre = "";
+        $scope.correo = "";
+        $scope.telefono = "";
+        $scope.asunto = "";
+        $scope.comentarios = "";
 
 
 
@@ -42,7 +57,7 @@
             IndicadoresService.getDolar2Atras().then(
                 function(exito) {
                     $scope.dolarAtras = exito.data.valor;
-                    console.log(exito.data.valor);
+
 
                 },
                 function(error) {
@@ -62,9 +77,35 @@
                 console.log("Error:", error);
             });
 
+            IndicadoresService.getTodasLasNoticias().then(function(exito) {
+                $scope.TodasNoticias = exito.data.records;
 
+            }, function(error) {
+                console.log("Error:", error);
+            });
+            IndicadoresService.getUltimasNoticias().then(function(exito) {
+                $scope.UltimasNoticias = exito.data.records;
+            }, function(error) {
+                console.log("Error:", error);
+            });
         }
 
+        $scope.enviarcorreo = function() {
+        }
+        $scope.seccion = function(obj) {
+            $scope.IsVisibleContenido = true;
+            $scope.IsVisibleGrid = false;
+            $scope.tituloSel = obj.titulo;
+            $scope.subtituloSel = obj.subtitulo;
+            $scope.descripcionSel = obj.descripcion;
+            $scope.autorSel = obj.autor;
+            $scope.imagenSel = obj.urlcompleta;
+            $scope.fechaSel = obj.fecha;
+        }
+        $scope.cierra = function() {
+            $scope.IsVisibleContenido = false;
+            $scope.IsVisibleGrid = true;
+        }
         $scope.obtenerRegistros();
 
 

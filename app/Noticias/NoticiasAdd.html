@@ -49,22 +49,21 @@
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                Descripción
-                                
+                                Contenido
+                                <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" ng-model="descripcion" max="255" placeholder="Ingrese el contenido de la noticia">
-                                <span class="error" ng-show="NoticiasForm.descripcion.$dirty && !NoticiasForm.descripcion.$valid">Debe ingresar el contenido de la noticia</span>
+                                <div class="ta-editor" text-angular ng-model="descripcion" placeholder="Ingresa el contenido de lo que se publicara en el blog de noticias"></div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label col-md-3 col-sm-3 col-xs-12">
                                 Url
-                                
+                               
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="url" name="url" ng-model="url" max="255" placeholder="Ingrese la url de referencia">
+                                <input type="text" class="form-control" id="url" name="url" ng-model="url" max="255" placeholder="http://www.dominio.com" class="form-control" ng-pattern="/^(http|https)?(:\/\/)(www)?(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/" >
                                 <span class="error" ng-show="NoticiasForm.url.$dirty && !NoticiasForm.url.$valid">Debe ingresar la url de referencia</span>
                             </div>
                         </div>

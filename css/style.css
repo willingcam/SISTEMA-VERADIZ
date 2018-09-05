@@ -4,7 +4,7 @@
     Fonts: Raleway & Open Sans
     ----------------------------------------
     Colors:
-        Moon Yellow:         #f4c613
+        Moon Yellow:         #520a0a
         Grey:                #212226
         White Smoke:         #f4f4f4
         White:               #fff
@@ -224,7 +224,7 @@ section {
 
 #arrow-down:hover,
 #arrow-down:focus {
-    color: #f4c613;
+    color: #520a0a;
 }
 
 
@@ -417,7 +417,7 @@ section {
 }
 
 .team-member-info h6 {
-    color: #f4c613;
+    color: #520a0a;
     font-size: 16px;
     margin: 0;
 }
@@ -512,7 +512,7 @@ ul.social-list li:nth-child(3) a:hover {
 }
 
 .progress-bar {
-    background: #f4c613;
+    background: #520a0a;
     position: relative;
 }
 
@@ -805,7 +805,7 @@ ul.social-list li:nth-child(3) a:hover {
 
 #isotope-filters button.active span {
     color: #520a0a;
-    border-bottom: 3px solid #f4c613;
+    border-bottom: 3px solid #520a0a;
 }
 
 
@@ -921,7 +921,7 @@ ul.social-list li:nth-child(3) a:hover {
 }
 
 #testimonial-slider {
-    background: #f4c613;
+    background: #520a0a;
     top: -120px;
 }
 
@@ -1080,7 +1080,7 @@ ul.social-list li:nth-child(3) a:hover {
 }
 
 .pricing-table.black:hover {
-    background: #f4c613;
+    background: #520a0a;
 }
 
 
@@ -1116,7 +1116,7 @@ ul.social-list li:nth-child(3) a:hover {
 
 .stats-item i {
     font-size: 42px;
-    color: #f4c613;
+    color: #520a0a;
     margin: 0 0 6px 0;
     -webkit-transition: all 400ms linear;
     transition: all 400ms linear;
@@ -1134,7 +1134,7 @@ ul.social-list li:nth-child(3) a:hover {
 }
 
 .stats-item:hover {
-    background: #f4c613;
+    background: #520a0a;
 }
 
 .stats-item:hover i {
@@ -1360,7 +1360,7 @@ footer p {
 }
 
 footer p span {
-    color: #f4c613;
+    color: #520a0a;
 }
 */
 

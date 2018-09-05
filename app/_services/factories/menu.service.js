@@ -13,7 +13,7 @@
         var _listafunciones = {};
 
         var _removeMenu = function() {
-            localStorageService.remove('MenuList');
+            localStorageService.remove('Menu');
         };
 
         var _removeReturnUrl = function() {
@@ -56,12 +56,12 @@
             return rolId;
         };
 
-        var _setMenuAdmin = function(listafunciones) {
-            localStorageService.set('MenuList', listafunciones);
+        var _setMenu = function(listafunciones) {
+            localStorageService.set('Menu', listafunciones);
         };
-        var _getMenuAdmin = function() {
+        var _getMenu = function() {
 
-            var menu = localStorageService.get('MenuList');
+            var menu = localStorageService.get('Menu');
             if (menu === null) {
                 menu = [];
             }
@@ -69,54 +69,14 @@
         };
 
 
-        var _setMenuCLI = function(listafunciones) {
-            localStorageService.set('MenuListCLI', listafunciones);
-        };
-
-        var _getMenuCLI = function() {
-            var menu = localStorageService.get('MenuListCLI');
-            if (menu === null) {
-                menu = [];
-            }
-            return menu;
-        };
-
-        var _setMenuDOC = function(listafunciones) {
-            localStorageService.set('MenuListDOC', listafunciones);
-        };
-
-        var _getMenuDOC = function() {
-            var menu = localStorageService.get('MenuListDOC');
-            if (menu === null) {
-                menu = [];
-            }
-            return menu;
-        };
 
 
-        var _setMenuSOC = function(listafunciones) {
-            localStorageService.set('MenuListSOC', listafunciones);
-        };
 
-        var _getMenuSOC = function() {
-            var menu = localStorageService.get('MenuListSOC');
-            if (menu === null) {
-                menu = [];
-            }
-            return menu;
-        };
 
-        var _setMenuTESO = function(listafunciones) {
-            localStorageService.set('MenuListTESO', listafunciones);
-        };
 
-        var _getMenuTESO = function() {
-            var menu = localStorageService.get('MenuListTESO');
-            if (menu === null) {
-                menu = [];
-            }
-            return menu;
-        };
+
+
+
 
         var _setVariable = function(nombrevar, valor) {
             localStorageService.set(nombrevar, valor);
@@ -190,20 +150,12 @@
             return $http.get(endpoint);
         };
 
-        service.setMenuAdmin = _setMenuAdmin;
-        service.getMenuAdmin = _getMenuAdmin;
 
-        service.setMenuDOC = _setMenuDOC;
-        service.getMenuDOC = _getMenuDOC;
+        service.setMenu = _setMenu;
+        service.getMenu = _getMenu;
 
-        service.setMenuCLI = _setMenuCLI;
-        service.getMenuCLI = _getMenuCLI;
 
-        service.setMenuTESO = _setMenuTESO;
-        service.getMenuTESO = _getMenuTESO;
 
-        service.setMenuSOC = _setMenuSOC;
-        service.getMenuSOC = _getMenuSOC;
 
         service.setVariable = _setVariable;
         service.getVariable = _getVariable;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-08-2018 a las 17:06:27
+-- Tiempo de generación: 05-09-2018 a las 02:12:11
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -294,7 +294,7 @@ INSERT INTO `calendario` (`id`, `anio`, `mes`, `dia`, `habil`, `fix`, `dof`, `pa
 (1214, 2018, 8, 23, 1, '18.8672', '', '18.8784', 'SIST', '2018-08-19'),
 (1215, 2018, 8, 24, 1, '18.8339', '', '18.8176', 'SIST', '2018-08-19'),
 (1216, 2018, 8, 25, 0, '', '', '18.8672', 'SIST', '2018-08-19'),
-(1217, 2018, 8, 26, 0, '', '', '', 'SIST', '2018-08-19'),
+(1217, 2018, 8, 26, 0, '', '', '18.8672', 'SIST', '2018-08-19'),
 (1218, 2018, 8, 27, 1, '', '', '', 'SIST', '2018-08-19'),
 (1219, 2018, 8, 28, 1, '', '', '', 'SIST', '2018-08-19'),
 (1220, 2018, 8, 29, 1, '', '', '', 'SIST', '2018-08-19'),
@@ -2973,8 +2973,9 @@ INSERT INTO `documentos` (`id`, `descripcion`, `archivo`, `ubicacion`, `clienteI
 (46, 'Estatus fiscal 1 NADRO', '1534998613adminbecarios.pdf', '/api_veradiz/Repository/Upload/documentos/', 13, 1, 2, '2018-08-23', 1, 1, 0, '0000-00-00'),
 (47, 'Pago de impuestos 1 ceMIESol', '1534998657fichacurricular.pdf', '/api_veradiz/Repository/Upload/documentos/', 14, 1, 4, '2018-08-23', 1, 1, 0, '2018-08-23'),
 (48, 'Información financiera 1 Chantilly', '1534998724personal.pdf', '/api_veradiz/Repository/Upload/documentos/', 15, 1, 3, '2018-08-23', 1, 1, 0, '2018-08-23'),
-(49, 'Clave fiscal 1 Colegio Williams', '1534998928lider.pdf', '/api_veradiz/Repository/Upload/documentos/', 16, 1, 5, '2018-08-23', 1, 3, 0, '2018-08-23'),
-(50, 'Estatus del mes agosto hamsa', '1535211280CR.pdf', '/api_veradiz/Repository/Upload/documentos/', 18, 1, 2, '2018-08-25', 30, 3, 0, '2018-08-25');
+(49, 'Clave fiscal 1 Colegio Williams', '1534998928lider.pdf', '/api_veradiz/Repository/Upload/documentos/', 16, 1, 5, '2018-08-23', 1, 2, 0, '2018-08-23'),
+(50, 'Estatus del mes agosto hamsa 123', '1535211280CR.pdf', '/api_veradiz/Repository/Upload/documentos/', 18, 1, 2, '2018-08-25', 30, 3, 1, '2018-08-26'),
+(51, 'Estatus financiero del mes agosto CDI', '1535312894Primera revisión a la nube.docx', '/api_veradiz/Repository/Upload/documentos/', 22, 1, 3, '2018-08-26', 30, 1, 0, '2018-08-26');
 
 -- --------------------------------------------------------
 
@@ -9268,7 +9269,7 @@ INSERT INTO `festivos` (`id`, `anio`, `descripcion`, `fecha`) VALUES
 CREATE TABLE `funciones` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `url` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
+  `url_referencia` varchar(128) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `nivel` int(11) DEFAULT NULL,
   `secuencia` int(11) DEFAULT NULL,
   `estado` int(11) DEFAULT NULL,
@@ -9276,23 +9277,23 @@ CREATE TABLE `funciones` (
   `idModulo` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
   `nombre` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
   `clase_icono` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
-  `campo_state` varchar(128) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
+  `campo_state` varchar(128) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `rol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `funciones`
 --
 
-INSERT INTO `funciones` (`id`, `descripcion`, `url`, `nivel`, `secuencia`, `estado`, `idPadre`, `idModulo`, `nombre`, `clase_icono`, `campo_state`) VALUES
-(4, 'Usuarios', 'IndexAdmin.html#/usuarios', 0, 1, 1, NULL, 'ADM', 'Usuarios', NULL, 'usuario'),
-(5, 'Noticias y eventos', 'IndexAdmin.html#/noticias', 0, 2, 1, NULL, 'ADM', 'Noticias', NULL, 'noticias'),
-(6, 'Asesorías', 'IndexSocio.html#/asesoria', 0, 1, 1, NULL, 'SOC', 'Asesorías', NULL, 'asesoria'),
-(7, 'Información fiscal', 'IndexSocio.html#/fiscal', 0, 2, 1, NULL, 'SOC', 'Información fiscal', NULL, 'fiscal'),
-(8, 'Información seguro social', 'IndexSocio.html#/social', 0, 3, 1, NULL, 'SOC', 'Información seguro social', NULL, 'social'),
-(9, 'Informes financieros', 'IndexCliente.html#/ifinanciero', 0, 1, 1, NULL, 'CLI', 'Informes financieros', NULL, 'ifinanciero'),
-(10, 'Documentos', 'IndexCliente.html#/documentos', 0, 2, 1, NULL, 'CLI', 'Documentos', NULL, 'documentos'),
-(11, 'Impuestos', 'IndexTeso.html#/impuestos', 0, 1, 1, NULL, 'TSO', 'Impuestos', NULL, 'impuestos'),
-(12, 'Documentos', 'IndexDocumentos.html#/documentos', 0, 2, 1, NULL, 'DOC', 'Documentos', NULL, 'documentos');
+INSERT INTO `funciones` (`id`, `descripcion`, `url_referencia`, `nivel`, `secuencia`, `estado`, `idPadre`, `idModulo`, `nombre`, `clase_icono`, `campo_state`, `rol`) VALUES
+(4, 'Usuarios', 'IndexAdmin.html#/usuarios', 0, 1, 1, NULL, 'ADM', 'Usuarios', NULL, 'usuarios', 1),
+(13, 'Clientes', 'veradiz.html#/clientes', 0, 2, 1, NULL, NULL, 'Clientes', NULL, 'clientes', 1),
+(15, 'Servicios', 'veradiz.html#/servicios', 0, 3, 1, NULL, NULL, 'Servicios', NULL, 'servicios', 1),
+(16, 'Noticias', 'veradiz.html#/noticias', 0, 4, 1, NULL, NULL, 'Noticias', NULL, 'noticias', 1),
+(19, 'Registro de informes', 'veradiz.html#/informes', 0, 5, 1, NULL, NULL, 'Registro de informes', NULL, 'informes', 3),
+(20, 'Revisión de informes', 'veradiz.html#/informess', 0, 7, 1, NULL, NULL, 'Revisión de informes', NULL, 'informess', 2),
+(23, 'Informes publicados', 'veradiz.html#/informesenviados', 0, 8, 1, NULL, NULL, 'Informes publicados', NULL, 'informesenviados', 2),
+(25, 'Consulta de informes', 'veradiz.html#/clientesinformes', 0, 11, 1, NULL, NULL, 'Consulta de informes', NULL, 'clientesinformes', 4);
 
 -- --------------------------------------------------------
 
@@ -9385,7 +9386,7 @@ CREATE TABLE `noticia` (
   `id` int(11) NOT NULL,
   `titulo` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `subtitulo` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
-  `descripcion` varchar(255) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
+  `descripcion` longtext CHARACTER SET latin1 COLLATE latin1_spanish_ci,
   `url_referencia` varchar(150) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `imagen` varchar(150) CHARACTER SET latin1 COLLATE latin1_spanish_ci DEFAULT NULL,
@@ -9399,7 +9400,11 @@ CREATE TABLE `noticia` (
 --
 
 INSERT INTO `noticia` (`id`, `titulo`, `subtitulo`, `descripcion`, `url_referencia`, `fecha`, `imagen`, `ubicacion_imagen`, `activo`, `autorId`) VALUES
-(2, 'Titulo 1', 'Subtitulo 1', 'Descripción 1', 'http://www.foo.com', '2018-08-17', '', '', 1, 1);
+(9, 'Titulo de prueba 01', 'Subtitulo de prueba 01', 'Contenido de prueba 01 ', 'http://www.foo.com', '2018-08-30', '', '', 1, 1),
+(10, 'Titulo de prueba 02', 'Subtitulo de prueba 02', 'Contenido de prueba 02', 'http://www.foo.com', '2018-08-30', '', '', 1, 1),
+(11, 'Titulo de prueba 03', 'Subtitulo de prueba 03', 'Contenido de prueba 03', 'http://www.foo.com', '2018-08-30', '', '', 1, 1),
+(12, 'Titulo de prueba 04', 'Subtitulo de prueba 04', 'Contenido de prueba 04', 'http://www.foo.com', '2018-08-30', '', '', 1, 1),
+(13, 'Titulo de prueba 05', 'Subtitulo de prueba 05', 'Contenido de prueba 05', 'http://www.foo.com', '2018-08-30', '', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -25021,7 +25026,14 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `usuario`, `claveacceso`, `tel
 (27, 'Melissa Castillo', 'melissa@correo.com', 'melissa', 'test', '(55)5563 7499', '(55)5563 7499', '1', 'Encargado de cuenta', 'team-img1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
 (28, 'Carolina  Ibarra', 'caro@correo.com', 'caro', 'test', '(55)5563 7499', '(55)5563 7499', '1', 'Encargado de cuenta', 'team-img4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
 (29, 'Wiliam Ingram Ramirez', 'ramirez@demo.com', 'ramirez', 'test', '7772677696', '7772677696', '111', 'Sistemas', 'team-4.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 2, 'Socio', ''),
-(30, 'Arturo Mora', 'mora@demo.com', 'mora', 'test', '77777777', '1111', '1111', 'Capturista', 'team-1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', '');
+(30, 'Arturo Mora', 'mora@demo.com', 'mora', 'test', '77777777', '1111', '1111', 'Capturista', 'team-1.jpg', 'api_veradiz/Repository/Upload/images/', 1, 1, 3, 'Empleado', ''),
+(31, 'NETFLIX', 'netflix@correo.com', 'netflix', 'test', '', '', '', '', 'empresa.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', ''),
+(32, 'NISSAN', 'nissan@correo.com', 'nissan', 'test', '', '', '', '', 'empresa.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', ''),
+(33, 'SANBORS', 'san@correo.com', 'san', 'test', '12333333', '232244', '1333455', 'Supervisor', 'descarga.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', 'Juan Penas'),
+(34, 'Prueba 1', 'Prueba@correo.com', 'Prueba', 'test', '', '', '', '', 'descarga.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', ''),
+(35, 'xxxx', 'correo@com.mx', 'correo', 'test', '', '', '', '', 'empresa.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', ''),
+(36, 'yyyyy', 'netflix@correo.com', 'netflix', 'test', '', '', '', '', 'empresa.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', ''),
+(37, 'test', 'netflix@correo.com', 'netflix', 'test', '', '', '', '', 'empresa.png', 'api_veradiz/Repository/Upload/images/', 0, 2, 4, 'Cliente', '');
 
 --
 -- Índices para tablas volcadas
@@ -25251,7 +25263,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `documentos`
 --
 ALTER TABLE `documentos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `dolar`
@@ -25287,7 +25299,7 @@ ALTER TABLE `festivos`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `funciones_rol`
@@ -25311,7 +25323,7 @@ ALTER TABLE `inflacion_mensual`
 -- AUTO_INCREMENT de la tabla `noticia`
 --
 ALTER TABLE `noticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `otras_monedas`
@@ -25395,7 +25407,7 @@ ALTER TABLE `udis`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

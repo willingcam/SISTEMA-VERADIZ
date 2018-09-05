@@ -12,52 +12,67 @@
         var service = {};
 
         service.getDolarDet = function() {
-            var endpoint = HOST + "dolarFixDet.php";
+            var endpoint = HOST + "Indices/dolarFixDet.php";
             return $http.get(endpoint);
         };
 
 
         service.getDolarLiq = function() {
-            var endpoint = HOST + "dolarFixLiq.php";
+            var endpoint = HOST + "Indices/dolarFixLiq.php";
             return $http.get(endpoint);
         };
 
         service.getCetes28 = function() {
-            var endpoint = HOST + "Cetes28.php";
+            var endpoint = HOST + "Indices/Cetes28.php";
             return $http.get(endpoint);
         };
 
         service.getTasaObjetivo = function() {
-            var endpoint = HOST + "TasasObjetivo.php";
+            var endpoint = HOST + "Indices/TasasObjetivo.php";
             return $http.get(endpoint);
         };
 
         service.getTIIE28 = function() {
-            var endpoint = HOST + "gettiie28.php";
+            var endpoint = HOST + "Indices/gettiie28.php";
             return $http.get(endpoint);
         };
 
         service.getTIIE91 = function() {
-            var endpoint = HOST + "gettiie91.php";
+            var endpoint = HOST + "Indices/gettiie91.php";
             return $http.get(endpoint);
         };
 
         service.getTasasObjetivo = function() {
-            var endpoint = HOST + "TasasObjetivo.php";
+            var endpoint = HOST + "Indices/TasasObjetivo.php";
             return $http.get(endpoint);
         };
 
 
         service.getDolar2Atras = function() {
-            var endpoint = HOST + "dolarAtras.php";
+            var endpoint = HOST + "Indices/dolarAtras.php";
             return $http.get(endpoint);
         };
 
         service.getDFestivos = function(registro) {
-            var endpoint = HOST + "read_one.php?fecha=" + registro.fecha;
+            var endpoint = HOST + "Indices/read_one.php?fecha=" + registro.fecha;
             return $http.get(endpoint);
         };
 
+        service.getTodasLasNoticias = function(registro) {
+            var endpoint = HOST + "Noticias/read.php";
+            return $http.get(endpoint);
+        };
+        service.getUltimasNoticias = function(registro) {
+            var endpoint = HOST + "Noticias/read_last.php";
+            return $http.get(endpoint);
+        };
+        service.enviarCorreo = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Correo/enviar.php'
+            });
+        };
         return service;
     }
 })();

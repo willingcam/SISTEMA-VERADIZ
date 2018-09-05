@@ -38,12 +38,15 @@ if($num>0){
 		extract($row);
 
 		$obj_item=array(
-			"id" => $id,
 			"titulo" => $titulo,
 			"subtitulo" => $subtitulo,
 			"descripcion" => $descripcion,
-			"fecha" => $fecha,
-			"url_referencia" => $url_referencia
+			"url_referencia" => $url_referencia,
+			"fecha" =>   date("d/m/Y", strtotime($fecha)),
+			"imagen" => $imagen,
+			"ubicacion" => $ubicacion_imagen,
+			"urlcompleta" => $ubicacion_imagen.$imagen,
+			"autor" => $nombre
 		);
 
 		array_push($obj_arr["records"], $obj_item);
