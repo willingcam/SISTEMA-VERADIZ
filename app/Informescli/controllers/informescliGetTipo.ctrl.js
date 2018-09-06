@@ -13,8 +13,14 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
         var id = $stateParams.id;
 
-        $scope.documentos = function() {
-            InformesService.getDocumentosClienteYaPublicados(AuthService.authentication.idUsuario).then(
+            $scope.documentos = function() {
+            var registro = {
+                "id": AuthService.authentication.idUsuario,
+                "tipo": id,
+            };
+
+
+            InformesService.getDocumentosClienteYaPublicadosTipo(registro).then(
                 function(result) {
                     $scope.loading = false;
                     $scope.documentosGet = result.data.records;
@@ -37,11 +43,13 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             InformesService.descargado(registro).then(
                 function(result) {
                     console.log(result);
+                    $scope.documentos();
                 },
                 function(err) {
 
                 }
             );
+            
         }
 
 
