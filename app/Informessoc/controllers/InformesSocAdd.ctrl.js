@@ -28,6 +28,19 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
 
         $scope.clientes = function() {
+            InformesService.getOnlyMyClient(AuthService.authentication.idUsuario).then(
+                function(result) {
+                    $scope.clientes = result.data.records;
+                },
+                function(err) {
+
+                }
+            );
+        }
+
+
+        /*
+        $scope.clientes = function() {
             InformesService.getAllClients().then(
                 function(result) {
                     $scope.clientes = result.data.records;
@@ -37,7 +50,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 }
             );
         }
-
+       */
 
         $scope.tiposdocumentos = function() {
             InformesService.getTipoDocumentos().then(
@@ -125,7 +138,7 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                         InformesService.Add(registo).then(
                             function(result) {
                                 toastr.success("Documento registrado exitosamente");
-                                $state.go("documentos");
+                                $state.go("informess");
                             },
                             function(err) {
                                 console.error(err);

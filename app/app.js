@@ -297,7 +297,7 @@
                 controller: "InformesSocAddCtrl"
             })
             .state("informessEdit", {
-                url: "/InformessEdit/:id",
+                url: "/informessEdit/:id",
                 templateUrl: "app/Informessoc/InformesSocEdit.html",
                 controller: "InformesSocEditCtrl"
             })
