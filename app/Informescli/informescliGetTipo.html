@@ -20,16 +20,20 @@
                             <tr>
                                 <th data-priority="1">Documento</th>
                                 <th data-priority="2">Tipo de documento</th>
+                                <th data-priority="3">Fecha de registro</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
                                     <a href="{{obj.urlCompleta}}" ng-click="actualizaFechaDescarga(obj.id)" target="_blank">{{obj.descripcion}}</a>
+                                    <span ng-if="obj.informedescargado == 0 " class="label label-success">Nuevo!</span>
                                 </td>
-
                                 <td>
                                     {{obj.tipodocumento}}
+                                </td>
+                                <td>
+                                    {{obj.fechaRegistro}}
                                 </td>
 
                             </tr>
@@ -41,7 +45,9 @@
             </div>
         </div>
 
-
+        <button type="button" ui-sref="clientesinformes" class="btn btn-primary">
+                <span class="fa fa-arrow-left"></span> Regresar
+            </button>
     </div>
 
 
