@@ -311,6 +311,11 @@
                 templateUrl: "app/Informescli/InformesCliGet.html",
                 controller: "InformesCliGetCtrl"
             })
+            .state("clientesinformestipo", {
+                url: "/clientesinformestipo/:id",
+                templateUrl: "app/Informescli/informescliGetTipo.html",
+                controller: "informescliGetTipoCtrl"
+            })
 
 
     };
