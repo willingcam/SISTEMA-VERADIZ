@@ -66,9 +66,9 @@
 
         $scope.logOut = function() {
             AuthService.logOut();
+            debugger;
 
-
-            window.location = "/indexApp.html";
+            window.location = "http://localhost/index.html";
         }
 
 
