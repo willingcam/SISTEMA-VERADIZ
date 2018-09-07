@@ -1,8 +1,8 @@
 ﻿(function() {
     angular.module("ModuloPrincipal")
-        .controller("IndicesGetCtrl", ["$scope", "IndicadoresService", IndicesGetCtrl]);
+        .controller("IndicesGetCtrl", ["$scope", "$window", "IndicadoresService", IndicesGetCtrl]);
 
-    function IndicesGetCtrl($scope, IndicadoresService) {
+    function IndicesGetCtrl($scope, $window, IndicadoresService) {
 
         $scope.dolarFixDet = "";
         $scope.dolarFixLiq = "";
@@ -30,6 +30,7 @@
         $scope.telefono = "";
         $scope.asunto = "";
         $scope.comentarios = "";
+        $scope.encabezado1 = "";
 
 
 
@@ -85,6 +86,7 @@
             });
             IndicadoresService.getUltimasNoticias().then(function(exito) {
                 $scope.UltimasNoticias = exito.data.records;
+                $scope.encabezado1 = $scope.UltimasNoticias[0].titulo;
             }, function(error) {
                 console.log("Error:", error);
             });
@@ -108,7 +110,9 @@
         }
         $scope.obtenerRegistros();
 
-
+        $scope.nube = function() {
+            $window.open("indexApp.html", "_top");
+        }
 
 
     }
