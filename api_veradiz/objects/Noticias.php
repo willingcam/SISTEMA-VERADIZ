@@ -79,7 +79,7 @@ class Noticias{
 	public function read(){
 
 		// select all query
-		$query = "SELECT P.titulo, P.subtitulo, P.descripcion, P.url_referencia, P.fecha, Q.imagen, Q.ubicacion_imagen, Q.nombre  FROM noticia P
+		$query = "SELECT P.id, P.titulo, P.subtitulo, P.descripcion, P.url_referencia, P.fecha, Q.imagen, Q.ubicacion_imagen, Q.nombre  FROM noticia P
 		          LEFT JOIN usuarios Q  ON P.autorId = Q.id WHERE  P.activo = 1 order by P.fecha desc LIMIT 0,10 ";
 
 		// prepare query statement
