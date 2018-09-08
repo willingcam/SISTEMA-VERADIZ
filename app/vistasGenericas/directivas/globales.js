@@ -1,6 +1,6 @@
 ﻿//SERVIDOR
-//var webAPIhost = "http://veradiz.com.mx/api_veradiz/";
-//var webAPIhostToken = "http://veradiz.com.mx/token";
+//var webAPIhost = "http://www.veradiz.com.mx/api_veradiz/";
+//var webAPIhostToken = "http://www.veradiz.com.mx/token";
 
 
 //var fichaPersonal = "Ficha curricular";
@@ -8,7 +8,7 @@
 
 //LOCAL
 var webAPIhost = "http://localhost/api_veradiz/";
-var webAPIhostToken = "http://localhost.com.mx/token";
+var webAPIhostToken = "http://localhost/token";
 
 var fotoEmpleado = "api_veradiz/Repository/Upload/images/user.png";
 
@@ -118,9 +118,7 @@ function RangoDeFechaStart(addDias, addMes, addAnios) {
     return datePicker;
 }
 
-function plantillaTour() {
-    return "<div class='popover tour'><div class='arrow' ></div ><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'> << </button><span data-role='separator'></span><button class='btn btn-default' data-role='next'> >> </button></div><button class='btn btn-default' data-role='end'>Finalizar</button></div > ";
-};
+
 
 function existeArchivo(listaArchivos, nuevoArchivo) {
     if (listaArchivos == undefined || listaArchivos == null || listaArchivos.length == 0) {

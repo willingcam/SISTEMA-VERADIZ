@@ -46,7 +46,7 @@
                                     <a class="btn btn-warning" ui-sref="noticiasEdit({id:obj.id})" title="Editar">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
-                                    <a class="btn btn-danger pull-right" ng-click="updateState(obj)" title="Eliminar">
+                                    <a class="btn btn-danger pull-right" ng-really-click="updateState(obj);" ng-really-message="¿Está seguro de eliminar esta noticia?" title="Eliminar">
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
                                 </td>

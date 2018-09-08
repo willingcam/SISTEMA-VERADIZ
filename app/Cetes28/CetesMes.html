@@ -1,0 +1,96 @@
+﻿<div class="vista">
+
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li>
+                    <i class="disabled fa fa-info-circle"></i>
+                    <a>Cetes</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <form name="ValidForm" id="form" class="form-horizontal">
+            <div class="col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Criterios de b&uacute;squeda</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <li>
+                                <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-xs-12">
+                            <div class="col-lg-3 col-md-4 col-xs-6">
+                                <div class="form-group ">
+                                    <label class="col-md-12 col-sm-12 col-xs-12">Fecha:</label>
+                                    <div class="col-xs-10">
+                                        <input show-button-bar="false" ng-minlength="8" maxlength="10" datepicker-options="datePicker.FechaOptions" uib-datepicker-popup='dd/MM/yyyy' popup-placement="bottom" type="text" class="form-control" ng-change="cambiafecha()" ng-model="fechach" is-open="open"
+                                            ng-required="true" close-text="Close" name="fechach" />
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-success" ng-click="open=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                        <span ng-show="ValidForm.fechach.$dirty &&  ValidForm.fechach.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="col-xs-12 col-md-6">
+                                    <div class="form-group ">
+                                        <a class="btn btn-success" ng-click="obtenerInformacion();">
+                                            <i class="glyphicon glyphicon-search"></i> Buscar
+                                        </a>
+                                        <a class="btn btn-primary" ng-click="reset()" title="Limpiar campos">
+                                            Limpiar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="x_panel">
+                    <div class="x_content sin-desborde">
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
