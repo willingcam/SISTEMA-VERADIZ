@@ -11,11 +11,22 @@ include_once '../../objects/TIIE91.php';
 $database = new Database();
 $db = $database->getConnection();
 
-// initialize object
-$tipo = new TIIE91($db);
+
+
+$obj = new TIIE91($db);
+
+
+$fecha1 = isset($_GET['fechai']) ? $_GET['fechai'] : die();
+$fecha2 = isset($_GET['fechat']) ? $_GET['fechat'] : die();
+
+$time1 = strtotime($fecha1);
+$time2 = strtotime($fecha2);
+
+$obj->fechaInicio = date('Y-m-d',$time1);
+$obj->fechaTermino =  date('Y-m-d',$time2);
 
 // query products
-$stmt = $tipo->read();
+$stmt = $obj->readPeriodo();
 $num  = $stmt->rowCount();
 
 // check if more than 0 record found

@@ -9,6 +9,8 @@ class TIIE28{
 	public $id;
 	public $valor;
 	public $fecha;
+	public $fechaInicio;
+	public $fechaTermino;
 		
 	// constructor with $db as database connection
 	public function __construct($db){
@@ -63,8 +65,28 @@ class TIIE28{
 	
 	
 
+		// read products
+		public function readPeriodo(){
+
+			// select all query
+			$query = " SELECT valor, fecha FROM  tiie28 WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+	
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+	
+
+		    // bind id of product to be updated
+		    $stmt->bindValue(':start', $this->fechaInicio);
+		    $stmt->bindValue(':end', $this->fechaTermino);
+
+			// execute query
+			$stmt->execute();
+	
+			return $stmt;
+		}
 
 
+				
 
 
 }

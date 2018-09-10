@@ -40,7 +40,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="nombre" ng-model="nombre" required max="150" name="nombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="nombre" ng-model="nombre" ng-required="true" required max="150" name="nombre" placeholder="Nombre">
                                 <span class="error" ng-show="UsuariosForm.nombre.$dirty && !UsuariosForm.nombre.$valid">Debe ingresar el nombre completo del usuario</span>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" class="form-control" id="correo" name="correo" ng-model="correo" required max="255" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$" placeholder="Correo eléctronico de la oficina por ejem : micorreo@oficina.com">
+                                <input type="email" class="form-control" id="correo" name="correo" ng-model="correo" ng-required="true" required max="255" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$" placeholder="Correo eléctronico de la oficina por ejem : micorreo@oficina.com">
                                 <span class="error" ng-show="UsuariosForm.correo.$dirty && !UsuariosForm.correo.$valid">Debe ingresar un correo electrónico válido</span>
                             </div>
                         </div>
@@ -130,7 +130,7 @@
                                 <span class="required">*</span>
                         </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="usuario" name="usuario" required ng-model="usuario" max="25" placeholder="Nombre de usuario, se recomienda el usuario del correo">
+                                <input type="text" class="form-control" id="usuario" name="usuario" ng-required="true" required ng-model="usuario" max="25" placeholder="Nombre de usuario, se recomienda el usuario del correo">
                                 <span class="error" ng-show="UsuariosForm.usuario.$dirty && !UsuariosForm.usuario.$valid">Ingrese el nombre de usuario</span>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                 <span class="required">*</span>
                         </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="claveacceso" name="claveacceso" required ng-model="claveacceso" max="25" placeholder="Nombre de usuario, se recomienda el usuario del correo">
+                                <input type="text" class="form-control" id="claveacceso" name="claveacceso" ng-required="true" required ng-model="claveacceso" max="25" placeholder="Nombre de usuario, se recomienda el usuario del correo">
                                 <span class="error" ng-show="UsuariosForm.claveacceso.$dirty && !UsuariosForm.claveacceso.$valid">Ingrese el nombre de usuario</span>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
 
                                         <i class="glyphicon glyphicon-saved"></i> Guardar
                                     </button>
-                                    <button type="button" ui-sref="usuarios" class="btn btn-primary">
+                                    <button type="button" confirma-regresar="regresar()" state-form="UsuariosForm" class="btn btn-primary">
                                         <span class="fa fa-arrow-left"></span> Regresar
                                     </button>
                                 </div>

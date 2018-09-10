@@ -31,7 +31,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <input type="text" class="form-control" id="titulo" ng-model="titulo" required max="100" name="titulo" placeholder="Título de la noticia">
+                                <input type="text" class="form-control" id="titulo" ng-model="titulo" ng-required="true" required max="100" name="titulo" placeholder="Título de la noticia">
                                 <span class="error" ng-show="NoticiasForm.titulo.$dirty && !NoticiasForm.titulo.$valid">Debe ingresar un titulo</span>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                 
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <input type="text" class="form-control" id="subtitulo" name="subtitulo" ng-model="subtitulo" max="255" placeholder="Ingresar un subtitulo para la noticia a publicar">
+                                <input type="text" class="form-control" id="subtitulo" name="subtitulo" ng-required="true" required ng-model="subtitulo" max="255" placeholder="Ingresar un subtitulo para la noticia a publicar">
                                 <span class="error" ng-show="NoticiasForm.subtitulo.$dirty && !NoticiasForm.subtitulo.$valid">Debe ingresar un subtitulo</span>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <div class="ta-editor" text-angular ng-model="descripcion" placeholder="Ingresa el contenido de lo que se publicara en el blog de noticias"></div>
+                                <div class="ta-editor" text-angular ng-model="descripcion" ng-required="true" required placeholder="Ingresa el contenido de lo que se publicara en el blog de noticias"></div>
                             </div>
                         </div>
 
@@ -79,7 +79,7 @@
 
                                         <i class="glyphicon glyphicon-saved"></i> Guardar
                                     </button>
-                                    <button type="button" ui-sref="noticias" class="btn btn-primary">
+                                    <button type="button" confirma-regresar="regresar()" state-form="NoticiasForm"  class="btn btn-primary">
                                         <span class="fa fa-arrow-left"></span> Regresar
                                     </button>
                                 </div>

@@ -320,7 +320,21 @@
                 templateUrl: "app/Informescli/informescliGetTipo.html",
                 controller: "informescliGetTipoCtrl"
             })
-
+            .state("cetes", {
+                url: "/cetes",
+                templateUrl: "app/Indicadores/CetesMes.html",
+                controller: "CetesMesGetCtrl"
+            })
+            .state("tiie", {
+                url: "/tiie",
+                templateUrl: "app/Indicadores/TiieMes.html",
+                controller: "TiieMesGetCtrl"
+            })
+            .state("dolar", {
+                url: "/dolar",
+                templateUrl: "app/Indicadores/Dolar.html",
+                controller: "DolarGetCtrl"
+            })
 
     };
 }());
