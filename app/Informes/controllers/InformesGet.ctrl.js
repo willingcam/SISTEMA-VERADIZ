@@ -70,6 +70,22 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             );
         }
 
+        $scope.descargaDoc = function(url){
+            //window.open(url,"_blank");
+           
+           // var link=document.createElement('a');
+           // link.href = url;
+           // link.download = url.substr(url.lastIndexOf('/') + 1);
+           // link.click();
+            var file_path = url;
+            var a = document.createElement('A');
+            a.href = file_path;
+            a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
         $scope.clientes();
         $scope.documentos();
 

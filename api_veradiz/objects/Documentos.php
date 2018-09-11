@@ -181,7 +181,7 @@ public function read_documents_by_author(){
 
 	public function documentos_publicados(){
 
-		$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre FROM encargado_cuenta P 
+		$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado,  R.tipo_documento, U.nombre, Q.informedescargado,Q.fechadescarga,Q.fechaRegistro FROM encargado_cuenta P 
 		RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 3
 		LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
 		LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
@@ -329,7 +329,7 @@ public function read_documents_by_author(){
 			// read products
 			public function documentos_cliente_publicado(){
 
-				$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado, R.tipo_documento, U.nombre FROM encargado_cuenta P 
+				$query = "SELECT P.idcliente, Q.descripcion, Q.archivo, Q.ubicacion, Q.tipoDocumentoId, Q.id, S.estado, R.tipo_documento, U.nombre, Q.informedescargado,Q.fechadescarga,Q.fechaRegistro  FROM encargado_cuenta P 
 				RIGHT JOIN documentos Q ON Q.clienteId = P.idcliente AND Q.estadodocumento = 2
 				LEFT JOIN estado_documentos S ON S.id = Q.estadodocumento
 		        LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
@@ -521,7 +521,7 @@ public function read_documents_by_author(){
 				  informedescargado=:informedescargado,
                   fechadescarga = now()
 				WHERE
-					id = :id";
+					id = :id and informedescargado=0";
 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);

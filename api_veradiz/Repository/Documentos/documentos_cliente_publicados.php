@@ -48,7 +48,10 @@ if($num>0){
 			"estado" => $estado,
 			"tipodocumento" => $tipo_documento,
 			"cliente" => $nombre,
-			"id" => $id
+			"id" => $id,
+			"informedescargado"=> $informedescargado,
+			"fechadescarga"=> $fechadescarga,
+			"fechapublicacion"=> $fechaRegistro
 			
 		);
 

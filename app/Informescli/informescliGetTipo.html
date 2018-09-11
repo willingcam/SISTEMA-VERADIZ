@@ -26,7 +26,7 @@
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
-                                    <a href="{{obj.urlCompleta}}" ng-click="actualizaFechaDescarga(obj.id)" target="_blank">{{obj.descripcion}}</a>
+                                    <a ng-click="descargaYactualizaFechaDescarga(obj.id,obj.urlCompleta)" target="_blank">{{obj.descripcion}}</a>
                                     <span ng-if="obj.informedescargado == 0 " class="label label-success">Nuevo!</span>
                                 </td>
                                 <td>

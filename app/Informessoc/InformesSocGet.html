@@ -50,7 +50,7 @@
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
-                                    <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
+                                    <a ng-click="descargaDoc(obj.urlCompleta);"  target="_blank">{{obj.descripcion}}</a>
                                     <br>Creado por: {{obj.nombreCreador}}
                                     <br>Fecha: {{obj.fechaRegistro}}
                                 </td>
