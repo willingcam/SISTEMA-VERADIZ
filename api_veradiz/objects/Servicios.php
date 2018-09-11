@@ -93,7 +93,7 @@ class Servicios{
 
 		// set values to object properties
 		$this->id = $row['id'];
-		$this->titulo = $row['servicio'];
+		$this->servicio = $row['servicio'];
 		$this->descripcion = $row['descripcion'];
 		$this->imagen = $row['imagen'];
 		$this->ubicacion_imagen = $row['ubicacion_imagen'];

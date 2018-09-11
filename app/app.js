@@ -8,6 +8,7 @@
             'veradiz.services',
             'blockUI',
             'Globales',
+            'directivas',
             'ngSanitize',
             'textAngular'
         ])
@@ -59,6 +60,9 @@
                 MenuService.removeGlobalID();
                 MenuService.removeGlobalID2();
             }
+            $rootScope.anioActual = anioActual();
+            $rootScope.datePicker = getRangoDeFechaDefault();
+            $rootScope.datePicker06 = RangoDeFechaStart(); //default 2006
             $rootScope.$on('$locationChangeStart', function(event) {
 
             });
@@ -100,7 +104,7 @@
 
 
                     } else {
-                        debugger;
+
 
                         var next = "";
                         if (typeof to.views === "object") {

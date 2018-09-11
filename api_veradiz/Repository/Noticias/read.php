@@ -38,6 +38,7 @@ if($num>0){
 		extract($row);
 
 		$obj_item=array(
+			"id" => $id,
 			"titulo" => $titulo,
 			"subtitulo" => $subtitulo,
 			"descripcion" => $descripcion,
