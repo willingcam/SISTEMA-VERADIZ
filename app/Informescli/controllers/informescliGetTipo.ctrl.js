@@ -32,7 +32,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         }
 
 
-        $scope.actualizaFechaDescarga = function(id) {
+        $scope.descargaYactualizaFechaDescarga = function(id,urlCompleta) {
             var registro = {
                 "id": id,
                 "fechadescarga": new Date(),
@@ -42,13 +42,23 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
             InformesService.descargado(registro).then(
                 function(result) {
-                    console.log(result);
+                    // descarga de archivo
+                    var file_path = urlCompleta;
+                    var a = document.createElement('A');
+                    a.href = file_path;
+                    a.download = file_path.substr(file_path.lastIndexOf('/') + 1);
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    //
+
                     $scope.documentos();
                 },
                 function(err) {
 
                 }
             );
+
             
         }
 

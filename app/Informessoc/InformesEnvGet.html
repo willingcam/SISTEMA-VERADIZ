@@ -43,6 +43,8 @@
                                 <th data-priority="2">Tipo de documento</th>
                                 <th data-priority="3">Cliente</th>
                                 <th data-priority="4">Estado</th>
+                                <th data-priority="5">Fecha publicación</th>
+                                <th data-priority="6">Fecha descarga</th>
 
 
                             </tr>
@@ -50,7 +52,7 @@
                         <tbody>
                             <tr ng-repeat="obj in documentosGet">
                                 <td>
-                                    <a href="{{obj.urlCompleta}}" target="_blank">{{obj.descripcion}}</a>
+                                    <a ng-click="descargaDoc(obj.urlCompleta);"  target="_blank">{{obj.descripcion}}</a>
                                 </td>
 
                                 <td>
@@ -65,7 +67,15 @@
                                     {{obj.estado}}
                                 </td>
 
+                                <td>
+                                    {{obj.fechapublicacion}}
+                                </td>
 
+                                <td>
+                                    <div  ng-if="obj.informedescargado == 1 ">
+                                        {{obj.fechadescarga}}
+                                    </div>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
