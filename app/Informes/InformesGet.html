@@ -37,7 +37,7 @@
                 <div class="x_panel">
                     <div class="x_content sin-desborde">
 
-
+                        <div ng-if="documentosGet != null">
                         <table id="documentosGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
                             <thead>
                                 <tr>
@@ -86,9 +86,10 @@
 
 
                     </div>
+                        <div ng-if="documentosGet == null"> No hay información disponible </div>
                 </div>
             </div>
-
+            </div>
 
         </div>
 

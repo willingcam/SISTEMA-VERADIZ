@@ -5,17 +5,27 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/CotizacionDolar.php';
+include_once '../../objects/Calendario.php';
 
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
-// initialize object
-$tipo = new CotizacionDolar($db);
+
+$obj = new Calendario($db);
+
+
+$fecha1 = isset($_GET['fechai']) ? $_GET['fechai'] : die();
+$fecha2 = isset($_GET['fechat']) ? $_GET['fechat'] : die();
+
+$time1 = strtotime($fecha1);
+$time2 = strtotime($fecha2);
+
+$obj->fechaInicio = date('Y-m-d',$time1);
+$obj->fechaTermino =  date('Y-m-d',$time2);
 
 // query products
-$stmt = $tipo->read();
+$stmt = $obj->readPeriodo();
 $num  = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -50,4 +60,5 @@ else{
 		array("message" => "No hay registros disponibles.")
 	);
 }
+
 ?>
