@@ -40,7 +40,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="nombre" ng-model="nombre" required max="100" name="nombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="nombre" ng-model="nombre" ng-required="true" required max="100" name="nombre" placeholder="Nombre">
                                 <span class="error" ng-show="UsuariosForm.nombre.$dirty && !UsuariosForm.nombre.$valid">Debe ingresar el nombre completo del usuario</span>
                             </div>
                         </div>
@@ -51,7 +51,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="email" class="form-control" id="correo" name="correo" ng-model="correo" required max="150" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$" placeholder="Correo eléctronico de la oficina por ejem : micorreo@oficina.com">
+                                <input type="email" class="form-control" id="correo" name="correo" ng-model="correo" ng-required="true" required max="150" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,3})+$" placeholder="Correo eléctronico de la oficina por ejem : micorreo@oficina.com">
                                 <span class="error" ng-show="UsuariosForm.correo.$dirty && !UsuariosForm.correo.$valid">Debe ingresar un correo electrónico válido</span>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
 
                                         <i class="glyphicon glyphicon-saved"></i> Guardar
                                     </button>
-                                    <button type="button" ui-sref="clientes" class="btn btn-primary">
+                                    <button type="button" confirma-regresar="regresar()" state-form="UsuariosForm" class="btn btn-primary">
                                         <span class="fa fa-arrow-left"></span> Regresar
                                     </button>
                                 </div>

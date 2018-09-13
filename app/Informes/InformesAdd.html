@@ -47,7 +47,7 @@
                                Descripcion <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" class="form-control" id="descripcion" ng-model="descripcion" required max="100" name="descripcion">
+                                <input type="text" class="form-control" id="descripcion" ng-model="descripcion" ng-required="true" required max="100" name="descripcion">
                                 <span class="error" ng-show="UsuariosForm.descripcion.$dirty && !UsuariosForm.descripcion.$valid">Debe ingresar una descripción del documento</span>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                     </form>
                 </div>
             </div>
-            <button type="button" ui-sref="informes" class="btn btn-primary">
+            <button type="button" confirma-regresar="regresar()" state-form="DocumentosForm" class="btn btn-primary">
                 <span class="fa fa-arrow-left"></span> Regresar
             </button>
         </div>

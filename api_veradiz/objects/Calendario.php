@@ -15,7 +15,10 @@ class Calendario{
     public $dof;
     public $pago;
     public $bitacora;
-    public $creado;
+	public $creado;
+	
+	public $fechaInicio;
+	public $fechaTermino;
 
 	// constructor with $db as database connection
 	public function __construct($db){
@@ -179,6 +182,26 @@ class Calendario{
 		return $stmt;
 			
 		}
+
+				// read products
+				public function readPeriodo(){
+
+					// select all query
+					$query = " SELECT valor, fecha FROM  calendario WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			
+					// prepare query statement
+					$stmt = $this->conn->prepare($query);
+			
+		
+					// bind id of product to be updated
+					$stmt->bindValue(':start', $this->fechaInicio);
+					$stmt->bindValue(':end', $this->fechaTermino);
+		
+					// execute query
+					$stmt->execute();
+			
+					return $stmt;
+				}
 
 
 }

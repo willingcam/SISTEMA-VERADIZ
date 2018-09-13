@@ -48,7 +48,7 @@
                                     <span class="required">*</span>
                                 </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" class="form-control" id="servicio" ng-model="registro.servicio" required max="100" name="servicio" placeholder="Nombre del servicio otorgado al cliente">
+                                            <input type="text" class="form-control" id="servicio" ng-model="registro.servicio" ng-required="true" required max="100" name="servicio" placeholder="Nombre del servicio otorgado al cliente">
                                             <span class="error" ng-show="ServiciosForm.servicio.$dirty && !ServiciosForm.servicio.$valid">Debe el nombre del servicio</span>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         <button type="submit" class="btn btn-success" ng-click="update()">
                                        <i class="glyphicon glyphicon-saved"></i> Actualizar
                                     </button>
-                                        <button type="button" ui-sref="servicios" class="btn btn-primary">
+                                        <button type="button" confirma-regresar="regresar()" state-form="ServiciosForm" class="btn btn-primary">
                                         <span class="fa fa-arrow-left"></span> Regresar
                                     </button>
                                     </div>
