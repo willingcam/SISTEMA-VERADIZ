@@ -5,9 +5,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradiz");
-    app.controller("informescliGetTipoCtrl", ['$scope', 'InformesService', 'AuthService','$stateParams',  informescliGetTipoCtrl]);
+    app.controller("informesCliGetTipoCtrl", ['$scope', 'InformesService', 'AuthService','$stateParams',  informesCliGetTipoCtrl]);
 
-    function informescliGetTipoCtrl($scope, InformesService, AuthService,$stateParams) {
+    function informesCliGetTipoCtrl($scope, InformesService, AuthService,$stateParams) {
 
         $scope.loading = true;
 

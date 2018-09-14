@@ -67,7 +67,7 @@
 
 
                         <div class="form-group ">
-                            <a class="btn btn-success" ng-click="obtenerInformacion();">
+                            <a class="btn btn-success" ng-click="obtenerInformacion()">
                                 <i class="glyphicon glyphicon-search"></i> Buscar
                             </a>
                             <a class="btn btn-primary" ng-click="reset()" title="Limpiar campos">
@@ -86,7 +86,7 @@
 
 
 
-    <div class="row" ng-if="resultadosBusqueda > 0">
+    <div class="row" ng-show="resultadosBusqueda != '' ">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
 
