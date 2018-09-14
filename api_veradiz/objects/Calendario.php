@@ -187,7 +187,7 @@ class Calendario{
 				public function readPeriodo(){
 
 					// select all query
-					$query = " SELECT valor, fecha FROM  calendario WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			$query = " SELECT valor, fecha FROM  dolar WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
 			
 					// prepare query statement
 					$stmt = $this->conn->prepare($query);
