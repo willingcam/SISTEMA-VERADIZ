@@ -6,7 +6,7 @@
             <ol class="breadcrumb miga">
                 <li>
                     <i class="disabled fa fa-line-chart"></i>
-                    <a>Cetes</a>
+                    <a>Dolar</a>
                 </li>
             </ol>
         </div>
@@ -28,67 +28,55 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <div class="col-xs-12">
-                            <div class="col-lg-3 col-md-4 col-xs-6">
 
-
-
-                                <div class="form-group ">
-                                    <label class="col-md-12 col-sm-12 col-xs-12">Período:</label>
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                Inicio <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="row">
                                     <div class="col-xs-10">
-                                        <select ng-model="periodoSel" ng-options="obj.id as obj.descripcion for obj in periodo" ng-init="actual" class="form-control"></select>
-                                    </div>
-
-
-                                </div>
-
-
-
-                                <div class="form-group ">
-                                    <label class="col-md-12 col-sm-12 col-xs-12">Fecha de inicio:</label>
-                                    <div class="col-xs-10">
-                                        <input show-button-bar="false" ng-minlength="8" maxlength="10" datepicker-options="datePicker.FechaOptions" uib-datepicker-popup='dd/MM/yyyy' popup-placement="bottom" type="text" class="form-control" ng-change="cambiafecha()" ng-model="fechai" is-open="open"
-                                            ng-required="true" close-text="Close" id="fechai" name="fechai" />
-                                    </div>
-                                    <div class="col-xs-2">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success" ng-click="open=true"><i class="glyphicon glyphicon-calendar"></i></button>
-                                        </span>
+                                        <input placeholder="dd/mm/yyyy" ng-minlength="8" name="fechai" maxlength="10" ng-init="open=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechai" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                            is-open="open" ng-required="true" close-text="Close" />
                                         <span ng-show="ValidForm.fechai.$dirty &&  ValidForm.fechai.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
                                     </div>
-
-                                </div>
-
-                                <div class="form-group ">
-                                    <label class="col-md-12 col-sm-12 col-xs-12">Fecha de termino:</label>
-                                    <div class="col-xs-10">
-                                        <input show-button-bar="false" ng-minlength="8" maxlength="10" datepicker-options="datePicker.FechaOptions" uib-datepicker-popup='dd/MM/yyyy' popup-placement="bottom" type="text" class="form-control" ng-change="cambiafecha()" ng-model="fechat" is-open="open"
-                                            ng-required="true" close-text="Close" id="fechat" name="fechat" />
-                                    </div>
                                     <div class="col-xs-2">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-success" ng-click="open=true"><i class="glyphicon glyphicon-calendar"></i></button>
-                                        </span>
-                                        <span ng-show="ValidForm.fechat.$dirty &&  ValidForm.fechat.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="col-xs-12">
-                                <div class="col-xs-12 col-md-6">
-                                    <div class="form-group ">
-                                        <a class="btn btn-success" ng-click="obtenerInformacion();">
-                                            <i class="glyphicon glyphicon-search"></i> Buscar
-                                        </a>
-                                        <a class="btn btn-primary" ng-click="reset()" title="Limpiar campos">
-                                            Limpiar
-                                        </a>
+                                        <button type="button" class="btn btn-success" ng-click="open=true"><i class="glyphicon glyphicon-calendar"></i></button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                T&eacute;rmino <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="row">
+                                    <div class="col-xs-10">
+                                        <input placeholder="dd/mm/yyyy" name="fechat" ng-minlength="8" ng-init="open2=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechat" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                            is-open="open2" ng-required="true" close-text="Close" />
+                                        <span ng-show="ValidForm.fechat.$dirty &&  ValidForm.fechat.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button type="button" class="btn btn-success" ng-click="open2=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group ">
+                            <a class="btn btn-success" ng-click="obtenerInformacion()">
+                                <i class="glyphicon glyphicon-search"></i> Buscar
+                            </a>
+                            <a class="btn btn-primary" ng-click="reset()" title="Limpiar campos">
+                                Limpiar
+                            </a>
+                        </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -96,15 +84,33 @@
     </div>
 
 
-    <div class="row">
+
+
+    <div class="row" ng-show="resultadosBusqueda != '' ">
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
 
 
+                <table id="tablaexport" datatable="ng" dt-options="dtOptions" class="table table-hover table-striped table-condensed dt-responsive nowrap" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="obj in resultadosBusqueda">
+                            <td>{{obj.fecha}}</td>
+                            <td>$ {{obj.valor}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
-
-
-
-
     </div>
+
+
+
+</div>

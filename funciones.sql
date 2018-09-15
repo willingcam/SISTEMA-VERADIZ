@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-09-2018 a las 00:27:58
+-- Tiempo de generación: 13-09-2018 a las 03:00:30
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 7.2.5
 
@@ -71,7 +71,17 @@ INSERT INTO `funciones` (`id`, `descripcion`, `url_referencia`, `nivel`, `secuen
 (48, 'Editar informes rol socio', 'veradiz.html#/informessEdit/', 0, 28, 1, NULL, NULL, 'Editar informes rol socio', NULL, 'informessEdit', 2),
 (49, 'Tipo de informe', 'veradiz#/clientesinformesTipo/', 0, 30, 1, NULL, NULL, 'Tipo de informe', NULL, 'clientesinformesTipo', 4),
 (50, 'Cetes', 'veradiz.html#/cetes', 0, 35, 1, NULL, NULL, 'Cetes', NULL, 'cetes', 1),
-(51, 'Cetes', 'veradiz.html#/cetes', 0, 36, 1, NULL, NULL, 'Cetes', NULL, 'cetes', 2);
+(51, 'Cetes', 'veradiz.html#/cetes', 0, 36, 1, NULL, NULL, 'Cetes', NULL, 'cetes', 2),
+(52, 'cetes', 'veradiz.html#/cetes', 0, 38, 1, NULL, NULL, 'cetes', NULL, 'cetes', 3),
+(53, 'cetes', 'veradiz.html#/cetes', 0, 38, 1, NULL, NULL, 'cetes', NULL, 'cetes', 5),
+(54, 'TIIE', 'veradiz.html#/tiie', 0, 39, 1, NULL, NULL, 'TIIE', NULL, 'tiie', 1),
+(55, 'TIIE', 'veradiz.html#/tiie', 0, 40, 1, NULL, NULL, 'TIIE', NULL, 'tiie', 2),
+(56, 'TIIE', 'veradiz.html#/tiie', 0, 39, 1, NULL, NULL, 'TIIE', NULL, 'tiie', 3),
+(57, 'TIIE', 'veradiz.html#/tiie', 0, 40, 1, NULL, NULL, 'TIIE', NULL, 'tiie', 5),
+(58, 'dolar', 'veradiz.html#/dolar', 0, 41, 1, NULL, NULL, 'dolar', NULL, 'dolar', 1),
+(59, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 2),
+(60, 'dolar', 'veradiz.html#/dolar', 0, 41, 1, NULL, NULL, 'dolar', NULL, 'dolar', 3),
+(61, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 5);
 
 --
 -- Índices para tablas volcadas
@@ -91,7 +101,7 @@ ALTER TABLE `funciones`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
