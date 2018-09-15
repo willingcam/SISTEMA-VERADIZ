@@ -8,7 +8,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
     app.controller("DolarGetCtrl", ["$scope", "IndicesService", DolarGetCtrl]);
 
     function DolarGetCtrl($scope, IndicesService) {
-        $scope.resultadosBusqueda = {};
+        $scope.resultadosBusqueda = [];
 
         $scope.fechai = "";
         $scope.fechat = "";
@@ -16,9 +16,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         $scope.reset = function() {
             $scope.fechai = new Date();
             $scope.fechat = new Date();
-            $scope.resultadosBusqueda = {};
-            $scope.fechai = "";
-            $scope.fechat = "";
+            $scope.resultadosBusqueda = "";
+
+            $scope.ValidForm.$setPristine();
             $scope.$broadcast('angucomplete-alt:clearInput');
         };
 

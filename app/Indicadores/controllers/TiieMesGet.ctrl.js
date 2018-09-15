@@ -11,7 +11,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
         $scope.actual = "28 días";
         $scope.periodoSel = "28 días";
-        $scope.resultadosBusqueda = {};
+        $scope.resultadosBusqueda = [];
 
         $scope.fechai = "";
         $scope.fechat = "";
@@ -30,9 +30,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         $scope.reset = function() {
             $scope.fechai = new Date();
             $scope.fechat = new Date();
-            $scope.resultadosBusqueda = {};
-            $scope.fechai = "";
-            $scope.fechat = "";
+            $scope.resultadosBusqueda = [];
+
+            $scope.ValidForm.$setPristine();
             $scope.$broadcast('angucomplete-alt:clearInput');
         };
 

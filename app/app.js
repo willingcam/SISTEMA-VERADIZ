@@ -318,7 +318,7 @@
             .state("clientesinformesTipo", {
                 url: "/clientesinformesTipo/:id",
                 templateUrl: "app/Informescli/informescliGetTipo.html",
-                controller: "informescliGetTipoCtrl"
+                controller: "informesCliGetTipoCtrl"
             })
             .state("cetes", {
                 url: "/cetes",
