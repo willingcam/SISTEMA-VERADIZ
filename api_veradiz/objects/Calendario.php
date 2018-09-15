@@ -184,10 +184,14 @@ class Calendario{
 		}
 
 				// read products
-				public function readPeriodo(){
+				public function readPeriodoDolar(){
 
 					// select all query
-			$query = " SELECT valor, fecha FROM  dolar WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			   			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
+					   FROM dolar a 
+					   LEFT JOIN dolar b on a.fecha=b.fecha+1
+					   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+			           order by a.fecha desc ";
 			
 					// prepare query statement
 					$stmt = $this->conn->prepare($query);

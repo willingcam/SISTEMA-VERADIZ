@@ -70,7 +70,11 @@ class TIIE91{
 		public function readPeriodo(){
 
 			// select all query
-			$query = " SELECT valor, fecha FROM  tiie91 WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
+			FROM tiie91 a 
+			LEFT JOIN tiie91 b on a.fecha=b.fecha+1
+			WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+			order by a.fecha desc ";
 	
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);

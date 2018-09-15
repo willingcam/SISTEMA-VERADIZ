@@ -47,7 +47,8 @@ if($num>0){
 
 		$tipo_item=array(
 			"valor" => $valor,
-			"fecha" => $fecha
+			"fecha" => $fecha,
+			"difDiaAnterior"=>$difDiaAnterior
 		);
 
 		array_push($tipo_arr["records"], $tipo_item);
