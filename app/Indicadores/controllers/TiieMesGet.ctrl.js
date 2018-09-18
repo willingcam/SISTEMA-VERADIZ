@@ -9,30 +9,31 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
     function TiieMesGetCtrl($scope, IndicesService) {
 
-        $scope.actual = "28 días";
-        $scope.periodoSel = "28 días";
-        $scope.resultadosBusqueda = {};
 
-        $scope.fechai = "";
-        $scope.fechat = "";
+        $scope.tipo = "1";
+        $scope.resultadosBusqueda = [];
 
-        $scope.periodo = [{
-                "id": "1",
-                "descripcion": "28 días"
-            },
-            {
-                "id": "2",
-                "descripcion": "91 días"
-            }
-        ];
+        $scope.fechai = new Date();
+        $scope.fechat = new Date();
+
+        $scope.classPositiva = "0";
+        $scope.fechai.setDate($scope.fechai.getDate() - 30);
+        $scope.primerValor = "";
+        $scope.primerDiferencia = "";
+
+
+        $scope.labels = [];
+        $scope.series = ['Series A'];
+
+        $scope.data = [];
 
 
         $scope.reset = function() {
             $scope.fechai = new Date();
             $scope.fechat = new Date();
-            $scope.resultadosBusqueda = {};
-            $scope.fechai = "";
-            $scope.fechat = "";
+            $scope.resultadosBusqueda = [];
+
+            $scope.ValidForm.$setPristine();
             $scope.$broadcast('angucomplete-alt:clearInput');
         };
 
@@ -55,8 +56,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             }
         };
 
-        $scope.obtenerInformacion = function() {
-            if ($scope.periodoSel == 1 || $scope.periodoSel == 2) {
+        $scope.cetesUno = function() {
 
                 if ($scope.fechai != "" || $scope.fechat != "") {
                     var diaInicio = $scope.fechai.getDate();
@@ -73,18 +73,102 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                         "fechat": fechaTerminoParametro
                     };
 
-                    if ($scope.periodoSel == 1) {
+                IndicesService.getTIIE28(registro).then(
+                    function(result) {
+                        $scope.resultadosBusqueda = result.data.records;
+                        $scope.primerValor = $scope.resultadosBusqueda[0].valor;
+                        $scope.primerDiferencia = $scope.resultadosBusqueda[0].difDiaAnterior;
+                        var datoEntero = parseFloat($scope.primerDiferencia);
+                        if (datoEntero > 0.01) {
+                            $scope.classPositiva = "1";
+                        } else {
+                            $scope.classPositiva = "0";
+                        }
+                        for (var i = 0; i < $scope.resultadosBusqueda.length; i++) {
+                            $scope.labels.push($scope.resultadosBusqueda[i].fecha);
+                            $scope.data.push($scope.resultadosBusqueda[i].valor);
+                        }
+                    },
+                    function(err) {
+                        toastr.error("No se han podido cargar la información solicitada");
+                    }
+                );
+            } else {
+                toastr.error("Debe seleccionar una fecha de inicio y de termino para establecer el rango de búsqueda");
+            }
+        }
+        $scope.cetesDos = function() {
+            if ($scope.fechai != "" || $scope.fechat != "") {
+                var diaInicio = $scope.fechai.getDate();
+                var monthInicio = $scope.fechai.getMonth() + 1;
+                var fechaInicioParametro = monthInicio + "/" + diaInicio + "/" + $scope.fechai.getFullYear();
+                var diaTermino = $scope.fechat.getDate();
+                var monthTermino = $scope.fechat.getMonth() + 1;
+                var fechaTerminoParametro = monthTermino + "/" + diaTermino + "/" + $scope.fechat.getFullYear();
+                var registro = {
+                    "fechai": fechaInicioParametro,
+                    "fechat": fechaTerminoParametro
+                };
+                IndicesService.getTIIE91(registro).then(
+                    function(result) {
+                        $scope.resultadosBusqueda = result.data.records;
+                        $scope.primerValor = $scope.resultadosBusqueda[0].valor;
+                        $scope.primerDiferencia = $scope.resultadosBusqueda[0].difDiaAnterior;
+                        var datoEntero = parseFloat($scope.primerDiferencia);
+                        if (datoEntero > 0.01) {
+                            $scope.classPositiva = "1";
+                        } else {
+                            $scope.classPositiva = "0";
+                        }
+                        for (var i = 0; i < $scope.resultadosBusqueda.length; i++) {
+                            $scope.labels.push($scope.resultadosBusqueda[i].fecha);
+                            $scope.data.push($scope.resultadosBusqueda[i].valor);
+                        }
+                    },
+                    function(err) {
+                        toastr.error("No se han podido cargar la información solicitada");
+                    }
+                );
+            } else {
+                toastr.error("Debe seleccionar una fecha de inicio y de termino para establecer el rango de búsqueda");
+            }
+        }
+        $scope.obtenerInformacion = function() {
+            if ($scope.fechai != "" || $scope.fechat != "") {
+                var diaInicio = $scope.fechai.getDate();
+                var monthInicio = $scope.fechai.getMonth() + 1;
+                var fechaInicioParametro = monthInicio + "/" + diaInicio + "/" + $scope.fechai.getFullYear();
+                var diaTermino = $scope.fechat.getDate();
+                var monthTermino = $scope.fechat.getMonth() + 1;
+                var fechaTerminoParametro = monthTermino + "/" + diaTermino + "/" + $scope.fechat.getFullYear();
+                var registro = {
+                    "fechai": fechaInicioParametro,
+                    "fechat": fechaTerminoParametro
+                };
+                if ($scope.tipo == "1") {
 
                         IndicesService.getTIIE28(registro).then(
                             function(result) {
                                 $scope.resultadosBusqueda = result.data.records;
+                            $scope.primerValor = $scope.resultadosBusqueda[0].valor;
+                            $scope.primerDiferencia = $scope.resultadosBusqueda[0].difDiaAnterior;
+                            var datoEntero = parseFloat($scope.primerDiferencia);
+                            if (datoEntero > 0.01) {
+                                $scope.classPositiva = "1";
+                            } else {
+                                $scope.classPositiva = "0";
+                            }
+                            for (var i = 0; i < $scope.resultadosBusqueda.length; i++) {
+                                $scope.labels.push($scope.resultadosBusqueda[i].fecha);
+                                $scope.data.push($scope.resultadosBusqueda[i].valor);
+                            }
                             },
                             function(err) {
                                 toastr.error("No se han podido cargar la información solicitada");
                             }
                         );
                     } else {
-                        if ($scope.periodoSel == 2) {
+                    if ($scope.tipo == "2") {
 
                             IndicesService.getTIIE91(registro).then(
                                 function(result) {
@@ -100,10 +184,10 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                 } else {
                     toastr.error("Debe seleccionar una fecha de inicio y de termino para establecer el rango de búsqueda");
                 }
-            } else {
-                toastr.error("Seleccione un período que dese consultar ");
+
             }
-        }
+
+        $scope.obtenerInformacion();
 
     }
 })();

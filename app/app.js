@@ -10,7 +10,8 @@
             'Globales',
             'directivas',
             'ngSanitize',
-            'textAngular'
+            'textAngular',
+            "chart.js",
         ])
         // DEFINICION DEL SERVIDOR 
         //local               
@@ -318,7 +319,7 @@
             .state("clientesinformesTipo", {
                 url: "/clientesinformesTipo/:id",
                 templateUrl: "app/Informescli/informescliGetTipo.html",
-                controller: "informescliGetTipoCtrl"
+                controller: "informesCliGetTipoCtrl"
             })
             .state("cetes", {
                 url: "/cetes",

@@ -68,7 +68,12 @@ class Cetes91{
 		public function readPeriodo(){
 
 			// select all query
-			$query = " SELECT valor, fecha FROM  cetes91 WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			//$query = " SELECT valor, fecha FROM  cetes91 WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
+			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
+			FROM cetes91 a 
+			LEFT JOIN cetes91 b on a.id=b.id+1
+			WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+			order by a.fecha desc ";
 	
 			// prepare query statement
 			$stmt = $this->conn->prepare($query);

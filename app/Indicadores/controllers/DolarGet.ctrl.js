@@ -8,17 +8,34 @@ FooEntitiesService nombre de factory en RolesGet.service.js
     app.controller("DolarGetCtrl", ["$scope", "IndicesService", DolarGetCtrl]);
 
     function DolarGetCtrl($scope, IndicesService) {
-        $scope.resultadosBusqueda = {};
 
-        $scope.fechai = "";
-        $scope.fechat = "";
+
+
+        $scope.resultadosBusqueda = [];
+
+        $scope.fechai = new Date();
+        $scope.fechat = new Date();
+
+        $scope.classPositiva = "0";
+
+        $scope.fechai.setDate($scope.fechai.getDate() - 30);
+
+        $scope.primerValor = "";
+        $scope.primerDiferencia = "";
+
+
+        $scope.labels = [];
+        $scope.series = ['Series A'];
+
+        $scope.data = [];
+
 
         $scope.reset = function() {
             $scope.fechai = new Date();
             $scope.fechat = new Date();
-            $scope.resultadosBusqueda = {};
-            $scope.fechai = "";
-            $scope.fechat = "";
+            $scope.resultadosBusqueda = [];
+
+            $scope.ValidForm.$setPristine();
             $scope.$broadcast('angucomplete-alt:clearInput');
         };
 
@@ -41,9 +58,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             }
         };
 
+
+
         $scope.obtenerInformacion = function() {
-
-
             if ($scope.fechai != "" || $scope.fechat != "") {
                 var diaInicio = $scope.fechai.getDate();
                 var monthInicio = $scope.fechai.getMonth() + 1;
@@ -62,7 +79,25 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
                 IndicesService.getDolar(registro).then(
                     function(result) {
+
                         $scope.resultadosBusqueda = result.data.records;
+                        $scope.primerValor = $scope.resultadosBusqueda[0].valor;
+                        $scope.primerDiferencia = $scope.resultadosBusqueda[0].difDiaAnterior;
+                        console.log($scope.resultadosBusqueda);
+                        debugger;
+                        var datoEntero = parseFloat($scope.primerDiferencia);
+
+                        if (datoEntero > 0.01) {
+                            $scope.classPositiva = "1";
+                        } else {
+                            $scope.classPositiva = "0";
+                        }
+
+                        for (var i = 0; i < $scope.resultadosBusqueda.length; i++) {
+                            $scope.labels.push($scope.resultadosBusqueda[i].fecha);
+                            $scope.data.push($scope.resultadosBusqueda[i].valor);
+                        }
+
                     },
                     function(err) {
                         toastr.error("No se han podido cargar la información solicitada");
@@ -74,6 +109,8 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             }
 
         }
+
+        $scope.obtenerInformacion();
 
 
     }
