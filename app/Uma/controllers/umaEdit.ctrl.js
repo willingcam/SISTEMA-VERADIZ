@@ -8,9 +8,9 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
     angular
         .module("veradiz")
-        .controller("salarioMinimoEditCtrl", ['$scope', 'SalariosService', 'globalGet', '$state', '$stateParams', '$http', 'AuthService', salarioMinimoEditCtrl]);
+        .controller("umaEditCtrl", ['$scope', 'UmaService', 'globalGet', '$state', '$stateParams', '$http', 'AuthService', umaEditCtrl]);
 
-    function salarioMinimoEditCtrl($scope, SalariosService, globalGet, $state, $stateParams, $http, AuthService) {
+    function umaEditCtrl($scope, UmaService, globalGet, $state, $stateParams, $http, AuthService) {
 
         //Variable API
         var API = globalGet.get("api");
@@ -25,7 +25,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         //$scope.urlImagenCompleta = "";
 
         //Obtene ambito
-        SalariosService.getById(id).then(
+        UmaService.getById(id).then(
             function(result) {
                 // $scope.registro = result.data.records;
                 $scope.registro = result.data;
@@ -53,9 +53,9 @@ $scope.registro.valor=Number($scope.registro.valor);
                 return false;
             }
             
-            SalariosService.Update($scope.registro).then(
+            UmaService.Update($scope.registro).then(
                 function(result) {
-                    $state.go("salario");
+                    $state.go("uma");
                 },
                 function(err) {
                     console.error(err);
@@ -66,7 +66,7 @@ $scope.registro.valor=Number($scope.registro.valor);
         }
 
         $scope.regresar = function() {
-            $state.go("salario");
+            $state.go("uma");
     }
 
     }

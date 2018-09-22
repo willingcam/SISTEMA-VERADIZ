@@ -1,9 +1,9 @@
 <?php
-class SalariosMinimos{
+class Uma{
 
 	// database connection and table name
 	private $conn;
-	private $table_name = "salarios_minimos";
+	private $table_name = "uma";
 
 	// object properties
 	public $id;
@@ -33,20 +33,18 @@ class SalariosMinimos{
 
 		// query to insert record
 		$query = "INSERT INTO " . $this->table_name . "
-				SET anio=:anio, fecha=:fecha, valor=:valor";
+				SET anio=:anio, valor=:valor";
 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
 
 		// sanitize
-		$this->anio=htmlspecialchars(strip_tags($this->anio));
-		$this->fecha=htmlspecialchars(strip_tags($this->fecha));
-		$this->valor=htmlspecialchars(strip_tags($this->valor));
+		$this->anio=strip_tags($this->anio);
+		$this->valor=strip_tags($this->valor);
 				
 
 		// bind values
 		$stmt->bindParam(":anio", $this->anio);
-		$stmt->bindParam(":fecha", $this->fecha);
 		$stmt->bindParam(":valor", $this->valor);
 				
 		// execute query
@@ -122,16 +120,13 @@ class SalariosMinimos{
 
 		// sanitize
 		$this->anio=htmlspecialchars(strip_tags($this->anio));
-		$this->fecha_inicio=htmlspecialchars(strip_tags($this->fecha));
 		$this->valor=htmlspecialchars(strip_tags($this->valor));
 		$this->id=htmlspecialchars(strip_tags($this->id));
 
 		// bind new values
 		$stmt->bindParam(':anio', $this->anio);
-		$stmt->bindParam(':fecha', $this->fecha);
 		$stmt->bindParam(':valor', $this->valor);
-		
-		
+				
 		$stmt->bindParam(':id', $this->id);
 
 		// execute the query

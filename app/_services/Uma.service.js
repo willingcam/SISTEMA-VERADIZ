@@ -11,9 +11,9 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
 
     angular
         .module("veradiz.services")
-        .factory("SalariosService", ["$http", "globalGet", SalariosService]);
+        .factory("UmaService", ["$http", "globalGet", UmaService]);
 
-    function SalariosService($http, globalGet) {
+    function UmaService($http, globalGet) {
         //endpoint hace referencia al consumo del WebAPI, no es indispensable respetar minusculas y mayusculas
         var API = globalGet.get("api");
         var service = {};
@@ -21,22 +21,22 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
 
         // Get all registers
         service.getAll = function() {
-            var endPoint = API + "Repository/SalariosMinimos/read.php";
+            var endPoint = API + "Repository/Uma/read.php";
             return $http.get(endPoint);
         }
 
 
         service.getById = function(id) {
-            var endPoint = API + "Repository/SalariosMinimos/read_one.php?id=" + id;
+            var endPoint = API + "Repository/Uma/read_one.php?id=" + id;
             return $http.get(endPoint);
         }
 
 
         service.Add = function(registro) {
-            return $http({
+                return $http({
                 method: 'POST',
                 data: registro,
-                url: API + 'Repository/SalariosMinimos/create.php'
+                url: API + 'Repository/Uma/create.php'
             });
         };
 
@@ -44,7 +44,7 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http({
                 method: 'POST',
                 data: registro,
-                url: API + 'Repository/SalariosMinimos/update.php'
+                url: API + 'Repository/Uma/update.php'
             });
         };
 
@@ -52,7 +52,7 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http({
                 method: 'POST',
                 data: registro,
-                url: API + 'Repository/SalariosMinimos/delete.php'
+                url: API + 'Repository/Uma/delete.php'
             });
         };
 

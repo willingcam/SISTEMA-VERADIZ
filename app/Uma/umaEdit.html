@@ -4,8 +4,8 @@
         <div class="title_left">
             <ol class="breadcrumb miga">
                 <li>
-                    <i class="disabled fa fa-newspaper-o"></i>
-                    <a>Salario mínimo/Actualizar</a>
+                    <i class="disabled fa fa-info-circle"></i>
+                    <a>UMA/Actualizar</a>
                 </li>
             </ol>
         </div>
@@ -34,7 +34,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <input type="number" class="form-control" id="Anio" ng-model="registro.anio" ng-required="true" required max="5" name="Anio" placeholder="Año del salario minimo">
+                                    <input type="text" class="form-control" id="Anio" ng-model="registro.anio" ng-required="true"  name="Anio" placeholder="Año del salario minimo">
                                     <span class="error" ng-show="SalarioForm.Anio.$dirty && !SalarioForm.Anio.$valid">Debe ingresar el año</span>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <input type="number" class="form-control" id="valor" name="valor" ng-model="registro.valor" ng-required="true" required max="10" placeholder="Ingresar un valor">
+                                    <input type="text" class="form-control" id="valor" name="valor" ng-model="registro.valor" ng-required="true"  placeholder="Ingresar un valor">
                                     <span class="error" ng-show="SalarioForm.valor.$dirty && !SalarioForm.valor.$valid">Debe ingresar un valor </span>
                                 </div>
                             </div>

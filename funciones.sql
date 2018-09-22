@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2018 a las 08:26:40
+-- Tiempo de generación: 22-09-2018 a las 21:59:17
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -82,8 +82,9 @@ INSERT INTO `funciones` (`id`, `descripcion`, `url_referencia`, `nivel`, `secuen
 (59, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 2),
 (60, 'dolar', 'veradiz.html#/dolar', 0, 41, 1, NULL, NULL, 'dolar', NULL, 'dolar', 3),
 (61, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 5),
-(62, 'Salario mínimo', 'veradiz.html#/salario', 0, 39, 1, NULL, NULL, 'Salario', NULL, 'Salario', 1),
-(63, 'Editar salario minimo', 'veradiz.html#/salarioEdit/', 0, 37, 1, NULL, NULL, 'Editar salario minimo', NULL, 'salarioEdit', 1);
+(62, 'UMA', 'veradiz.html#/uma', 0, 39, 1, NULL, NULL, 'uma', NULL, 'uma', 1),
+(63, 'Editar UMA', 'veradiz.html#/umaEdit/', 0, 37, 1, NULL, NULL, 'Editar UMA', NULL, 'umaEdit', 1),
+(64, 'Agregar UMA', 'veradiz.html#/umaAdd/', 0, 40, 1, NULL, NULL, 'Agregar UMA', NULL, 'umaAdd', 1);
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +104,7 @@ ALTER TABLE `funciones`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

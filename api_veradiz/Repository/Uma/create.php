@@ -10,12 +10,12 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 include_once '../../config/database.php';
 
 // instantiate obj object
-include_once '../../objects/SalariosMinimos.php';
+include_once '../../objects/Uma.php';
 
 $database = new Database();
 $db = $database->getConnection();
 
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -23,15 +23,15 @@ $data = json_decode(file_get_contents("php://input"));
 // make sure data is not empty
 if(
 	isset($data->anio) &&
-	isset($data->fecha) &&
 	isset($data->valor) 
+	
 ){
 
 	// set obj property values
 	$obj->anio = $data->anio;
 	$obj->valor = $data->valor;
-	$obj->fecha = $data->fecha;
-	
+
+		
 
 	// create the obj
 	if($obj->create()){

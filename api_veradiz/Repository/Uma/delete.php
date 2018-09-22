@@ -8,20 +8,23 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object file
 include_once '../../config/database.php';
-include_once '../../objects/SalariosMinimos.php';
+include_once '../../objects/Uma.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare obj object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
+// get obj id
 $data = json_decode(file_get_contents("php://input"));
 
+// set obj id to be deleted
+$obj->id = $data->id;
+
 // delete the obj
-if($obj->deleteSelected($data->ids)){
-	// records were deleted
+if($obj->delete()){
 	echo '{';
 		echo '"message": "Registro eliminado."';
 	echo '}';

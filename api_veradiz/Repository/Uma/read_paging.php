@@ -7,7 +7,7 @@ header("Content-Type: application/json; charset=UTF-8");
 include_once '../config/core.php';
 include_once '../shared/utilities.php';
 include_once '../config/database.php';
-include_once '../objects/SalariosMinimos.php';
+include_once '../objects/Uma.php';
 
 // utilities
 $utilities = new Utilities();
@@ -17,7 +17,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
 // query products
 $stmt = $obj->readPaging($from_record_num, $records_per_page);

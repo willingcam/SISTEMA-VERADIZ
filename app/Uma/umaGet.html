@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="title_left">
             <ol class="breadcrumb miga">
-                <li><i class="disabled fa fa-newspaper-o"></i> <a>Noticias</a></li>
+                <li><i class="disabled fa fa-info"></i> <a>UMA</a></li>
             </ol>
         </div>
     </div>
@@ -18,14 +18,14 @@
             <div class="x_panel">
                 <div class="x_content sin-desborde">
                     <div class="x_title">
-                        <h2>Salario minimo</h2>
+                        <h2>UMA</h2>
                         <div class="clearfix"></div>
                     </div>
 
 
 
 
-                    <table id="NoticiasGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
+                    <table id="SalarioMinimoGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
                         <thead>
                             <tr>
                                 <th data-priority="1" class="text-center">Año</th>
@@ -44,7 +44,7 @@
                                     {{obj.valor}}
                                 </td>
                                 <td class="text-center" style="width: 15%;">
-                                    <a class="btn btn-warning" ui-sref="salarioEdit({id:obj.id})" title="Editar">
+                                    <a class="btn btn-warning" ui-sref="umaEdit({id:obj.id})" title="Editar">
                                         <i class="glyphicon glyphicon-pencil"></i>
                                     </a>
                                     <a class="btn btn-danger pull-right" ng-really-click="eliminarSalario(obj);" ng-really-message="¿Está seguro de eliminar este registro?" title="Eliminar">
@@ -55,7 +55,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    {{ salariosGet | json}}
+                    
                     
 
                 </div>
@@ -63,7 +63,7 @@
 
             <div class="row">
                 <div class="col-xs-12">
-                    <button type="button" ui-sref="noticiasAdd" class="btn btn-success">
+                    <button type="button" ui-sref="umaAdd" class="btn btn-success">
                     <span class="glyphicon glyphicon-plus"></span> Agregar
                 </button>
                 </div>

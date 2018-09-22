@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-09-2018 a las 08:25:55
+-- Tiempo de generación: 22-09-2018 a las 21:58:45
 -- Versión del servidor: 10.1.34-MariaDB
 -- Versión de PHP: 7.2.8
 
@@ -25,32 +25,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `salarios_minimos`
+-- Estructura de tabla para la tabla `uma`
 --
 
-CREATE TABLE `salarios_minimos` (
+CREATE TABLE `uma` (
   `id` int(11) NOT NULL,
   `anio` int(5) NOT NULL,
-  `fecha` date NOT NULL,
-  `valor` decimal(10,2) DEFAULT NULL
+  `fecha` date DEFAULT NULL,
+  `valor` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `salarios_minimos`
+-- Volcado de datos para la tabla `uma`
 --
 
-INSERT INTO `salarios_minimos` (`id`, `anio`, `fecha`, `valor`) VALUES
-(1, 2016, '2016-09-04', '4.00'),
-(2, 2016, '2018-02-05', '75.60');
+INSERT INTO `uma` (`id`, `anio`, `fecha`, `valor`) VALUES
+(3, 2012, '2018-09-22', 82),
+(7, 2008, '2018-09-22', 98.5),
+(8, 2006, NULL, 27.5);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `salarios_minimos`
+-- Indices de la tabla `uma`
 --
-ALTER TABLE `salarios_minimos`
+ALTER TABLE `uma`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58,10 +59,10 @@ ALTER TABLE `salarios_minimos`
 --
 
 --
--- AUTO_INCREMENT de la tabla `salarios_minimos`
+-- AUTO_INCREMENT de la tabla `uma`
 --
-ALTER TABLE `salarios_minimos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `uma`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

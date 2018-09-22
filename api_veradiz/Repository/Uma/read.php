@@ -5,14 +5,14 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/SalariosMinimos.php';
+include_once '../../objects/Uma.php';
 
 // instantiate database and obj object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
 // query products
 $stmt = $obj->read();

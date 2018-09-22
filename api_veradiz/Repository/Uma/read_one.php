@@ -8,14 +8,14 @@ header('Content-Type: application/json');
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/SalariosMinimos.php';
+include_once '../../objects/Uma.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare obj object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
 // set ID property of record to read
 $obj->id = isset($_GET['id']) ? $_GET['id'] : die();

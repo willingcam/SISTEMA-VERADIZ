@@ -5,9 +5,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradiz");
-    app.controller("salarioMinimoGetCtrl", ["$scope", "SalariosService", salarioMinimoGetCtrl]);
+    app.controller("umaGetCtrl", ["$scope", "UmaService", umaGetCtrl]);
 
-    function salarioMinimoGetCtrl($scope, SalariosService) {
+    function umaGetCtrl($scope, UmaService) {
 
         //Variables de carga
         $scope.loading = true;
@@ -18,7 +18,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         //obtener registros
 
         $scope.cargaDatos = function() {
-            SalariosService.getAll().then(
+            UmaService.getAll().then(
                 function(result) {
 
                     $scope.loading = false;
@@ -36,7 +36,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                 'id': obj.id
             }
 
-            SalariosService.Delete(registro).then(
+            UmaService.Delete(registro).then(
                 function(result) {
                     $scope.cargaDatos();
                 },

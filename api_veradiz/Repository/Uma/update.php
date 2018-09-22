@@ -8,14 +8,14 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/SalariosMinimos.php';
+include_once '../../objects/Uma.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare obj object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
 // get id of obj to be edited
 $data = json_decode(file_get_contents("php://input"));
@@ -25,7 +25,6 @@ $obj->id = $data->id;
 
 // set obj property values
 $obj->anio = $data->anio;
-$obj->fecha = $data->fecha;
 $obj->valor = $data->valor;
 
 
