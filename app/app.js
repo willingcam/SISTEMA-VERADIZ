@@ -336,6 +336,21 @@
                 templateUrl: "app/Indicadores/Dolar.html",
                 controller: "DolarGetCtrl"
             })
+            .state("uma", {
+                url: "/uma",
+                templateUrl: "app/Uma/umaGet.html",
+                controller: "umaGetCtrl"
+            })
+            .state("umaAdd", {
+                url: "/umaAdd",
+                templateUrl: "app/Uma/umaAdd.html",
+                controller: "umaAddCtrl"
+            })
+            .state("umaEdit", {
+                url: "/umaEdit/:id",
+                templateUrl: "app/Uma/umaEdit.html",
+                controller: "umaEditCtrl"
+            })
 
     };
 }());

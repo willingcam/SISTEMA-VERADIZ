@@ -6,31 +6,39 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// include database and object file
-include_once '../config/database.php';
-include_once '../objects/SalariosMinimos.php';
+// include database and object files
+include_once '../../config/database.php';
+include_once '../../objects/Uma.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare obj object
-$obj = new SalariosMinimos($db);
+$obj = new Uma($db);
 
+// get id of obj to be edited
 $data = json_decode(file_get_contents("php://input"));
 
-// delete the obj
-if($obj->deleteSelected($data->ids)){
-	// records were deleted
+// set ID property of obj to be edited
+$obj->id = $data->id;
+
+// set obj property values
+$obj->anio = $data->anio;
+$obj->valor = $data->valor;
+
+
+// update the obj
+if($obj->update()){
 	echo '{';
-		echo '"message": "Products were deleted."';
+		echo '"message": "El registro fue actualizado exitosamente."';
 	echo '}';
 }
 
-// if unable to delete the obj
+// if unable to update the obj, tell the user
 else{
 	echo '{';
-		echo '"message": "Unable to delete products."';
+		echo '"message": "Fallo la actualización del registro."';
 	echo '}';
 }
 ?>
