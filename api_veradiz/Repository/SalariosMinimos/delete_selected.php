@@ -7,8 +7,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // include database and object file
-include_once '../config/database.php';
-include_once '../objects/SalariosMinimos.php';
+include_once '../../config/database.php';
+include_once '../../objects/SalariosMinimos.php';
 
 // get database connection
 $database = new Database();
@@ -23,14 +23,14 @@ $data = json_decode(file_get_contents("php://input"));
 if($obj->deleteSelected($data->ids)){
 	// records were deleted
 	echo '{';
-		echo '"message": "Products were deleted."';
+		echo '"message": "Registro eliminado."';
 	echo '}';
 }
 
 // if unable to delete the obj
 else{
 	echo '{';
-		echo '"message": "Unable to delete products."';
+		echo '"message": "No se pudo eliminar el registro."';
 	echo '}';
 }
 ?>

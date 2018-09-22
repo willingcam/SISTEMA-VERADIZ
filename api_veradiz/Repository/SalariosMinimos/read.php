@@ -4,8 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/SalariosMinimos.php';
+include_once '../../config/database.php';
+include_once '../../objects/SalariosMinimos.php';
 
 // instantiate database and obj object
 $database = new Database();
@@ -38,10 +38,7 @@ if($num>0){
 			"id" => $id,
 			"anio" => $anio,
 			"valor" => $valor,
-			"tipoIndicador" => $tipoIndicador,
-			"tipoArea" => $tipoArea,
-			"fecha_inicio" => $fecha_inicio,
-			"fecha_termino" => $fecha_termino
+			"fecha" => $fecha
 		);
 
 		array_push($obj_arr["records"], $obj_item);

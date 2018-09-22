@@ -7,10 +7,10 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // get database connection
-include_once '../config/database.php';
+include_once '../../config/database.php';
 
 // instantiate obj object
-include_once '../objects/SalariosMinimos.php';
+include_once '../../objects/SalariosMinimos.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -23,20 +23,15 @@ $data = json_decode(file_get_contents("php://input"));
 // make sure data is not empty
 if(
 	isset($data->anio) &&
-	isset($data->fecha_inicio) &&
-	isset($data->fecha_termino) &&
-	isset($data->valor) &&
-	isset($data->tipoIndicador) &&
-	isset($data->tipoArea)
+	isset($data->fecha) &&
+	isset($data->valor) 
 ){
 
 	// set obj property values
 	$obj->anio = $data->anio;
 	$obj->valor = $data->valor;
-	$obj->tipoIndicador = $data->tipoIndicador;
-	$obj->tipoArea = $data->tipoArea;
-	$obj->fecha_inicio = $data->fecha_inicio;
-	$obj->fecha_termino = $data->fecha_termino;
+	$obj->fecha = $data->fecha;
+	
 
 	// create the obj
 	if($obj->create()){

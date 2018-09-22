@@ -7,8 +7,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // include database and object files
-include_once '../config/database.php';
-include_once '../objects/SalariosMinimos.php';
+include_once '../../config/database.php';
+include_once '../../objects/SalariosMinimos.php';
 
 // get database connection
 $database = new Database();
@@ -25,11 +25,9 @@ $obj->id = $data->id;
 
 // set obj property values
 $obj->anio = $data->anio;
-$obj->fecha_inicio = $data->fecha_inicio;
-$obj->fecha_termino = $data->fecha_termino;
+$obj->fecha = $data->fecha;
 $obj->valor = $data->valor;
-$obj->tipoIndicador = $data->tipoArea
-$obj->tipoArea = $data->tipoIndicador
+
 
 // update the obj
 if($obj->update()){

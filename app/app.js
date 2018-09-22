@@ -336,6 +336,21 @@
                 templateUrl: "app/Indicadores/Dolar.html",
                 controller: "DolarGetCtrl"
             })
+            .state("salario", {
+                url: "/salario",
+                templateUrl: "app/salarioMinimo/salarioMinimoGet.html",
+                controller: "salarioMinimoGetCtrl"
+            })
+            .state("salarioAdd", {
+                url: "/salarioAdd",
+                templateUrl: "app/salarioMinimo/salarioMinimoAdd.html",
+                controller: "salarioMinimoAddCtrl"
+            })
+            .state("salarioEdit", {
+                url: "/salarioEdit/:id",
+                templateUrl: "app/salarioMinimo/salarioMinimoEdit.html",
+                controller: "salarioMinimoEditCtrl"
+            })
 
     };
 }());
