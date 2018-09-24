@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="x_content sin-desborde">
-                    <form role="form" name="SalarioForm" class="form-horizontal">
+                    <form role="form" name="UmaForm" class="form-horizontal">
                         {{registro}}
                                                     <div class="form-group">
                                                         <label class="control-label col-md-2 col-sm-2 col-xs-2">
@@ -32,7 +32,7 @@
                                                         </label>
                                                         <div class="col-md-10 col-sm-10 col-xs-10">
                                                             <input type="text" class="form-control" id="anio" ng-model="anio" ng-required="true"  name="Anio" placeholder="Año del salario minimo">
-                                                            <span class="error" ng-show="SalarioForm.Anio.$dirty && !SalarioForm.Anio.$valid">Debe ingresar el año</span>
+                                                            <span class="error" ng-show="UmaForm.Anio.$dirty && !UmaForm.Anio.$valid">Debe ingresar el año</span>
                                                         </div>
                                                     </div>
                         
@@ -43,7 +43,7 @@
                                                         </label>
                                                         <div class="col-md-10 col-sm-10 col-xs-10">
                                                             <input type="text" class="form-control" id="valor" name="valor" ng-model="valor" ng-required="true"  placeholder="Ingresar un valor">
-                                                            <span class="error" ng-show="SalarioForm.valor.$dirty && !SalarioForm.valor.$valid">Debe ingresar un valor </span>
+                                                            <span class="error" ng-show="UmaForm.valor.$dirty && !UmaForm.valor.$valid">Debe ingresar un valor </span>
                                                         </div>
                                                     </div>
                         
@@ -56,7 +56,7 @@
                                                                 <button type="submit" class="btn btn-success" ng-click="save()">
                                                                <i class="glyphicon glyphicon-saved"></i> Registrar
                                                             </button>
-                                                                <button type="button" confirma-regresar="regresar()" state-form="SalarioForm" class="btn btn-primary">
+                                                                <button type="button" confirma-regresar="regresar()" state-form="UmaForm" class="btn btn-primary">
                                                                 <span class="fa fa-arrow-left"></span> Regresar
                                                             </button>
                                                             </div>

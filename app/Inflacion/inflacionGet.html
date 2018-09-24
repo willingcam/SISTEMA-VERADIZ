@@ -1,0 +1,95 @@
+﻿<div class="vista">
+
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li><i class="disabled fa fa-info"></i> <a>Inflación</a></li>
+            </ol>
+        </div>
+    </div>
+
+
+
+    <div class="clearfix"></div>
+    <div class="row">
+
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_content sin-desborde">
+                    <div class="x_title">
+                        <h2>Inflación</h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+
+
+
+                    <table id="inflacionGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive"
+                        cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
+                        <thead>
+                            <tr>
+                                <th data-priority="1" class="text-center">Año</th>
+                                <th data-priority="2" class="text-center">Mes</th>
+                                <th data-priority="3" class="text-center">Valor</th>
+                                <th data-priority="4" class="text-center">Porcentaje mensual</th>
+                                <th data-priority="5" class="text-center">Acumulado mensual</th>
+                                <th data-priority="6" class="text-center">Dif. acumulado vs año anterior</th>
+                                <th data-priority="7" class="text-center">opciones</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="obj in inflacionGet">
+
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.anio}}
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.mes}}
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.valor}}
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.porcen_mensual }}
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.porcen_acumulada}}
+                                </td>
+                                <td class="text-center" style="width: 20%">
+                                    {{obj.porcen_acumvsanioanterior}}
+                                </td>
+                                <td class="text-center" style="width: 15%;">
+                                    <a class="btn btn-warning" ui-sref="inflacionEdit({id:obj.id})" title="Editar">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-danger pull-right" ng-really-click="eliminarInflacion(obj);"
+                                        ng-really-message="¿Está seguro de eliminar este registro?" title="Eliminar">
+                                        <i class="glyphicon glyphicon-trash"></i>
+                                    </a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" ui-sref="inflacionAdd" class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus"></span> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>

@@ -5,25 +5,25 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/InflacionMensual.php';
+include_once '../../objects/Inflacion.php';
 
-// instantiate database and product object
+// instantiate database and obj object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$objeto = new InflacionMensual($db);
+$obj = new Inflacion($db);
 
 // query products
-$stmt = $objeto->read();
+$stmt = $obj->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
 if($num>0){
 
 	// products array
-	$objeto_arr=array();
-	$objeto_arr["records"]=array();
+	$obj_arr=array();
+	$obj_arr["records"]=array();
 
 	// retrieve our table contents
 	// fetch() is faster than fetchAll()
@@ -34,24 +34,25 @@ if($num>0){
 		// just $name only
 		extract($row);
 
-		$objeto_item=array(
+		$obj_item=array(
 			"id" => $id,
-			"mes" => $mes,
 			"anio" => $anio,
 			"mes" => $mes,
 			"valor" => $valor,
-			"tipoIndicador" => $tipoIndicador,
-		);
+			"porcen_mensual" => $porcen_mensual,
+			"porcen_acumulada" => $porcen_acumulada,
+			"porcen_acumvsanioanterior" => $porcen_acumvsanioanterior
+			);
 
-		array_push($objeto_arr["records"], $objeto_item);
+		array_push($obj_arr["records"], $obj_item);
 	}
 
-	echo json_encode($objeto_arr);
+	echo json_encode($obj_arr);
 }
 
 else{
     echo json_encode(
-		array("message" => "No hay información disponible.")
+		array("message" => "No hay registros diponibles.")
 	);
 }
 ?>

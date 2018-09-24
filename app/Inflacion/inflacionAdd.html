@@ -1,0 +1,128 @@
+﻿<div class="vista">
+
+    <div class="page-title">
+        <div class="title_left">
+            <ol class="breadcrumb miga">
+                <li>
+                    <i class="disabled fa fa-info-circle"></i>
+                    <a>UMA/Registro</a>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Agregar información de INPC</h2>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="x_content sin-desborde">
+                    <form role="form" name="InflacionForm" class="form-horizontal">
+                        {{registro}}
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Año
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="anio" ng-model="anio" ng-required="true"
+                                    name="Anio" placeholder="Año del INPC">
+                                <span class="error" ng-show="InflacionForm.Anio.$dirty && !InflacionForm.Anio.$valid">Debe
+                                    ingresar el año</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Mes
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="mes" ng-model="mes" ng-required="true"
+                                    name="mes" placeholder="Mes del INPC">
+                                <span class="error" ng-show="InflacionForm.Anio.$dirty && !InflacionForm.Anio.$valid">Debe
+                                    ingresar el mes</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Valor
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="valor" name="valor" ng-model="valor"
+                                    ng-required="true" placeholder="Ingresar un valor">
+                                <span class="error" ng-show="InflacionForm.valor.$dirty && !InflacionForm.valor.$valid">Debe
+                                    ingresar un valor </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Porcentaje mensual
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="porcen_mensual" name="porcen_mensual" ng-model="porcen_mensual"
+                                    ng-required="true" placeholder="Ingresar porcentaje mensual">
+                                <span class="error" ng-show="InflacionForm.porcen_mensual.$dirty && !InflacionForm.porcen_mensual.$valid">Debe
+                                    ingresar un valor </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Acumulado mensual
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="porcen_acumulada" name="porcen_acumulada" ng-model="porcen_acumulada"
+                                    ng-required="true" placeholder="Ingresar acumulado mensual">
+                                <span class="error" ng-show="InflacionForm.porcen_acumulada.$dirty && !InflacionForm.porcen_acumulada.$valid">Debe
+                                    ingresar un valor </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-2 col-sm-2 col-xs-2">
+                                Dif. acumulado vs año anterior
+                                <span class="required">*</span>
+                            </label>
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <input type="text" class="form-control" id="porcen_acumvsanioanterior" name="porcen_acumvsanioanterior" ng-model="porcen_acumvsanioanterior"
+                                    ng-required="true" placeholder="Ingresar dif. acumulado vs año anterior">
+                                <span class="error" ng-show="InflacionForm.porcen_acumvsanioanterior.$dirty && !InflacionForm.porcen_acumvsanioanterior.$valid">Debe
+                                    ingresar un valor </span>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                <div class="">
+                                    <button type="submit" class="btn btn-success" ng-click="save()">
+                                        <i class="glyphicon glyphicon-saved"></i> Registrar
+                                    </button>
+                                    <button type="button" confirma-regresar="regresar()" state-form="InflacionForm" class="btn btn-primary">
+                                        <span class="fa fa-arrow-left"></span> Regresar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

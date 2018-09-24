@@ -1,23 +1,20 @@
 <?php
-class InflacionMensual{
+class Inpc{
 
 	// database connection and table name
 	private $conn;
-	private $table_name = "inflacion_mensual";
+	private $table_name = "Inpc";
 
 	// object properties
 	public $id;
-	public $mes;
 	public $anio;
+	public $fecha;
 	public $valor;
-	public $tipoIndicador;
 	
-
 	// constructor with $db as database connection
 	public function __construct($db){
 		$this->conn = $db;
 	}
-
 
 
 	// used for paging products
@@ -36,28 +33,22 @@ class InflacionMensual{
 
 		// query to insert record
 		$query = "INSERT INTO " . $this->table_name . "
-			      SET mes=:mes, anio=:anio, valor=:valor, tipoIndicador=:tipoIndicador";
+				SET anio=:anio, mes=:mes,  valor=:valor";
 
 		// prepare query
 		$stmt = $this->conn->prepare($query);
 
 		// sanitize
-		
-		$this->mes=htmlspecialchars(strip_tags($this->mes));
-		$this->anio=htmlspecialchars(strip_tags($this->anio));
-		$this->valor=htmlspecialchars(strip_tags($this->valor));
-		
-		$this->tipoIndicador=htmlspecialchars(strip_tags($this->tipoIndicador));
-		
+		$this->anio=strip_tags($this->anio);
+		$this->mes=strip_tags($this->mes);
+		$this->valor=strip_tags($this->valor);
+				
 
 		// bind values
-		
-		$stmt->bindParam(":mes", $this->mes);
 		$stmt->bindParam(":anio", $this->anio);
+		$stmt->bindParam(":mes", $this->mes);
 		$stmt->bindParam(":valor", $this->valor);
-		
-		$stmt->bindParam(":tipoIndicador", $this->tipoIndicador);
-		
+				
 		// execute query
 		if($stmt->execute()){
 			return true;
@@ -74,8 +65,7 @@ class InflacionMensual{
 	public function read(){
 
 		// select all query
-		$query = "SELECT p.id, p.mes, p.anio, p.valor, p.tipoIndicador, c.indicador  FROM " . $this->table_name . " p 
-                    LEFT JOIN 	tipo_indicador c ON p.id = c.id 		";
+		$query = "SELECT p.id, p.anio,p.mes, p.fecha, p.valor FROM " . $this->table_name . " p  ";
 
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
@@ -90,9 +80,8 @@ class InflacionMensual{
 	function readOne(){
 
 		// query to read single record
-		$query = "SELECT p.id, p.mes, p.anio, p.valor, p.tipoIndicador, c.indicador
-				FROM " . $this->table_name . "   p
-				LEFT JOIN 	tipo_indicador c ON p.id = c.id 
+		$query = "SELECT p.id, p.anio, p.mes, p.fecha, p.valor
+				FROM " . $this->table_name . "  p
 				WHERE id = ?
 				LIMIT 0,1";
 
@@ -109,48 +98,24 @@ class InflacionMensual{
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		// set values to object properties
-		
-		$this->id = $row['id'];
-		$this->mes = $row['mes'];
 		$this->anio = $row['anio'];
+		$this->mes = $row['mes'];
+		$this->fecha = $row['fecha'];
 		$this->valor = $row['valor'];
-		$this->tipoIndicador = $row['tipoIndicador'];
 		
 	}
 
-	// read products with pagination
-	public function readPaging($from_record_num, $records_per_page){
-
-		// select query
-		$query = "SELECT p.id, p.mes, p.anio, p.valor, p.tipoIndicador,  c.indicador
-				FROM  " . $this->table_name . " p 	
-				LEFT JOIN 	tipo_indicador c ON p.id = c.id 			
-				LIMIT ?, ?";
-
-		// prepare query statement
-		$stmt = $this->conn->prepare( $query );
-
-		// bind variable values
-		$stmt->bindParam(1, $from_record_num, PDO::PARAM_INT);
-		$stmt->bindParam(2, $records_per_page, PDO::PARAM_INT);
-
-		// execute query
-		$stmt->execute();
-
-		// return values from database
-		return $stmt;
-	}
 
 	// update the product
 	function update(){
 
 		// update query
 		$query = "UPDATE " . $this->table_name . "
-				SET				
-					mes = :mes,
+				SET
 					anio = :anio,
-					valor = :valor,
-					tipoIndicador = :tipoIndicador				
+					mes = :mes,
+					fecha = now(),
+					valor = :valor
 				WHERE
 					id = :id";
 
@@ -158,21 +123,16 @@ class InflacionMensual{
 		$stmt = $this->conn->prepare($query);
 
 		// sanitize
-		
-		$this->mes=htmlspecialchars(strip_tags($this->mes));
 		$this->anio=htmlspecialchars(strip_tags($this->anio));
+		$this->mes=htmlspecialchars(strip_tags($this->mes));
 		$this->valor=htmlspecialchars(strip_tags($this->valor));
-		$this->tipoIndicador=htmlspecialchars(strip_tags($this->tipoIndicador));
-		
 		$this->id=htmlspecialchars(strip_tags($this->id));
 
 		// bind new values
-		
-		$stmt->bindParam(':mes', $this->price);
 		$stmt->bindParam(':anio', $this->anio);
+		$stmt->bindParam(':mes', $this->mes);
 		$stmt->bindParam(':valor', $this->valor);
-		$stmt->bindParam(':tipoIndicador', $this->tipoIndicador);
-		
+				
 		$stmt->bindParam(':id', $this->id);
 
 		// execute the query
@@ -223,7 +183,6 @@ class InflacionMensual{
 			return false;
 		}
 	}
-
 
 }
 ?>

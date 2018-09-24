@@ -8,29 +8,32 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 // include database and object file
 include_once '../../config/database.php';
-include_once '../../objects/InflacionMensual.php';
+include_once '../../objects/Inflacion.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare product object
-$objeto = new InflacionMensual($db);
+// prepare obj object
+$obj = new Inflacion($db);
 
+// get obj id
 $data = json_decode(file_get_contents("php://input"));
 
-// delete the product
-if($objeto->deleteSelected($data->ids)){
-	// records were deleted
+// set obj id to be deleted
+$obj->id = $data->id;
+
+// delete the obj
+if($obj->delete()){
 	echo '{';
-		echo '"message": "Registros eliminados exitosamente."';
+		echo '"message": "Registro eliminado."';
 	echo '}';
 }
 
-// if unable to delete the product
+// if unable to delete the obj
 else{
 	echo '{';
-		echo '"message": "Se presento un problema en la eliminación de los registros solicitados."';
+		echo '"message": "No se pudo eliminar el registro."';
 	echo '}';
 }
 ?>
