@@ -8,32 +8,33 @@ header('Content-Type: application/json');
 
 // include database and object files
 include_once '../../config/database.php';
-include_once '../../objects/InflacionMensual.php';
+include_once '../../objects/Inpc.php';
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
-// prepare product object
-$objeto = new InflacionMensual($db);
+// prepare obj object
+$obj = new Inpc($db);
 
 // set ID property of record to read
-$objeto->id = isset($_GET['id']) ? $_GET['id'] : die();
+$obj->id = isset($_GET['id']) ? $_GET['id'] : die();
 
-// read the details of product to be edited
-$objeto->readOne();
+// read the details of obj to be edited
+$obj->readOne();
 
 // create array
-$objeto_arr = array(
-	"id" =>  $product->id,
-	"mes" => $product->mes,
-	"anio" => $product->anio,
-	"valor" => $product->valor,
-	"tipoIndicador" => $product->tipoIndicador,
-	
-
-);
+//$obj_arr = array(
+//			"id" => $id,
+//			"anio" => $anio,
+//			"valor" => $valor,
+//			"fecha" => $fecha
+//			
+//);
 
 // make it json format
-print_r(json_encode($objeto_arr));
+//print_r(json_encode($obj_arr));
+
+print_r(json_encode($obj));
+
 ?>

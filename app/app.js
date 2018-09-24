@@ -351,6 +351,36 @@
                 templateUrl: "app/Uma/umaEdit.html",
                 controller: "umaEditCtrl"
             })
+            .state("inpc", {
+                url: "/inpc",
+                templateUrl: "app/Inpc/inpcGet.html",
+                controller: "inpcGetCtrl"
+            })
+            .state("inpcAdd", {
+                url: "/inpcAdd",
+                templateUrl: "app/Inpc/inpcAdd.html",
+                controller: "inpcAddCtrl"
+            })
+            .state("inpcEdit", {
+                url: "/inpcEdit/:id",
+                templateUrl: "app/Inpc/inpcEdit.html",
+                controller: "inpcEditCtrl"
+            })
+            .state("inflacion", {
+                url: "/inflacion",
+                templateUrl: "app/Inflacion/inflacionGet.html",
+                controller: "inflacionGetCtrl"
+            })
+            .state("inflacionAdd", {
+                url: "/inflacionAdd",
+                templateUrl: "app/Inflacion/inflacionAdd.html",
+                controller: "inflacionAddCtrl"
+            })
+            .state("inflacionEdit", {
+                url: "/inflacionEdit/:id",
+                templateUrl: "app/Inflacion/inflacionEdit.html",
+                controller: "inflacionEditCtrl"
+            })
 
     };
 }());
