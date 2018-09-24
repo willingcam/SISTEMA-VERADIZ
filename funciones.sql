@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2018 a las 03:00:30
--- Versión del servidor: 10.1.32-MariaDB
--- Versión de PHP: 7.2.5
+-- Tiempo de generación: 22-09-2018 a las 21:59:17
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -81,7 +81,10 @@ INSERT INTO `funciones` (`id`, `descripcion`, `url_referencia`, `nivel`, `secuen
 (58, 'dolar', 'veradiz.html#/dolar', 0, 41, 1, NULL, NULL, 'dolar', NULL, 'dolar', 1),
 (59, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 2),
 (60, 'dolar', 'veradiz.html#/dolar', 0, 41, 1, NULL, NULL, 'dolar', NULL, 'dolar', 3),
-(61, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 5);
+(61, 'dolar', 'veradiz.html#/dolar', 0, 42, 1, NULL, NULL, 'dolar', NULL, 'dolar', 5),
+(62, 'UMA', 'veradiz.html#/uma', 0, 39, 1, NULL, NULL, 'uma', NULL, 'uma', 1),
+(63, 'Editar UMA', 'veradiz.html#/umaEdit/', 0, 37, 1, NULL, NULL, 'Editar UMA', NULL, 'umaEdit', 1),
+(64, 'Agregar UMA', 'veradiz.html#/umaAdd/', 0, 40, 1, NULL, NULL, 'Agregar UMA', NULL, 'umaAdd', 1);
 
 --
 -- Índices para tablas volcadas
@@ -101,7 +104,7 @@ ALTER TABLE `funciones`
 -- AUTO_INCREMENT de la tabla `funciones`
 --
 ALTER TABLE `funciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
