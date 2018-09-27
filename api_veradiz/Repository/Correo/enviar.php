@@ -6,59 +6,48 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// get database connection
-include_once '../config/database.php';
-
-// instantiate obj object
-include_once '../objects/Clientes.php';
-
-$database = new Database();
-$db = $database->getConnection();
-
-$obj = new Clientes($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
+
 // make sure data is not empty
-if(
-	isset($data->cliente) &&
-	isset($data->descripcion) &&
-	isset($data->servicios_contratados) &&
-	isset($data->nombre_contacto) &&
-	isset($data->correo) &&
-	isset($data->telefono) &&
-	isset($data->extension) &&
-	isset($data->celular) &&
-	isset($data->imagen) &&
-	isset($data->ubicacion_imagen)
- ){
+//if(
+//	isset($data->nombre) &&
+//	isset($data->correo) &&
+//	isset($data->telefono) &&
+//	isset($data->asunto) &&
+//	isset($data->comentarios) 
+// ){
 
 	// set obj property values
-	$obj->cliente = $data->cliente;
-	$obj->descripcion = $data->descripcion;
-	$obj->servicios_contratados = $data->servicios_contratados;
-	$obj->nombre_contacto = $data->nombre_contacto;
-	$obj->correo = $data->correo;
-	$obj->telefono = $data->telefono;
-    $obj->extension = $data->extension;
-	$obj->celular = $data->celular;
-	$obj->imagen = $data->imagen;
-	$obj->ubicacion_imagen = $data->ubicacion_imagen;
-
+//	$nombre = $data->nombre;
+//	$correo = $data->correo;
+//	$telefono = $data->telefono;
+//	$asunto = $data->asunto;
+//	$comentarios = $data->comentarios;
 	
-	// create the obj
-	if($obj->create()){
+	$to = "jingramramirez@gmail.com";
+	$subject = "subject";
+	$message = "comentarios";
+	
+
+	$header = "MIME-Version: 1.0" . "\r\n";
+	$header .= "Content-type:text/html;charset=utf-8" . "\r\n";
+	$header .= "From: mail@mail.com" . "\r\n";
+
+	$retval = mail($to,$subject,$message,$header);
+
+
+	if($retval){
 		echo '{';
-			echo '"message": "El registro fue creado exitosamente."';
+			echo '"message": "El mensaje fue enviado exitosamente."';
+		echo '}';
+	}else{
+		echo '{';
+			echo '"message": "Su mensaje no pudo ser enviado."';
 		echo '}';
 	}
 
-	// if unable to create the obj, tell the user
-	else{
-		echo '{';
-			echo '"message": "Se presento un problema al registrar la informacion."';
-		echo '}';
-	}
-}
+//}
 ?>

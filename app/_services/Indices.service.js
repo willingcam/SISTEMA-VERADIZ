@@ -18,8 +18,6 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
         var API = globalGet.get("api");
         var service = {};
 
-
-
         service.getCetes28 = function(registro) {
             var endPoint = API + "Repository/Indices/readHCetes28.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
             return $http.get(endPoint);
@@ -29,7 +27,6 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             var endPoint = API + "Repository/Indices/readHCetes91.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
             return $http.get(endPoint);
         }
-
 
         service.getTIIE28 = function(registro) {
             var endPoint = API + "Repository/Indices/readHTIIE28.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
@@ -45,6 +42,71 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             var endPoint = API + "Repository/Indices/readHDolar.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
             return $http.get(endPoint);
         }
+
+        service.getInflacionAcumulada = function(registro) {
+
+            var endPoint = API + "Repository/Indices/readHInflacion.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaDolar = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHDolar.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaCetes = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHCetes28.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaTIIE28 = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHTIIE28.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaTIIE91 = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHTIIE91.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaUDIS = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHUDIS.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.getUdis = function(registro) {
+            var endPoint = API + "Repository/Indices/readHUdis.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+
+        service.getTasaObjetivo = function(registro) {
+            var endPoint = API + "Repository/Indices/readHTasaObjetivo.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.getCPP = function(registro) {
+
+            var endPoint = API + "Repository/Indices/readHCPP.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+
+        service.AddCPP = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Indices/cppSave.php'
+            });
+        };
+
+        service.AddCPP = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Indices/cppSave.php'
+            });
+        };
 
         return service;
 

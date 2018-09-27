@@ -16,6 +16,7 @@ $db = $database->getConnection();
 
 // initialize object
 $obj = new Funciones($db);
+
 // set ID property of record to read
 $obj->rol = isset($_GET['rol']) ? $_GET['rol'] : die();
 
@@ -45,8 +46,6 @@ if($num>0){
 			"nombre" => $nombre,
 			"url_referencia" => $url_referencia,
 			"campo_state" => $campo_state
-			
-		
 		);
 
 		array_push($obj_arr["records"], $obj_item);

@@ -53,6 +53,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
             formData.append("file", adjunto.files[0]);
 
             var URL = API + "Repository/Upload/upload.php";
+
             $http.post(URL, formData, {
                     transformRequest: angular.identity,
                     headers: { 'Content-Type': undefined, 'Process-Data': false }
@@ -76,14 +77,18 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 toastr.error("Debe ingresar el titulo de la noticia");
                 return false;
             }
+
             if ($scope.registro.subtitulo == '' || $scope.registro.subtitulo == null || $scope.registro.subtitulo == undefined) {
                 toastr.error("Debe ingresar el subtitulo de la noticia");
                 return false;
             }
+
             if ($scope.registro.descripcion == '' || $scope.registro.descripcion == null || $scope.registro.descripcion == undefined) {
                 toastr.error("Debe ingresar el contenido de la noticia");
                 return false;
             }
+
+
             NoticiasService.Update($scope.registro).then(
                 function(result) {
                     $state.go("noticias");
@@ -98,7 +103,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
         $scope.regresar = function() {
             $state.go("noticias");
-    }
+        }
 
     }
 })();

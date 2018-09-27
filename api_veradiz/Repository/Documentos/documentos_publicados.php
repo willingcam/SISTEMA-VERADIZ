@@ -51,7 +51,6 @@ if($num>0){
 			"informedescargado"=> $informedescargado,
 			"fechadescarga"=> $fechadescarga,
 			"fechapublicacion"=> $fechaRegistro
-
 			
 		);
 

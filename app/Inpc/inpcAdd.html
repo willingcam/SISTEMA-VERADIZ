@@ -4,8 +4,8 @@
         <div class="title_left">
             <ol class="breadcrumb miga">
                 <li>
-                    <i class="disabled fa fa-info-circle"></i>
-                    <a>UMA/Registro</a>
+                    <i class="disabled fa fa-shopping-cart"></i>
+                    <a>INPC/Registro</a>
                 </li>
             </ol>
         </div>
@@ -17,24 +17,21 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Agregar información de INPC</h2>
+                    <h2>Agregar información actual del INPC</h2>
 
                     <div class="clearfix"></div>
                 </div>
 
                 <div class="x_content sin-desborde">
                     <form role="form" name="SalarioForm" class="form-horizontal">
-                        {{registro}}
+
                         <div class="form-group">
                             <label class="control-label col-md-2 col-sm-2 col-xs-2">
                                 Año
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <input type="text" class="form-control" id="anio" ng-model="anio" ng-required="true"
-                                    name="Anio" placeholder="Año del INPC">
-                                <span class="error" ng-show="SalarioForm.Anio.$dirty && !SalarioForm.Anio.$valid">Debe
-                                    ingresar el año</span>
+                                <select ng-model="anioActual" ng-options="anio.id as anio.descripcion for anio in anios" ng-init="anioActual" class="form-control"></select>
                             </div>
                         </div>
 
@@ -44,10 +41,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <input type="text" class="form-control" id="mes" ng-model="mes" ng-required="true"
-                                    name="mes" placeholder="Mes del INPC">
-                                <span class="error" ng-show="SalarioForm.Anio.$dirty && !SalarioForm.Anio.$valid">Debe
-                                    ingresar el mes</span>
+                                <select ng-model="mesActual" ng-options="mes.id as mes.descripcion for mes in meses" ng-init="mesActual" class="form-control"></select>
                             </div>
                         </div>
 
@@ -57,8 +51,7 @@
                                 <span class="required">*</span>
                             </label>
                             <div class="col-md-10 col-sm-10 col-xs-10">
-                                <input type="text" class="form-control" id="valor" name="valor" ng-model="valor"
-                                    ng-required="true" placeholder="Ingresar un valor">
+                                <input type="text" class="form-control" id="valor" name="valor" ng-model="valor" ng-required="true" placeholder="Ingresar un valor">
                                 <span class="error" ng-show="SalarioForm.valor.$dirty && !SalarioForm.valor.$valid">Debe
                                     ingresar un valor </span>
                             </div>

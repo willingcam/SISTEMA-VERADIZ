@@ -62,12 +62,10 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             var endPoint = API + "Repository/Documentos/read_client_docs_pub_tipo.php?id=" + registro.id + "&tipo=" + registro.tipo;
             return $http.get(endPoint);
         }
-        
         service.getDocumentosClienteYaPublicadosTotalNuevos = function(id) {
             var endPoint = API + "Repository/Documentos/read_client_docs_total_news.php?id=" + id;
             return $http.get(endPoint);
         }
-
 
         service.getAllMyDocumentsByClient = function(registro) {
             var endPoint = API + "Repository/Documentos/read_documents_client.php?empleado=" + registro.empleado + "&cliente=" + registro.cliente;
@@ -152,6 +150,23 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http.get(endPoint);
         }
 
+
+        service.AddTipoDocumento = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/TipoDocumento/create.php'
+            });
+        };
+
+
+        service.UpdateTipoDocumento = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/TipoDocumento/update.php'
+            });
+        };
 
         return service;
 

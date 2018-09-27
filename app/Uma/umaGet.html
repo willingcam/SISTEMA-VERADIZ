@@ -4,7 +4,7 @@
     <div class="page-title">
         <div class="title_left">
             <ol class="breadcrumb miga">
-                <li><i class="disabled fa fa-info"></i> <a>UMA</a></li>
+                <li><i class="disabled fa fa-dollar"></i> <a>Unidad de medida y actualización</a></li>
             </ol>
         </div>
     </div>
@@ -29,19 +29,27 @@
                         <thead>
                             <tr>
                                 <th data-priority="1" class="text-center">Año</th>
-                                <th data-priority="2" class="text-center">Valor</th>
+                                <th data-priority="2" class="text-center">Diario</th>
+                                <th data-priority="2" class="text-center">Mensual</th>
+                                <th data-priority="2" class="text-center">Anual</th>
                                 <th data-priority="3" class="text-center">opciones</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="obj in salariosGet">
-                                
-                                <td style="width: 40%">
-                                        {{obj.anio}}
+
+                                <td style="width: 20%">
+                                    {{obj.anio}}
                                 </td>
-                                <td style="width: 45%">
-                                    {{obj.valor}}
+                                <td style="width: 20%">
+                                    $ {{obj.valor}}
+                                </td>
+                                <td style="width: 20%">
+                                    $ {{obj.mes}}
+                                </td>
+                                <td style="width: 20%">
+                                    $ {{obj.year}}
                                 </td>
                                 <td class="text-center" style="width: 15%;">
                                     <a class="btn btn-warning" ui-sref="umaEdit({id:obj.id})" title="Editar">
@@ -51,12 +59,12 @@
                                         <i class="glyphicon glyphicon-trash"></i>
                                     </a>
                                 </td>
-                                                                
+
                             </tr>
                         </tbody>
                     </table>
-                    
-                    
+
+
 
                 </div>
             </div>

@@ -38,51 +38,51 @@
                     <div ng-if="documentosGet!=null">
 
                         <table id="documentosGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-column-defs="dtColumnDefs" dt-options="dtOptions">
-                        <thead>
-                            <tr>
-                                <th data-priority="1">Documento</th>
-                                <th data-priority="2">Tipo de documento</th>
-                                <th data-priority="3">Cliente</th>
-                                <th data-priority="4">Estado</th>
-                                <th data-priority="5">Opciones</th>
+                            <thead>
+                                <tr>
+                                    <th data-priority="1">Documento</th>
+                                    <th data-priority="2">Tipo de documento</th>
+                                    <th data-priority="3">Cliente</th>
+                                    <th data-priority="4">Estado</th>
+                                    <th data-priority="5">Opciones</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="obj in documentosGet">
-                                <td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="obj in documentosGet">
+                                    <td>
                                     <a ng-click="descargaDoc(obj.urlCompleta);"  target="_blank">{{obj.descripcion}}</a>
-                                    <br>Creado por: {{obj.nombreCreador}}
-                                    <br>Fecha: {{obj.fechaRegistro}}
-                                </td>
+                                        <br>Creado por: {{obj.nombreCreador}}
+                                        <br>Fecha: {{obj.fechaRegistro}}
+                                    </td>
 
-                                <td>
-                                    {{obj.tipodocumento}}
-                                </td>
+                                    <td>
+                                        {{obj.tipodocumento}}
+                                    </td>
 
-                                <td>
-                                    {{obj.cliente}}
-                                </td>
+                                    <td>
+                                        {{obj.cliente}}
+                                    </td>
 
-                                <td>
-                                    {{obj.estado}}
-                                </td>
+                                    <td>
+                                        {{obj.estado}}
+                                    </td>
 
-                                <td class="text-center">
+                                    <td class="text-center">
 
 
-                                    <a class="btn btn-warning" ui-sref="informessEdit({id:obj.id})" title="Editar">
-                                        <i class="glyphicon glyphicon-pencil"></i>
-                                    </a>
+                                        <a class="btn btn-warning" ui-sref="informessEdit({id:obj.id})" title="Editar">
+                                            <i class="glyphicon glyphicon-pencil"></i>
+                                        </a>
 
-                                    <a class="btn btn-danger" ng-really-click="eliminarDocumento(obj.id, obj.archivo);" ng-really-message="¿Está seguro que desea eliminar este documento?"  title=" Eliminar ">
-                                        <i class="glyphicon glyphicon-trash "></i>
-                                    </a>
+                                        <a class="btn btn-danger" ng-really-click="eliminarDocumento(obj.id, obj.archivo);" ng-really-message="¿Está seguro que desea eliminar este documento?" title=" Eliminar ">
+                                            <i class="glyphicon glyphicon-trash "></i>
+                                        </a>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
 

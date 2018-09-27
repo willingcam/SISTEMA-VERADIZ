@@ -11,12 +11,14 @@ include_once '../../config/database.php';
 include_once '../../objects/Usuarios.php';
 
 include_once '../../objects/Funciones.php';
+
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
 
 // prepare product object
 $obj = new Usuarios($db);
+
 // initialize object
 $objFunciones = new Funciones($db);
 
@@ -34,15 +36,22 @@ $obj->claveacceso = isset($_GET['claveacceso']) ? $_GET['claveacceso'] : die();
     print_r(json_encode("null"));
  }else{
 // make it json format
+
+
+
 // set ID property of record to read
 $objFunciones->rol = $obj->rolID;
+
 $stmt = $objFunciones->read();
 $num  = $stmt->rowCount();
+
 	// functions array
 $obj_arr=array();
 $obj_arr["records"]=array();
+
 // check if more than 0 record found
 if($num>0){
+
 	// retrieve our table contents
 	// fetch() is faster than fetchAll()
 	// http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
@@ -51,6 +60,7 @@ if($num>0){
 		// this will make $row['name'] to
 		// just $name only
 		extract($row);
+
 		$obj_item=array(
 			"id" => $id,
 			"rol" => $rol,
@@ -58,9 +68,14 @@ if($num>0){
 			"url_referencia" => $url_referencia,
 			"campo_state" => $campo_state
 		);
+
 		array_push($obj_arr["records"], $obj_item);
 	}
+
+
 }
+
+
 if($num > 0){
  $datosUsuario = (object)['usuario' => $obj, 'funciones' => $obj_arr["records"] ];
  print_r(json_encode($datosUsuario));
@@ -68,6 +83,13 @@ if($num > 0){
   $datosUsuario = (object)['usuario' => $obj, 'funciones' => 'null' ];
   print_r(json_encode($datosUsuario));
 }
+
+
+
+
+
+
+   
  }
 
 

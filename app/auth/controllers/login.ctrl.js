@@ -31,7 +31,6 @@
                         $scope.message = "Usuario y clave de acceso no validos";
                         toastr.error($scope.message);
                     } else {
-
                         MenuService.setRolDescripcion(response.usuario.rol);
                         MenuService.setRolId(response.usuario.rolID);
                         MenuService.setMenu(response.funciones);
@@ -55,6 +54,14 @@
                     toastr.error($scope.message);
                 });
 
+
+
         };
+
+
+
+
+
+
     }
 }());

@@ -38,71 +38,67 @@
                     <div class="x_content sin-desborde">
 
                         <div ng-if="documentosGet != null">
-                        <table id="documentosGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
-                            <thead>
-                                <tr>
-                                    <th data-priority="1">Documento</th>
-                                    <th data-priority="2">Tipo de documento</th>
-                                    <th data-priority="3">Cliente</th>
-                                    <th data-priority="4">Estado</th>
+                            <table id="documentosGet" dt-instance="dtInstance" class="table table-hover table-striped table-condensed dt-responsive" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions">
+                                <thead>
+                                    <tr>
+                                        <th data-priority="1">Documento</th>
+                                        <th data-priority="2">Tipo de documento</th>
+                                        <th data-priority="3">Cliente</th>
+                                        <th data-priority="4">Estado</th>
                                     <th data-priority="5">Fecha registro</th>
                                     <th data-priority="6">Opciones</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="obj in documentosGet">
-                                    <td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="obj in documentosGet">
+                                        <td>
                                         <a ng-click="descargaDoc(obj.urlCompleta);"  target="_blank">{{obj.descripcion}}</a>
-                                    </td>
+                                        </td>
 
-                                    <td>
-                                        {{obj.tipodocumento}}
-                                    </td>
+                                        <td>
+                                            {{obj.tipodocumento}}
+                                        </td>
 
-                                    <td>
-                                        {{obj.cliente}}
-                                    </td>
+                                        <td>
+                                            {{obj.cliente}}
+                                        </td>
 
-                                    <td>
-                                        {{obj.estado}}
+                                        <td>
+                                            {{obj.estado}}
                                     </td>
-                                                                        
                                     <td>
                                         {{obj.fechaRegistro}}
-                                    </td>
+                                        </td>
 
-                                    <td class="text-center">
+                                        <td class="text-center">
 
-                                        <div ng-if="obj.estadoId == 1 ">
-                                            <a class="btn btn-warning" ui-sref="informesEdit({id:obj.id})" title="Editar">
-                                                <i class="glyphicon glyphicon-pencil"></i>
-                                            </a>
+                                            <div ng-if="obj.estadoId == 1 ">
+                                                <a class="btn btn-warning" ui-sref="informesEdit({id:obj.id})" title="Editar">
+                                                    <i class="glyphicon glyphicon-pencil"></i>
+                                                </a>
 
-                                            <a class="btn btn-danger" ng-really-click="eliminarDocumento(obj.id, obj.archivo);" ng-really-message="¿Está seguro que desea eliminar este documento?" title=" Eliminar ">
-                                                <i class="glyphicon glyphicon-trash "></i>
-                                            </a>
-                                        </div>
+                                                <a class="btn btn-danger" ng-really-click="eliminarDocumento(obj.id, obj.archivo);" ng-really-message="¿Está seguro que desea eliminar este documento?" title=" Eliminar ">
+                                                    <i class="glyphicon glyphicon-trash "></i>
+                                                </a>
+                                            </div>
 
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                    </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <div ng-if="documentosGet == null"> No hay información disponible </div>
+                    </div>
                 </div>
             </div>
-            </div>
-
         </div>
 
         <div class="row ">
             <div class="col-xs-12 ">
                 <button type="button " ui-sref="informesAdd " class="btn btn-success ">
-                <span class="glyphicon glyphicon-plus "></span> Agregar
-            </button>
+                    <span class="glyphicon glyphicon-plus "></span> Agregar
+                </button>
             </div>
         </div>
     </div>

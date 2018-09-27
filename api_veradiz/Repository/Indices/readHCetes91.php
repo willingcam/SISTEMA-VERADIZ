@@ -46,7 +46,7 @@ if($num>0){
 
 		$tipo_item=array(
 			"valor" => $valor,
-			"fecha" => $fecha,
+			"fecha" =>   date("d/m/Y", strtotime($fecha)), 
 			"difDiaAnterior"=>$difDiaAnterior
 		);
 

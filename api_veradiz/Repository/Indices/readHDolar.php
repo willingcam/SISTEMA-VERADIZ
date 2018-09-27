@@ -38,6 +38,7 @@ if($num>0){
 	// retrieve our table contents
 	// fetch() is faster than fetchAll()
 	// http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
+	$cont = 1;
 	while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 		// extract row
 		// this will make $row['name'] to
@@ -45,12 +46,14 @@ if($num>0){
 		extract($row);
 
 		$tipo_item=array(
-			"valor" => $valor,
-			"fecha" => $fecha,
+			"id"  => $cont,
+ 			"valor" => $valor,
+			"fecha" =>    date("d/m/Y", strtotime($fecha)), 
 			"difDiaAnterior"=>$difDiaAnterior
 		);
 
 		array_push($tipo_arr["records"], $tipo_item);
+		$cont= $cont +1;
 	}
 
 	echo json_encode($tipo_arr);

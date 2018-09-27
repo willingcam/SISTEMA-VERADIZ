@@ -33,53 +33,89 @@
     <link rel="stylesheet" type="text/css" href="css/blog_style.css" />
 
     <script src="Scripts/jquery-2.1.0.min.js"></script>
+
     <script src="Scripts/jquery-ui-1.11.3.min.js"></script>
+
     <script src="js/modernizr.custom.js"></script>
+
+
+
     <script src="Scripts/angular.js"></script>
     <script src="Scripts/angular-ui-router.js"></script>
     <script src="Scripts/i18n/angular-locale_es-mx.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--Archivos de configuracion inicial en nuestra aplicacion-->
     <script src="app/IND/moduloprincipal.js"></script>
     <script src="app/IND/app.js"></script>
+
+    <!--Servicios-->
     <script src="app/IND/services/indicadoresService.js"></script>
+
+    <!--Nuevos controladores que se vayan agregando-->
     <script src="app/IND/controller/IndicesGetCtrl.js"></script>
+
+
+
+
+
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="65" data-ng-controller="IndicesGetCtrl">
 
 
     <div class="container">
+
         <button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
 
         <div id="theSidebar" class="sidebar">
-
             <div><a class="fa fa-reply" href="index.html" title="Home"><span> Regresar</span></a></div>
             <h1> <span>Blog <span> Veradiz</h1>
-        
-        
-                </div>
-                <div id="theGrid" class="main">
+        </div>
+
+
+        <div id="theGrid" class="main">
             <div class="grid" ng-show="IsVisibleGrid">
-                        <header class="top-bar">
-                            <h2 class="top-bar__headline">últimas publicaciones</h2>
-        </header>
+                <header class="top-bar">
+                    <h2 class="top-bar__headline">últimas publicaciones</h2>
+                </header>
+
 
                 <a class="grid__item" href="#" ng-click="seccion(obj)" ng-repeat="obj in TodasNoticias">
+
                     <h2 class="title title--preview">{{obj.titulo}}</h2>
-            <div class="loader"></div>
+                    <div class="loader"></div>
                     <span class="category">{{obj.subtitulo}}</span>
-            <div class="meta meta--preview">
-                <img class="meta__avatar" src="img/testimonial/1.png" alt=" " />
-                <span class="meta__date">
+                <div class="meta meta--preview">
+                    <img class="meta__avatar" src="img/testimonial/1.png" alt=" " />
+                    <span class="meta__date">
                             <i class="fa fa-calendar-o"></i> {{obj.fecha}}
                       </span>
-            </div>
-        </a>
+                </div>
+                </a>
 
         </div>
+
+
+
         <div ng-show="IsVisibleContenido">
+
+
             <a href="#" class="close-button" ng-click="cierra()">
                 <i class="fa fa-close"></i>
+
             </a>
+
             <div>
                 <article class="content__item">
                     <span class="category category--full">{{tituloSel}}</span>
@@ -92,20 +128,14 @@
                     <p> {{descripcionSel}} </p>
                 </article>
 
-
             </div>
 
 
 
-    </div>
-    </div>
-
+        </div>
     </div>
 
-    <!-- JQuery -->
-
-    <!-- Bootstrap JS -->
-
+    </div>
 
 </body>
 

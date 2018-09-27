@@ -15,6 +15,7 @@
         }
 
 
+
         $scope.$parent.rolDescripcion = MenuService.getRolDescripcion();
 
 

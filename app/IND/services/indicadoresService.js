@@ -62,17 +62,22 @@
             var endpoint = HOST + "Noticias/read.php";
             return $http.get(endpoint);
         };
+
+
         service.getUltimasNoticias = function(registro) {
             var endpoint = HOST + "Noticias/read_last.php";
             return $http.get(endpoint);
         };
+
+
         service.enviarCorreo = function(registro) {
             return $http({
                 method: 'POST',
                 data: registro,
-                url: API + 'Repository/Correo/enviar.php'
+                url: HOST + 'Correo/enviar.php'
             });
         };
+
         return service;
     }
 })();
