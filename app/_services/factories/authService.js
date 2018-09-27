@@ -65,6 +65,8 @@
                         _authentication.nombreCompleto = response.data.usuario.nombre;
                         _authentication.foto = response.data.usuario.ubicacion_imagen + response.data.usuario.imagen;
                         _authentication.tipoUsuarioId = response.data.usuario.tipoUsuarioId;
+
+
                     } else {
                         var authData = { token: null, id: null, nombreCompleto: null, userName: null, ultimologin: null };
                         localStorageService.set('authorizationData', authData);
@@ -85,6 +87,8 @@
 
                 });
         };
+
+
 
         var _logOut = function() {
 
@@ -142,6 +146,7 @@
         //service.saveRegistration = _saveRegistration;
         service.login = _login;
         service.logOut = _logOut;
+
         service.fillAuthData = _fillAuthData;
         service.authentication = _authentication;
         service.verificaSesion = _verificaSesion;

@@ -89,7 +89,22 @@ class TIIE28{
 			return $stmt;
 		}
 
+		public function  graficaTIIE28(){
 
+			// select all query
+					  $query = " SELECT  a.fecha, a.valor  
+					   FROM tiie28 a 
+					   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+					   order by a.fecha asc ";
+			
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+			
+			// execute query
+			$stmt->execute();
+			
+			return $stmt;
+        }  
 				
 
 

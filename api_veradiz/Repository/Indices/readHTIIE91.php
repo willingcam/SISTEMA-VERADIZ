@@ -35,7 +35,7 @@ if($num>0){
 	// products array
 	$tipo_arr=array();
 	$tipo_arr["records"]=array();
-
+	$cont = 1;
 	// retrieve our table contents
 	// fetch() is faster than fetchAll()
 	// http://stackoverflow.com/questions/2770630/pdofetchall-vs-pdofetch-in-a-loop
@@ -46,12 +46,14 @@ if($num>0){
 		extract($row);
 
 		$tipo_item=array(
+			"id"  => $cont,
 			"valor" => $valor,
-			"fecha" => $fecha,
+			"fecha" =>   date("d/m/Y", strtotime($fecha)), 
 			"difDiaAnterior"=>$difDiaAnterior
 		);
 
 		array_push($tipo_arr["records"], $tipo_item);
+		$cont= $cont +1;
 	}
 
 	echo json_encode($tipo_arr);

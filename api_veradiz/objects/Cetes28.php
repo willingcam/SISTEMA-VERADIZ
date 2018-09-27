@@ -89,6 +89,23 @@ class Cetes28{
 		}
 
 
+				// read products
+		public function  graficaCetes28(){
+
+					// select all query
+							  $query = " SELECT  a.fecha, a.valor  
+							   FROM cetes28 a 
+							   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+							   order by a.fecha asc ";
+					
+					// prepare query statement
+					$stmt = $this->conn->prepare($query);
+					
+					// execute query
+					$stmt->execute();
+					
+					return $stmt;
+		}
 
 
 

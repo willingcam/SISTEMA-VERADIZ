@@ -20,6 +20,9 @@ class Calendario{
 	public $fechaInicio;
 	public $fechaTermino;
 
+	public $valor;
+	public $fecha;
+
 	// constructor with $db as database connection
 	public function __construct($db){
 		$this->conn = $db;
@@ -68,6 +71,41 @@ class Calendario{
 			return false;
 		}
 	}
+
+
+
+// create product
+function registroDolar(){
+
+	// query to insert record
+	$query = "INSERT INTO  dolar SET valor=:valor, fecha=:fecha";
+
+	// prepare query
+	$stmt = $this->conn->prepare($query);
+
+	// sanitize
+
+	$this->valor=strip_tags($this->valor);
+	$this->fecha=strip_tags($this->fecha);
+
+	// bind values
+	$stmt->bindParam(":valor", $this->valor);
+	$stmt->bindParam(":fecha", $this->fecha);
+				
+	// execute query
+	if($stmt->execute()){
+		return true;
+	}else{
+		echo "<pre>";
+			print_r($stmt->errorInfo());
+		echo "</pre>";
+
+		return false;
+	}
+}
+
+
+
 
 	// used when filling up the update product form
 	function readOne(){
@@ -183,30 +221,49 @@ class Calendario{
 			
 		}
 
-				// read products
-				public function readPeriodoDolar(){
+		// read products
+		public function readPeriodoDolar(){
 
-					// select all query
+			// select all query
 			   			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
 					   FROM dolar a 
 					   LEFT JOIN dolar b on a.fecha=b.fecha+1
 					   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
 			           order by a.fecha desc ";
 			
+			// prepare query statement
+			$stmt = $this->conn->prepare($query);
+			
+		
+			// bind id of product to be updated
+			$stmt->bindValue(':start', $this->fechaInicio);
+			$stmt->bindValue(':end', $this->fechaTermino);
+		
+			// execute query
+			$stmt->execute();
+			
+			return $stmt;
+		}
+                        
+                             
+                   
+		// read products
+		public function  graficaPeriodoDolar(){
+
+					// select all query
+							  $query = " SELECT  a.fecha, a.valor  
+							   FROM dolar a 
+							   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
+							   order by a.fecha asc ";
+					
 					// prepare query statement
 					$stmt = $this->conn->prepare($query);
-			
-		
-					// bind id of product to be updated
-					$stmt->bindValue(':start', $this->fechaInicio);
-					$stmt->bindValue(':end', $this->fechaTermino);
-		
+					
 					// execute query
 					$stmt->execute();
-			
+					
 					return $stmt;
-				}
-
+		}
 
 }
 ?>

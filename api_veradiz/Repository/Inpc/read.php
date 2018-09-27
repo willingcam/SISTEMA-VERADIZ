@@ -33,11 +33,61 @@ if($num>0){
 		// this will make $row['name'] to
 		// just $name only
 		extract($row);
+		$nombremes = "";  
+		
+       if($mes == 1){
+		$nombremes = "Enero";  
+	   }
+
+	   if($mes == 2){
+		$nombremes = "Febrero";  
+	   }
+
+	   if($mes == 3){
+		$nombremes = "Marzo";  
+	   }
+
+
+	   if($mes == 4){
+		$nombremes = "Abril";  
+	   }
+
+	   if($mes == 5){
+		$nombremes = "Mayo";  
+	   }
+
+	   if($mes == 6){
+		$nombremes = "Junio";  
+	   }
+
+	   if($mes == 7){
+		$nombremes = "Julio";  
+	   }
+
+	   if($mes == 8){
+		$nombremes = "Agosto";  
+	   }
+
+       if($mes == 9){
+		$nombremes = "Septiembre";  
+	   }
+
+	   if($mes == 10){
+		$nombremes = "Octubre";  
+	   }
+
+	   if($mes == 11){
+		$nombremes = "Noviembre";  
+	   }
+
+	   if($mes == 12){
+		$nombremes = "Diciembre";  
+	   }
 
 		$obj_item=array(
 			"id" => $id,
 			"anio" => $anio,
-			"mes" => $mes,
+			"mes" => $nombremes ,
 			"valor" => $valor,
 			"fecha" => $fecha
 		);

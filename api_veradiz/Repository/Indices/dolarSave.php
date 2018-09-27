@@ -49,6 +49,8 @@ $objCalendario->mes = $month;
 $objCalendario->dia = $day;
 
 
+
+
 // query products
 $stmt = $objCalendario->readLastRecordsValid();;
 $num = $stmt->rowCount();
@@ -92,10 +94,16 @@ if($dayWeekGet == 0 || $dayWeekGet == 6 ||  $ESFESTIVO == 1){
 	$objCalendario->anio = $year;
 	$objCalendario->mes = $month;
 	$objCalendario->dia = $day;
-	$objCalendario->fix =  $objBanxico->getExRateDet();;
+	$objCalendario->fix =  $objBanxico->getExRateDet();
 	$objCalendario->dof = "";
 	$objCalendario->pago = $PAGOS;
     $objCalendario->update();
+
+
+	$objCalendario->fecha = date("Y-m-d");
+	$objCalendario->valor =  $objBanxico->getExRateDet();
+
+	$objCalendario->registroDolar();
 
 }
 	

@@ -72,7 +72,6 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 
         $scope.descargaDoc = function(url){
             //window.open(url,"_blank");
-           
            // var link=document.createElement('a');
            // link.href = url;
            // link.download = url.substr(url.lastIndexOf('/') + 1);
@@ -85,7 +84,6 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             a.click();
             document.body.removeChild(a);
         }
-
         $scope.clientes();
         $scope.documentos();
 

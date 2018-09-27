@@ -67,7 +67,6 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             a.click();
             document.body.removeChild(a);
         }
-
         $scope.eliminarDocumento = function(id, archivo) {
             var registro = {
                 "id": id,

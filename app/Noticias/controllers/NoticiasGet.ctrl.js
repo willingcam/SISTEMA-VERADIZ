@@ -24,6 +24,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                     $scope.loading = false;
                     $scope.noticiasGet = result.data.records;
 
+
                 },
                 function(err) {
                     toastr.error("No se han podido cargar la información de noticias que tenemos registradas");

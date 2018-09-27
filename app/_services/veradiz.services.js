@@ -61,6 +61,7 @@
         })
         .filter('trim', function() {
             return function(value) {
+
                 try {
                     if (typeof type !== "string") {
                         return value.trim();
@@ -72,6 +73,7 @@
         })
         .filter('substr', function() {
             return function(text, value) {
+
                 var res = text;
                 try {
                     if (text != "" && text != undefined && text.length > value) {
@@ -139,6 +141,7 @@
                             return camel(y1);
                         }
                     } catch (e) { return y1; }
+
                     if (y1 == y2) {
                         return camel(y1);
                     } else {
@@ -151,10 +154,12 @@
             return function(input, index) {
                 try {
                     var upper = input.substring(index, index + 1).toUpperCase();
+
                     var prefix = input.substring(0, index);
                     var sufix = input.substring(index + 1);
                     var r = prefix + upper + sufix;
                     return r;
+
                 } catch (e) { return input }
             }
         })
@@ -167,6 +172,7 @@
                     if (fechaRaw == undefined || fechaRaw == null || fechaRaw == "") {
                         return msg;
                     }
+
                     var date = new Date(fechaRaw);
                     var fecha = new Date();
                     fecha.setFullYear(1900);
@@ -176,6 +182,7 @@
                         return date;
                     }
                     return msg;
+
                 } catch (e) { return date }
             }
         })
@@ -192,6 +199,7 @@
                         return msg;
                     }
                     return msg;
+
                 } catch (e) { return date }
             }
         })
@@ -210,7 +218,9 @@
                 if (condition) {
                     input = replace(input, input.length - 1, "a");
                 }
+
                 return input;
+
             }
         })
         .filter('getFloor', function() {
@@ -226,7 +236,12 @@
                     var str = input + "";
                     str = str.replace(sufix, "");
                     return str;
+
                 } catch (e) { return input }
             }
         })
+
+
+
+
 })();

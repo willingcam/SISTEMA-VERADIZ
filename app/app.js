@@ -5,19 +5,23 @@
             'LocalStorageModule',
             'ui.bootstrap',
             'datatables',
+            'datatables.directive',
+            'datatables.columnfilter',
+            'datatables.buttons',
             'veradiz.services',
             'blockUI',
             'Globales',
             'directivas',
             'ngSanitize',
             'textAngular',
-            "chart.js",
+            'ngLocale',
+            "chart.js"
         ])
         // DEFINICION DEL SERVIDOR 
         //local               
         .constant('HOST', "localhost")
         //servidor
-        //.constant('HOST', 'www.veradiz.com.mx')
+        // .constant('HOST', 'www.veradiz.com.mx')
         .config(function($httpProvider) {
             $httpProvider.interceptors.push('authInterceptorService');
         })
@@ -61,9 +65,11 @@
                 MenuService.removeGlobalID();
                 MenuService.removeGlobalID2();
             }
+
             $rootScope.anioActual = anioActual();
             $rootScope.datePicker = getRangoDeFechaDefault();
             $rootScope.datePicker06 = RangoDeFechaStart(); //default 2006
+
             $rootScope.$on('$locationChangeStart', function(event) {
 
             });
@@ -318,7 +324,7 @@
             })
             .state("clientesinformesTipo", {
                 url: "/clientesinformesTipo/:id",
-                templateUrl: "app/Informescli/informescliGetTipo.html",
+                templateUrl: "app/Informescli/informesCliGetTipo.html",
                 controller: "informesCliGetTipoCtrl"
             })
             .state("cetes", {
@@ -335,6 +341,21 @@
                 url: "/dolar",
                 templateUrl: "app/Indicadores/Dolar.html",
                 controller: "DolarGetCtrl"
+            })
+            .state("udis", {
+                url: "/udis",
+                templateUrl: "app/Indicadores/Udis.html",
+                controller: "UdisGetCtrl"
+            })
+            .state("cpp", {
+                url: "/cpp",
+                templateUrl: "app/Indicadores/CPP.html",
+                controller: "CPPGetCtrl"
+            })
+            .state("cppAdd", {
+                url: "/cppAdd",
+                templateUrl: "app/Indicadores/cppAdd.html",
+                controller: "cppAddCtrl"
             })
             .state("uma", {
                 url: "/uma",
@@ -366,20 +387,10 @@
                 templateUrl: "app/Inpc/inpcEdit.html",
                 controller: "inpcEditCtrl"
             })
-            .state("inflacion", {
-                url: "/inflacion",
-                templateUrl: "app/Inflacion/inflacionGet.html",
-                controller: "inflacionGetCtrl"
-            })
-            .state("inflacionAdd", {
-                url: "/inflacionAdd",
-                templateUrl: "app/Inflacion/inflacionAdd.html",
-                controller: "inflacionAddCtrl"
-            })
-            .state("inflacionEdit", {
-                url: "/inflacionEdit/:id",
-                templateUrl: "app/Inflacion/inflacionEdit.html",
-                controller: "inflacionEditCtrl"
+            .state("inflacionh", {
+                url: "/inflacionh",
+                templateUrl: "app/Indicadores/inflacion.html",
+                controller: "InflacionGetCtrl"
             })
 
     };

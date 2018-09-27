@@ -91,17 +91,24 @@ class Noticias{
 		return $stmt;
 	}
 	
+
 	// read products
 	public function read_last(){
+
 		// select all query
 		$query = "SELECT P.titulo, P.subtitulo, P.descripcion, P.url_referencia, P.fecha, Q.imagen, Q.ubicacion_imagen, Q.nombre  FROM noticia P
 		          LEFT JOIN usuarios Q  ON P.autorId = Q.id WHERE  P.activo = 1 order by P.fecha desc LIMIT 0,2";
+
 		// prepare query statement
 		$stmt = $this->conn->prepare($query);
+
 		// execute query
 		$stmt->execute();
+
 		return $stmt;
 	}
+
+
 	// used when filling up the update product form
 	function readOne(){
 
@@ -170,10 +177,11 @@ class Noticias{
 		// update query
 		$query = " UPDATE " . $this->table_name . "
 				SET
-					titulo = :titulo,
-					descripcion = :descripcion,
-					subtitulo = :subtitulo,
-					url_referencia = :url_referencia										
+					titulo=:titulo,
+					descripcion=:descripcion,
+					subtitulo=:subtitulo,
+					url_referencia=:url_referencia	
+													
 				WHERE
 					id = :id";
 

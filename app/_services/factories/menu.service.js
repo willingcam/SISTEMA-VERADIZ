@@ -76,8 +76,6 @@
 
 
 
-
-
         var _setVariable = function(nombrevar, valor) {
             localStorageService.set(nombrevar, valor);
         }
@@ -150,10 +148,8 @@
             return $http.get(endpoint);
         };
 
-
         service.setMenu = _setMenu;
         service.getMenu = _getMenu;
-
 
 
 

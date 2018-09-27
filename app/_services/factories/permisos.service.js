@@ -14,9 +14,6 @@
 
         service.verificaPermisos = function(siguiente) {
 
-
-
-
             var q = $q.defer();
             try {
                 var next = siguiente.replace(':id', '').replace(':seccion', '').replace('/:id2', '');
@@ -40,6 +37,8 @@
                 q.resolve(permitir);
             }
             return q.promise;
+
+
         };
 
         return service;

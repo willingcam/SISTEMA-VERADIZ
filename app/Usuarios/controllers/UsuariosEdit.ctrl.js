@@ -164,9 +164,11 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
 
         $scope.getRoles();
 
+
         $scope.regresar = function() {
             $state.go("usuarios");
         }
+
     }
 
 })();

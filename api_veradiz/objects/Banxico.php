@@ -76,9 +76,6 @@ class Banxico{
         }
 	}
 
-
-    
-
 	//Tasa objetivo
 	public function getTasasObjetivo()
 	{

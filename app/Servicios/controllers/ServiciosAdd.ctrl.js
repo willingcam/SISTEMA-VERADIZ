@@ -65,8 +65,6 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 'activo': 1
             }
 
-
-
             ServiciosService.Add(registro).then(
                 function(result) {
                     toastr.success("Servicio registrado exitosamente");
@@ -84,5 +82,4 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
 
     }
-
 })();

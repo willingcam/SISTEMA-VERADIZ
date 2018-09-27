@@ -108,6 +108,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         $scope.regresar = function() {
             $state.go("clientes");
         }
+
     }
 
 })();

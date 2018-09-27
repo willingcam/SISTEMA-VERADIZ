@@ -241,28 +241,20 @@ public function read_documents_by_author(){
 		}
 
 			public function read_client_docs_pub_tipo(){
-
 				$query = "SELECT Q.clienteId, Q.descripcion, Q.archivo, Q.ubicacion, Q.id, R.tipo_documento,R.id AS idTipo,Q.fechaRegistro,Q.informedescargado FROM Documentos Q 
 				 LEFT JOIN tipo_documento  R  ON R.id = Q.tipoDocumentoId
 				 WHERE  Q.clienteId = ? AND Q.estadodocumento = 3 AND R.id= ? ORDER BY Q.fechaRegistro desc,Q.informedescargado asc ";
-		
 					// prepare query statement
 					$stmt = $this->conn->prepare($query);
-		
 					// bind id of product to be updated
 					$stmt->bindParam(1, $this->id);
 					$stmt->bindParam(2, $this->tipo);
-			
 					// execute query
 					$stmt->execute();
-			
 					return $stmt;
 		}
-		
-
 			// Total por tipo de informes, existentes y nuevos
 			public function read_client_docs_total_news(){
-
 				$query = "SELECT D1.id,D1.tipo_documento,IFNULL(G1.contadorExiste,0) AS contadorExiste,IFNULL(G2.contadorNuevos,0) AS contadorNuevos FROM tipo_documento D1
 						LEFT JOIN
 						(
@@ -285,21 +277,15 @@ public function read_documents_by_author(){
 						group by 1,2
 						) G2
 						ON D1.id=G2.id";
-		
 					// prepare query statement
 					$stmt = $this->conn->prepare($query);
-		
 					// bind id of product to be updated
 					$stmt->bindParam(1, $this->id);
 					$stmt->bindParam(2, $this->id);
-			
 					// execute query
 					$stmt->execute();
-			
 					return $stmt;
 		}
-
-		
 
 
 			// read products

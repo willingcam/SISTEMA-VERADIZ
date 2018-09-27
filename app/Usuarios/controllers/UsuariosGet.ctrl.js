@@ -33,6 +33,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
         }
 
 
+
+
+
         $scope.updateState = function(obj) {
             obj.activo = 0;
 

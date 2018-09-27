@@ -51,7 +51,6 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             a.click();
             document.body.removeChild(a);
         }
-
         $scope.filtraDocumentos = function() {
 
             var registro = {
@@ -98,14 +97,16 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             $scope.paramsDT.displayStart = 0;
         }
 
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('stateSaveCallback', stateSaveCallback)
             .withOption('stateLoadCallback', stateLoadCallback)
             .withOption('displayStart', $scope.paramsDT.displayStart);
+
         function stateSaveCallback(settings, data) {
             var stado = $('#documentosGet').DataTable().state();
             localStorage.setItem('documentosGet' + window.location.pathname, JSON.stringify(stado))
-    }
+        }
 
         function stateLoadCallback(settings) {
             if ($scope.paramsDT != null) {
@@ -113,6 +114,8 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             } else {
                 return JSON.parse(localStorage.getItem('documentosGet' + window.location.pathname))
             }
+
         }
+
     }
 })();

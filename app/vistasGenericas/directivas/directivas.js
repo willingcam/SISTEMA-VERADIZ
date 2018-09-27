@@ -99,6 +99,7 @@
                             var modalHtml = '<div class="modal-header">Confirmaci&oacuten<button type="button" class="close" ng-click="cancel()" data-dissmiss="modal">x</button></div><div class="modal-body">' + msj + '</div>';
                             modalHtml += '<div class="modal-body"><button class="btn btn-success" ng-click="ok()">Confirmar</button><button class="btn btn-primary" ng-click="cancel()">Cancelar</button></div>';
 
+
                             //abre el modal preguntando al usuario su confirmacion 
                             var modalInstance = $uibModal.open({
                                 template: modalHtml,
