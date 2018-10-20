@@ -8,9 +8,11 @@ class Inpc{
 	// object properties
 	public $id;
 	public $anio;
+	public $mes;
 	public $fecha;
 	public $valor;
-	
+
+
 	// constructor with $db as database connection
 	public function __construct($db){
 		$this->conn = $db;
@@ -42,8 +44,7 @@ class Inpc{
 		$this->anio=strip_tags($this->anio);
 		$this->mes=strip_tags($this->mes);
 		$this->valor=strip_tags($this->valor);
-				
-
+			
 		// bind values
 		$stmt->bindParam(":anio", $this->anio);
 		$stmt->bindParam(":mes", $this->mes);
@@ -105,6 +106,36 @@ class Inpc{
 		
 	}
 
+		// used when filling up the update product form
+	function readValorMesAnterior(){
+
+			// query to read single record
+			$query = "SELECT p.id, p.anio, p.mes, p.fecha, p.valor
+					FROM " . $this->table_name . "  p
+					WHERE p.anio  = ? AND  p.mes = ?
+					LIMIT 0,1";
+	
+			// prepare query statement
+			$stmt = $this->conn->prepare( $query );
+	
+			// bind id of product to be updated
+			$stmt->bindParam(1, $this->anio);
+			$stmt->bindParam(2, $this->mes);
+	
+			// execute query
+			$stmt->execute();
+	
+			// get retrieved row
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+	
+			// set values to object properties
+			$this->id = $row['id'];
+			$this->anio = $row['anio'];
+			$this->mes = $row['mes'];
+			$this->fecha = $row['fecha'];
+			$this->valor = $row['valor'];
+			
+	}
 
 	// update the product
 	function update(){

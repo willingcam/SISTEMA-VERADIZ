@@ -224,6 +224,7 @@
     <script src="app/Indicadores/controllers/UdisGet.ctrl.js"></script>
     <script src="app/Indicadores/controllers/CPPGet.ctrl.js"></script>
     <script src="app/Indicadores/controllers/cppAdd.ctrl.js"></script>
+    <script src="app/Indicadores/controllers/cppEdit.ctrl.js"></script>
 
     <script src="app/Indicadores/controllers/InflacionGet.ctrl.js"></script>
 
@@ -235,6 +236,8 @@
     <!-- morris.js -->
     <script src="../vendors/raphael/raphael.min.js"></script>
     <script src="../vendors/morris.js/morris.min.js"></script>
+
+
     <!-- endinject -->
 
 
@@ -247,10 +250,10 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view bg-gradient-menuv">
                     <div class="navbar nav_title bg-gradient-menuv" style="border: 0;">
-
-
-                        <a href="" class="site_title"> <span>VERADIZ</span></a>
-
+                        <br/>
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a class="site_title"><img src="img/logo-nube.jpg" alt="VERADIZ" /> <span>&nbsp;&nbsp;VERADIZ</span></a>
+                        </div>
 
                     </div>
                     <div class="clearfix"></div>
@@ -302,16 +305,7 @@
                                                 <i class="fa fa-newspaper-o"> </i>&nbsp;Noticias/Eventos
                                             </a>
                                         </li>
-                                        <li>
-                                            <a ng-href="veradiz.html#/uma">
-                                                <i class="fa  fa fa-dollar"> </i>&nbsp;UMA
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a ng-href="veradiz.html#/inpc">
-                                                <i class="fa fa-shopping-cart"> </i>&nbsp;INPC
-                                            </a>
-                                        </li>
+
 
                                     </ul>
                                 </li>
@@ -348,10 +342,12 @@
                                         <i class="fa fa-line-chart"></i> Indicadores financieros <span class="fa fa-chevron-down"></span>
                                     </a>
                                     <ul class="nav child_menu">
+                                        <li><a href="veradiz.html#/uma">UMA</a></li>
+                                        <li><a href="veradiz.html#/inpc">INPC</a></li>
                                         <li><a href="veradiz.html#/cetes">Cetes</a></li>
                                         <li><a href="veradiz.html#/tiie">TIIE</a></li>
-                                        <li><a href="veradiz.html#/dolar">Dolar</a></li>
-                                        <li><a href="veradiz.html#/udis">Udis</a></li>
+                                        <li><a href="veradiz.html#/dolar">Dólar</a></li>
+                                        <li><a href="veradiz.html#/udis">UDIS</a></li>
                                         <li><a href="veradiz.html#/cpp">CPP</a></li>
                                         <li><a href="veradiz.html#/inflacionh">Inflación</a></li>
                                     </ul>

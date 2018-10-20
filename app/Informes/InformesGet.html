@@ -45,15 +45,15 @@
                                         <th data-priority="2">Tipo de documento</th>
                                         <th data-priority="3">Cliente</th>
                                         <th data-priority="4">Estado</th>
-                                    <th data-priority="5">Fecha registro</th>
-                                    <th data-priority="6">Opciones</th>
+                                        <th data-priority="5">Fecha registro</th>
+                                        <th data-priority="6">Opciones</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="obj in documentosGet">
                                         <td>
-                                        <a ng-click="descargaDoc(obj.urlCompleta);"  target="_blank">{{obj.descripcion}}</a>
+                                            <a ng-click="descargaDoc(obj.urlCompleta);" target="_blank">{{obj.descripcion}}</a>
                                         </td>
 
                                         <td>
@@ -66,9 +66,9 @@
 
                                         <td>
                                             {{obj.estado}}
-                                    </td>
-                                    <td>
-                                        {{obj.fechaRegistro}}
+                                        </td>
+                                        <td>
+                                            {{obj.fechaRegistro}}
                                         </td>
 
                                         <td class="text-center">

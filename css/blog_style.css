@@ -36,7 +36,6 @@ body {
 }
 
 a {
-    outline: none;
     color: #81c483;
     text-decoration: none;
 }
@@ -44,7 +43,6 @@ a {
 a:hover,
 a:focus {
     color: #333;
-    outline: none;
 }
 
 button:focus {
@@ -661,7 +659,6 @@ button:focus {
     width: 100%;
     overflow: hidden;
     padding: 20px 60px 60px 60px;
-    pointer-events: none;
     font-size: 0.85em;
 }
 
@@ -709,7 +706,7 @@ button:focus {
 }
 
 .meta--full .meta__author::before {
-    content: 'by ';
+    content: 'Por ';
     font-weight: normal;
 }
 

@@ -102,6 +102,7 @@ if($dayWeekGet == 0 || $dayWeekGet == 6 ||  $ESFESTIVO == 1){
 
 	$objCalendario->fecha = date("Y-m-d");
 	$objCalendario->valor =  $objBanxico->getExRateDet();
+	$objCalendario->obligaciones = $PAGOS;
 
 	$objCalendario->registroDolar();
 

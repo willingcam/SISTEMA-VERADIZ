@@ -45,7 +45,7 @@ if($num>0){
 		extract($row);
 
 		$tipo_item=array(
-			"id"  => $cont,
+			"id"  => $id,
 			"valor" => $valor,
 			"fecha" =>   date("d/m/Y", strtotime($fecha))	
 		);

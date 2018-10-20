@@ -2,7 +2,7 @@
 
 
     <div class="col-lg-12">
-        <h1 class="page-header"> <i class="disabled fa fa-line-chart"></i> Dolar</h1>
+        <h1 class="page-header"> <i class="disabled fa fa-line-chart"></i> Dólar</h1>
     </div>
 
 
@@ -18,7 +18,7 @@
                                 <i class="fa fa-bar-chart-o fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="medium">Valor actual</div>
+                                <div class="medium">Dólar FIX</div>
                                 <div>$ {{primerValor}} </div>
                                 <!-- <p>{{ documentosGetContadores[7].nuevos }}</p> -->
                             </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="medium">Valor del día anterior</div>
-                                <div>{{anteriorValor}} %</div>
+                                <div>${{anteriorValor}}</div>
                                 <!-- <p>{{ documentosGetContadores[7].nuevos }}</p> -->
                             </div>
                         </div>
@@ -54,13 +54,13 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="medium">Diferencia</div>
-                                <div>( {{primerDiferencia}}%)</div>
+                                <div>$( {{primerDiferencia}})</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="panel panel-yellow" ng-if="classPositiva == '0'">
+                <div class="panel panel-red" ng-if="classPositiva == '0'">
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="col-xs-9 text-right">
                                 <div class="medium">Diferencia</div>
-                                <div>( {{primerDiferencia}}%)</div>
+                                <div>$ ( {{primerDiferencia}})</div>
                             </div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
     <div class="x_panel">
         <div class="row">
             <div class="col-sm-4 text-center">
-                <h3>Datos historicos </h3>
+                <h3>Datos históricos </h3>
             </div>
             <div class="col-sm-8">
                 <div class="row">
@@ -143,19 +143,191 @@
                                 <button type="button" class="btn btn-success" ng-click="update()">
                                     <i class="glyphicon glyphicon-saved"></i> Actualizar información
                                 </button>
+
+                                <button type="button" class="btn btn-success" ng-click="graficarResultados()">
+                                    <i class="glyphicon glyphicon-saved"></i> Graficar resultados
+                                </button>
+
                             </div>
                         </div>
                     </div>
 
                 </div>
             </div>
+            Fuente de información Banxico <br/> Datos históricos a partir de 1992
 
         </div>
     </div>
 
 
 
+    <div class="x_panel">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <h3>Comparativo de fechas </h3>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
 
+                    <div class="col-sm-12">
+                        <div class="row">
+
+
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">
+                                                Inicio
+                                    </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" ng-minlength="8" name="fechaiC1" maxlength="10" ng-init="open=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechaiC1" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechaiC1.$dirty &&  ValidForm.fechaiC1.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open=true;"><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3 ">
+                                                T&eacute;rmino
+                                            </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" name="fechatC1" ng-minlength="8" ng-init="open2=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechatC1" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open2" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechatC1.$dirty &&  ValidForm.fechatC1.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open2=true; "><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">
+                                                Inicio
+                                    </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" ng-minlength="8" name="fechaiC2" maxlength="10" ng-init="open=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechaiC2" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechaiC2.$dirty &&  ValidForm.fechaiC2.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open=true; "><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3 ">
+                                                T&eacute;rmino
+                                            </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" name="fechat" ng-minlength="8" ng-init="open2=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechatC2" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open2" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechatC2.$dirty &&  ValidForm.fechatC2.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open2=true; "><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+
+
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3">
+                                                Inicio
+                                    </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" ng-minlength="8" name="fechaiC3" maxlength="10" ng-init="open=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechaiC3" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechaiC3.$dirty &&  ValidForm.fechaiC3.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open=true; "><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-3 ">
+                                                T&eacute;rmino
+                                            </label>
+                                    <div class=" col-sm-9 ">
+                                        <div class="row">
+                                            <div class="col-xs-10">
+                                                <input placeholder="dd/mm/yyyy" name="fechatC3" ng-minlength="8" ng-init="open2=false" type="text" show-button-bar="false" popup-placement="bottom" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="fechatC3" value="{{ date | date: 'dd/MM/yyyy' }}"
+                                                    is-open="open2" ng-required="true" close-text="Close" />
+                                                <span ng-show="ValidForm.fechatC3.$dirty &&  ValidForm.fechatC3.$invalid" class="error">Formato inválido 'dd/MM/yyyy'</span>
+                                            </div>
+                                            <div class="col-xs-2">
+                                                <button type="button" class="btn btn-success" ng-click="open2=true; "><i  class="glyphicon glyphicon-calendar"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="button" class="btn btn-success" ng-click="graficaComparativa()">
+                                    <i class="glyphicon glyphicon-saved"></i> Gráficar comparativo de fechas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            Fuente de información Banxico <br/> Datos históricos a partir de 1992
+
+        </div>
+    </div>
 
 
 
@@ -169,17 +341,17 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Fecha</th>
-                        <th>Valor</th>
-
+                        <th style=" text-align: center;">Fecha</th>
+                        <th style=" text-align: center;">Fix</th>
+                        <th style=" text-align: center;">Tipo de cambio para solventar obligaciones denominadas en dólares</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="odd gradeX" ng-repeat="obj in resultadosBusqueda">
                         <td style=" width: 1px;">{{obj.id}}</td>
-                        <td style="width: 49%"> {{obj.fecha}}</td>
-                        <td style="width: 49%">$ {{obj.valor}}</td>
-
+                        <td style="width: 33%;  text-align: center;"> {{obj.fecha}}</td>
+                        <td style="width: 33%;  text-align: center;">$ {{obj.valor}}</td>
+                        <td style="width: 33%;  text-align: center;">$ {{obj.obligacion}}</td>
 
                     </tr>
 
@@ -190,12 +362,18 @@
     </div>
 
 
-    <div class="x_panel">
+    <div class="x_panel" ng-if="mostrarGaficaResultados">
         <div class="row">
-            <canvas id="myChart" style="height: 360px; width: 10%;"></canvas>
+            <canvas id="myChart" style="height: 360px; width: 80%;"></canvas>
         </div>
     </div>
 
+
+    <div class="x_panel" ng-if="mostrarGaficaComparativa">
+        <div class="row">
+            <canvas id="myChart2" style="height: 360px; width: 80%;"></canvas>
+        </div>
+    </div>
 
 
 </div>

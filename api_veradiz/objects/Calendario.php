@@ -16,6 +16,8 @@ class Calendario{
     public $pago;
     public $bitacora;
 	public $creado;
+
+	public $obligaciones;
 	
 	public $fechaInicio;
 	public $fechaTermino;
@@ -78,7 +80,7 @@ class Calendario{
 function registroDolar(){
 
 	// query to insert record
-	$query = "INSERT INTO  dolar SET valor=:valor, fecha=:fecha";
+	$query = "INSERT INTO  dolar SET valor=:valor, fecha=:fecha, obligacion=:obligaciones";
 
 	// prepare query
 	$stmt = $this->conn->prepare($query);
@@ -87,11 +89,13 @@ function registroDolar(){
 
 	$this->valor=strip_tags($this->valor);
 	$this->fecha=strip_tags($this->fecha);
+	$this->obligaciones=strip_tags($this->obligaciones);
 
 	// bind values
 	$stmt->bindParam(":valor", $this->valor);
 	$stmt->bindParam(":fecha", $this->fecha);
-				
+	$stmt->bindParam(":obligaciones",$this->obligaciones);		
+
 	// execute query
 	if($stmt->execute()){
 		return true;
@@ -225,9 +229,8 @@ function registroDolar(){
 		public function readPeriodoDolar(){
 
 			// select all query
-			   			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
+			   			$query = " SELECT a.id, a.fecha, a.valor , a.obligacion
 					   FROM dolar a 
-					   LEFT JOIN dolar b on a.fecha=b.fecha+1
 					   WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'
 			           order by a.fecha desc ";
 			

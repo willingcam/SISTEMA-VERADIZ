@@ -40,9 +40,10 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
             function(result) {
                 // $scope.registro = result.data.records;
 
-                console.log(result.data);
 
                 $scope.registro = result.data;
+
+
                 $scope.clienteActual = $scope.registro.clienteId;
                 $scope.clienteSeleccionado = $scope.registro.clienteId;
 
@@ -138,6 +139,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 'tipoDocumentoId': $scope.documentoSeleccionado,
                 "fechaRegistro": $scope.registro.fechaRegistro,
                 "autorId": AuthService.authentication.idUsuario,
+                "comentarios": $scope.registro.comentarios,
                 "id": $scope.registro.id
             }
 
@@ -204,9 +206,11 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         $scope.RegresaEdicion = function() {
             var registro = {
                 "estadodocumento": 1,
+                "comentarios": $scope.registro.comentarios,
                 "id": $scope.registro.id
             }
-            InformesService.cambioestado(registro).then(
+
+            InformesService.regresaaempleado(registro).then(
                 function(result) {
                     toastr.success("Informe regresado a edición  ");
                     $state.go("informess");

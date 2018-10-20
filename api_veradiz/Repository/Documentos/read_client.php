@@ -50,7 +50,8 @@ if($num>0){
 			"autorId" => $autorId,
 			"estado" => $estado,
 			"cliente" => $nombre,
-			"tipodocumento" => $tipo_documento
+			"tipodocumento" => $tipo_documento,
+			"estadoId" => $estadodocumento
 		);
 
 		array_push($obj_arr["records"], $obj_item);

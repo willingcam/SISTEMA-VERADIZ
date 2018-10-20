@@ -38,8 +38,8 @@ if($num>0){
 			"id" => $id,
 			"anio" => $anio,
 			"valor" => $valor,
-			"mes" => ($valor * 30.4),
-			"year" => (($valor * 30.4) * 12),
+			"mes" =>  number_format(($valor * 30.4),2),              
+			"year" =>  number_format( (($valor * 30.4) * 12),2),      
 			"fecha" => $fecha
 		);
 

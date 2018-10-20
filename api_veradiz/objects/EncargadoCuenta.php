@@ -59,8 +59,8 @@ class EncargadoCuenta{
 	// read products
 	public function read_asignations(){
 
-		// select all query
-		$query = " SELECT P.id, P.idcliente, P.idempleado, Q.nombre FROM encargado_cuenta  P LEFT JOIN  usuarios Q ON Q.id = P.idempleado  WHERE idcliente = ?";
+		// select all query0 
+		$query = " SELECT P.id, P.idcliente, P.idempleado, Q.nombre FROM encargado_cuenta  P LEFT JOIN  usuarios Q ON Q.id = P.idempleado  WHERE idcliente = ? AND estatus = 1 ";
 
 		// prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -75,7 +75,34 @@ class EncargadoCuenta{
 	}
 	
 
+	function desactiva(){
 
+		// update query
+		$query = "UPDATE
+					" . $this->table_name . "
+				SET
+					estatus = 0			
+				WHERE
+					id = :id";
+
+		// prepare query statement
+		$stmt = $this->conn->prepare($query);
+
+		
+		
+		$this->id=htmlspecialchars(strip_tags($this->id));
+
+		// bind new values
+	
+		$stmt->bindParam(':id', $this->id);
+
+		// execute the query
+		if($stmt->execute()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 	
 

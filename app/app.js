@@ -45,10 +45,10 @@
             DTDefaultOptions.setOption('searchHighlight', 'true');
             DTDefaultOptions.setOption('bStateSave', true);
             DTDefaultOptions.setOption('aLengthMenu', [
-                [5, 10, 20, 50],
-                [5, 10, 20, 50]
+                [20, 50, 100, 200],
+                [20, 50, 100, 200]
             ]);
-            DTDefaultOptions.setDisplayLength(5);
+            DTDefaultOptions.setDisplayLength(20);
         })
         .run(function($rootScope, MenuService, $window, $location, AuthService, PermisosService, $state) {
 
@@ -356,6 +356,11 @@
                 url: "/cppAdd",
                 templateUrl: "app/Indicadores/cppAdd.html",
                 controller: "cppAddCtrl"
+            })
+            .state("cppEdit", {
+                url: "/cppEdit/:id",
+                templateUrl: "app/Indicadores/cppEdit.html",
+                controller: "cppEditCtrl"
             })
             .state("uma", {
                 url: "/uma",

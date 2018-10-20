@@ -31,6 +31,7 @@ $obj->ubicacion = $data->ubicacion;
 $obj->tipoAccesoId = $data->tipoAccesoId;
 $obj->clienteId = $data->clienteId;
 $obj->tipoDocumentoId = $data->tipoDocumentoId;
+$obj->comentarios = $data->comentarios;
 
 // update the obj
 if($obj->update()){

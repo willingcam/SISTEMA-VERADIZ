@@ -17,7 +17,12 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         var id = $stateParams.id;
 
 
-        $scope.anioActual = (new Date()).getFullYear().toString();
+        $scope.valorAnioAnterior = {};
+        $scope.valorMesAnterior = {};
+        $scope.valorMismoMesAAnterior = {};
+
+
+
         $scope.anios = [{
                 "id": "2016",
                 "descripcion": "2016"
@@ -82,7 +87,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         ];
 
 
-        $scope.mesActual = ((new Date()).getMonth() + 1).toString();
+
         $scope.meses = [{
                 "id": "1",
                 "descripcion": "Enero"
@@ -148,17 +153,92 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 $scope.registro.mesActual = $scope.registro.mes.toString();
                 $scope.registro.valor = Number($scope.registro.valor);
 
+
+
+                $scope.aactual = parseInt($scope.registro.anioActual);
+                $scope.aanterior = $scope.aactual - 1;
+
+                var mesHoy1 = parseInt($scope.registro.mesActual);
+                $scope.manterior = mesHoy1 - 1;
+
+
+                var reg2 = {
+                    'anio': $scope.aanterior,
+                    'mes': "12"
+                };
+
+                InpcService.getValorAnterior(reg2).then(
+                    function(result) {
+                        $scope.valorAnioAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+
+
+                if (mesHoy1 == 1) {
+
+                    var reg1 = {
+                        'anio': $scope.aanterior,
+                        'mes': "12"
+                    };
+
+                    InpcService.getValorAnterior(reg1).then(
+                        function(result) {
+                            $scope.valorMesAnterior = result.data;
+
+                        },
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+
+                } else {
+
+                    var reg1 = {
+                        'anio': $scope.aactual,
+                        'mes': $scope.manterior
+                    };
+
+                    InpcService.getValorAnterior(reg1).then(
+                        function(result) {
+                            $scope.valorMesAnterior = result.data;
+
+                        },
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+                }
+
+                var reg3 = {
+                    'anio': $scope.aanterior,
+                    'mes': mesHoy1
+                };
+
+                InpcService.getValorAnterior(reg3).then(
+                    function(result) {
+                        $scope.valorMismoMesAAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+
+
             },
             function(err) {
                 console.error(err);
             }
         );
 
-
         //Guardar Cambios
         $scope.update = function() {
 
-            if ($scope.registro.anio == '' || $scope.registro.anio == null || $scope.registro.anio == undefined) {
+            if ($scope.registro.anioActual == '' || $scope.registro.anioActual == null || $scope.registro.anioActual == undefined) {
                 toastr.error("Debe ingresar año del salario mínimo");
                 return false;
             }
@@ -167,8 +247,36 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 return false;
             }
 
+
+            $scope.registro.anio = $scope.registro.anioActual;
+            $scope.registro.mes = $scope.registro.mesActual;
+
             InpcService.Update($scope.registro).then(
                 function(result) {
+
+
+                    var inflacionMensual = ((parseFloat($scope.registro.valor) / parseFloat($scope.valorMesAnterior.valor)) - 1) * 100;
+                    var acumuladaAunual = ((parseFloat($scope.registro.valor) / parseFloat($scope.valorAnioAnterior.valor)) - 1) * 100;
+                    var acumuladavsanioanterior = ((parseFloat($scope.registro.valor) / parseFloat($scope.valorMismoMesAAnterior.valor)) - 1) * 100;
+
+
+                    var registroAcumulada = {
+                        'anio': $scope.registro.anioActual,
+                        'mes': $scope.registro.mesActual,
+                        'inflacionMensual': inflacionMensual.toFixed(2),
+                        'acumuladaAunual': acumuladaAunual.toFixed(2),
+                        'acumuladavsanioanterior': acumuladavsanioanterior.toFixed(2)
+                    }
+
+                    InpcService.updateAcumulada(registroAcumulada).then(
+                        function(result) {
+
+                        },
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+
                     $state.go("inpc");
                 },
                 function(err) {
@@ -182,6 +290,87 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         $scope.regresar = function() {
             $state.go("inpc");
         }
+
+
+        $scope.recaulcula = function() {
+
+
+            $scope.aactual = parseInt($scope.registro.anioActual);
+            $scope.aanterior = $scope.aactual - 1;
+
+            var mesHoy1 = parseInt($scope.registro.mesActual);
+            $scope.manterior = mesHoy1 - 1;
+
+
+            var reg2 = {
+                'anio': $scope.aanterior,
+                'mes': "12"
+            };
+
+            InpcService.getValorAnterior(reg2).then(
+                function(result) {
+                    $scope.valorAnioAnterior = result.data;
+
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+
+
+            if (mesHoy1 == 1) {
+
+                var reg1 = {
+                    'anio': $scope.aanterior,
+                    'mes': "12"
+                };
+
+                InpcService.getValorAnterior(reg1).then(
+                    function(result) {
+                        $scope.valorMesAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+
+            } else {
+
+                var reg1 = {
+                    'anio': $scope.aactual,
+                    'mes': $scope.manterior
+                };
+
+                InpcService.getValorAnterior(reg1).then(
+                    function(result) {
+                        $scope.valorMesAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+            }
+
+            var reg3 = {
+                'anio': $scope.aanterior,
+                'mes': mesHoy1
+            };
+
+            InpcService.getValorAnterior(reg3).then(
+                function(result) {
+                    $scope.valorMismoMesAAnterior = result.data;
+
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+        }
+
+
+
 
     }
 })();

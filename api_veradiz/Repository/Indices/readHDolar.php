@@ -24,6 +24,9 @@ $time2 = strtotime($fecha2);
 $obj->fechaInicio = date('Y-m-d',$time1);
 $obj->fechaTermino =  date('Y-m-d',$time2);
 
+
+
+
 // query products
 $stmt = $obj->readPeriodoDolar();
 $num  = $stmt->rowCount();
@@ -49,7 +52,7 @@ if($num>0){
 			"id"  => $cont,
  			"valor" => $valor,
 			"fecha" =>    date("d/m/Y", strtotime($fecha)), 
-			"difDiaAnterior"=>$difDiaAnterior
+			"obligacion"=>$obligacion
 		);
 
 		array_push($tipo_arr["records"], $tipo_item);
@@ -64,5 +67,6 @@ else{
 		array("message" => "No hay registros disponibles.")
 	);
 }
+
 
 ?>

@@ -34,7 +34,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <select ng-model="registro.anioActual" ng-options="anio.id as anio.descripcion for anio in anios" ng-init="registro.anioActual" class="form-control"></select>
+                                    <select ng-model="registro.anioActual" ng-options="anio.id as anio.descripcion for anio in anios" ng-init="registro.anioActual" ng-change="recaulcula()" class="form-control"></select>
                                 </div>
                             </div>
 
@@ -44,7 +44,7 @@
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <select ng-model="registro.mesActual" ng-options="mes.id as mes.descripcion for mes in meses" ng-init="registro.mesActual" class="form-control"></select>
+                                    <select ng-model="registro.mesActual" ng-options="mes.id as mes.descripcion for mes in meses" ng-init="registro.mesActual" ng-change="recaulcula()" class="form-control"></select>
 
                                 </div>
                             </div>

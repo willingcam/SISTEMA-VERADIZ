@@ -42,10 +42,10 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-2">
                                     Subtitulo
-                                    <span class="required">*</span>
+                                    
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <input type="text" class="form-control" id="subtitulo" name="subtitulo" ng-model="registro.subtitulo" ng-required="true" required max="255" placeholder="Ingresar un subtitulo para la noticia a publicar">
+                                    <input type="text" class="form-control" id="subtitulo" name="subtitulo" ng-model="registro.subtitulo" ng-required="false"  max="255" placeholder="Ingresar un subtitulo para la noticia a publicar">
                                     <span class="error" ng-show="NoticiasForm.subtitulo.$dirty && !NoticiasForm.subtitulo.$valid">Debe ingresar un subtitulo</span>
                                 </div>
                             </div>
@@ -53,10 +53,10 @@
                             <div class="form-group">
                                 <label class="control-label col-md-2 col-sm-2 col-xs-2">
                                     Contenido
-                                    <span class="required">*</span>
+                                   
                                 </label>
                                 <div class="col-md-10 col-sm-10 col-xs-10">
-                                    <div class="ta-editor" text-angular ng-model="registro.descripcion"  ng-required="true" required  placeholder="Ingresa el contenido de lo que se publicara en el blog de noticias"></div>
+                                    <div class="ta-editor" text-angular ng-model="registro.descripcion"  ng-required="false"   placeholder="Ingresa el contenido de lo que se publicara en el blog de noticias"></div>
 
 
                                 </div>
