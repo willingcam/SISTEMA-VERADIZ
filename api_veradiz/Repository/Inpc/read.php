@@ -87,6 +87,7 @@ if($num>0){
 		$obj_item=array(
 			"id" => $id,
 			"anio" => $anio,
+			"mesid" => $mes,
 			"mes" => $nombremes ,
 			"valor" => $valor,
 			"fecha" => $fecha

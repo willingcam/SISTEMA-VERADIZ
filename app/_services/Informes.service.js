@@ -127,6 +127,15 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
 
 
 
+        service.regresaaempleado = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Documentos/regresaaempleado.php'
+            });
+        };
+
+
         service.descargado = function(registro) {
             return $http({
                 method: 'POST',

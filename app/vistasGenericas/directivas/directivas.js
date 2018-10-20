@@ -53,6 +53,45 @@
     ])
 
 
+    .directive('ngReallyPublicar', ['$uibModal',
+        function($uibModal) {
+            // debugger;
+            return {
+                restrict: 'A',
+                scope: {
+                    ngReallyPublicar: "&",
+                    item: "=",
+                    ngReallyCancel: "&"
+                },
+                link: function(scope, element, attrs) {
+                    element.bind('click', function() {
+                        var message = attrs.ngReallyMessage || "&iquest;Seguro que desea enviar este documento al cliente&#63;";
+
+                        var modalHtml = '<div class="modal-header">Confirmaci&oacuten<button type="button" class="close" ng-click="cancel()" data-dissmiss="modal">x</button></div><div class="modal-body">' + message + '</div>';
+                        modalHtml += '<div class="modal-footer"><button class="btn btn-success" ng-click="ok()">Confirmar</button><button class="btn btn-primary" ng-click="cancel()">Cancelar</button></div>';
+
+                        var modalInstance = $uibModal.open({
+                            template: modalHtml,
+                            controller: ModalInstanceCtrl
+                        });
+
+                        modalInstance.result.then(function() {
+                            // debugger;
+                            scope.ngReallyPublicar({ item: scope.item });
+                        }, function() {
+                            //Modal dismissed
+                            scope.ngReallyCancel({ item: scope.item });
+                        });
+                        //*/
+
+                    });
+
+                }
+            }
+        }
+    ])
+
+
     .directive('loadStatus', function() {
         return {
             restrict: 'ACE',

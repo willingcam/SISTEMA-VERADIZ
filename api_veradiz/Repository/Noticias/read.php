@@ -47,7 +47,8 @@ if($num>0){
 			"imagen" => $imagen,
 			"ubicacion" => $ubicacion_imagen,
 			"urlcompleta" => $ubicacion_imagen.$imagen,
-			"autor" => $nombre
+			"autor" => $nombre,
+			"imagen_blog" => $ubicacion_imagen.$imagen_blog
 		);
 
 		array_push($obj_arr["records"], $obj_item);

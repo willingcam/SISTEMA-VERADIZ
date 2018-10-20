@@ -35,6 +35,7 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
 
         service.getTIIE91 = function(registro) {
             var endPoint = API + "Repository/Indices/readHTIIE91.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+
             return $http.get(endPoint);
         }
 
@@ -50,6 +51,11 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
         }
 
         service.graficaDolar = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHDolar.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
+        service.graficaDolarComparativo = function(registro) {
             var endPoint = API + "Repository/Indices/graficaHDolar.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
             return $http.get(endPoint);
         }
@@ -74,6 +80,12 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             return $http.get(endPoint);
         }
 
+
+        service.graficainflacion = function(registro) {
+            var endPoint = API + "Repository/Indices/graficaHInflacion.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
+            return $http.get(endPoint);
+        }
+
         service.getUdis = function(registro) {
             var endPoint = API + "Repository/Indices/readHUdis.php?fechai=" + registro.fechai + "&fechat=" + registro.fechat;
             return $http.get(endPoint);
@@ -92,13 +104,11 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
         }
 
 
-        service.AddCPP = function(registro) {
-            return $http({
-                method: 'POST',
-                data: registro,
-                url: API + 'Repository/Indices/cppSave.php'
-            });
-        };
+        service.getValorAnterior = function(registro) {
+            var endPoint = API + "Repository/Inpc/read_mesanterior.php?anio=" + registro.anio + "&mes=" + registro.mes;
+            return $http.get(endPoint);
+        }
+
 
         service.AddCPP = function(registro) {
             return $http({
@@ -107,6 +117,25 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
                 url: API + 'Repository/Indices/cppSave.php'
             });
         };
+
+        service.updateCPP = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Indices/updateCPP.php'
+            });
+        };
+
+        service.deleteCPP = function(id) {
+
+            var endPoint = API + "Repository/Indices/deleteCPP.php?id=" + id;
+            return $http.get(endPoint);
+        }
+
+        service.getCPPById = function(id) {
+            var endPoint = API + "Repository/Indices/cppById.php?id=" + id;
+            return $http.get(endPoint);
+        }
 
         return service;
 

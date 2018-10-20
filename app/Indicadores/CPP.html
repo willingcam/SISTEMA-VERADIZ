@@ -18,8 +18,8 @@
                                 <i class="fa fa-bar-chart-o fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="medium">Valor actual</div>
-                                <div>$ {{primerValor}} </div>
+                                <div class="medium">Valor del mes</div>
+                                <div> {{primerValor}} %</div>
                                 <!-- <p>{{ documentosGetContadores[7].nuevos }}</p> -->
                             </div>
                         </div>
@@ -126,7 +126,7 @@
 
                 </div>
             </div>
-
+            Fuente de información Banxico
         </div>
     </div>
 
@@ -141,19 +141,31 @@
 
 
         <div ng-show="resultadosBusqueda.length > 0 ">
-            <table width="100%" class="table table-striped table-bordered table-hover dt-responsive" id="dolar" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions" dt-instance="dtInstance">
+            <table width="100%" class="table table-striped table-bordered table-hover dt-responsive" id="cpp" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions" dt-instance="dtInstance">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Fecha</th>
-                        <th>Valor</th>
+                        <th class="hidden"></th>
+                        <th style=" text-align: center;">Fecha</th>
+                        <th style=" text-align: center;">Valor</th>
+                        <th style=" text-align: center;" ng-show="rol == '1' ">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="odd gradeX" ng-repeat="obj in resultadosBusqueda">
-                        <td style=" width: 1px;">{{obj.id}}</td>
-                        <td style="width: 49%"> {{obj.fecha}}</td>
-                        <td style="width: 49%">$ {{obj.valor}}</td>
+                        <td style=" width: 1px;" class="hidden">{{obj.id}}</td>
+                        <td style="width: 43%; text-align: center;"> {{obj.fecha}}</td>
+                        <td style="width: 43%; text-align: center;"> {{obj.valor}} </td>
+
+                        <td class="text-center" style="width: 15%;" ng-show="rol == '1' ">
+                            <a class=" btn btn-warning " ui-sref="cppEdit({id:obj.id}) " title="Editar ">
+                                <i class="glyphicon glyphicon-pencil "></i>
+                            </a>
+                            <a class="btn btn-danger pull-right " ng-really-click="delete(obj.id); " ng-really-message="¿Está seguro de eliminar este valor? " title="Eliminar ">
+                                <i class="glyphicon glyphicon-trash "></i>
+                            </a>
+                        </td>
+
+
                     </tr>
                 </tbody>
             </table>

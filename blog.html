@@ -11,9 +11,10 @@
     <!-- Title -->
     <title>VERA, DIZ Y CIA., S.C.</title>
 
+
     <!-- Basic SEO -->
-    <meta name="description" content="Creative website development with html5, css3, jQuery & bootstrap framework">
-    <meta name="keywords" content="HTML5, CSS3, JQuery, Bootstrap, Web Design, Web Development, Responsive website, Creative website">
+    <meta name="description" content="Asesores financieros y contables">
+    <meta name="keywords" content="Auditorias externas, asesoría fiscal, consultoria en administración y finanzas, asesoría en el área judicial, consultoria en planeación de negocios ">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon/favicon.ico">
@@ -97,7 +98,7 @@
                     <div class="loader"></div>
                     <span class="category">{{obj.subtitulo}}</span>
                 <div class="meta meta--preview">
-                    <img class="meta__avatar" src="img/testimonial/1.png" alt=" " />
+                    <img class="meta__avatar" src="api_veradiz/Repository/Upload/images/team-1-chica.jpg" alt=" " />
                     <span class="meta__date">
                             <i class="fa fa-calendar-o"></i> {{obj.fecha}}
                       </span>
@@ -117,16 +118,22 @@
             </a>
 
             <div>
-                <article class="content__item">
+                <div class="content__item">
                     <span class="category category--full">{{tituloSel}}</span>
                     <h2 class="title title--full">{{subtituloSel}}</h2>
                     <div class="meta meta--full">
                         <br/>
                         <span class="meta__author">{{autorSel}}</span>
                         <span class="meta__date"><i class="fa fa-calendar-o"></i>{{fechaSel}}</span>
+                        <br/>
+                        <span class="meta__date"><i class="fa fa-globe"></i><a href="{{url_referencia}}" target="_blank">Ir al sitio web</a></span>
                     </div>
+
                     <p> {{descripcionSel}} </p>
-                </article>
+
+                </div>
+
+
 
             </div>
 

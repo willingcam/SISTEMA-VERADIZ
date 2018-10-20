@@ -63,15 +63,19 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 return false;
             }
 
+            /*
             if ($scope.subtitulo == '' || $scope.subtitulo == null || $scope.subtitulo == undefined) {
                 toastr.error("Debe ingresar el subtitulo de la noticia");
                 return false;
             }
+            */
 
+            /*
             if ($scope.descripcion == '' || $scope.descripcion == null || $scope.descripcion == undefined) {
                 toastr.error("Debe ingresar el contenido de la noticia");
                 return false;
             }
+            */
 
             var registro = {
                 'titulo': $scope.titulo,

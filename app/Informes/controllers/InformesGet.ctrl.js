@@ -5,9 +5,9 @@ FooEntitiesService nombre de factory en RolesGet.service.js
 (function() {
     "use strict";
     var app = angular.module("veradiz");
-    app.controller("InformesGetCtrl", ["$scope", "InformesService",'AuthService', InformesGetCtrl]);
+    app.controller("InformesGetCtrl", ["$scope", "InformesService", 'AuthService', InformesGetCtrl]);
 
-    function InformesGetCtrl($scope, InformesService,AuthService) {
+    function InformesGetCtrl($scope, InformesService, AuthService) {
 
 
         $scope.loading = true;
@@ -33,7 +33,7 @@ FooEntitiesService nombre de factory en RolesGet.service.js
                 function(result) {
                     $scope.loading = false;
                     $scope.documentosGet = result.data.records;
-
+                    console.log(result);
                 },
                 function(err) {
                     toastr.error("Se presento un error en la carga de los datos");
@@ -70,12 +70,12 @@ FooEntitiesService nombre de factory en RolesGet.service.js
             );
         }
 
-        $scope.descargaDoc = function(url){
+        $scope.descargaDoc = function(url) {
             //window.open(url,"_blank");
-           // var link=document.createElement('a');
-           // link.href = url;
-           // link.download = url.substr(url.lastIndexOf('/') + 1);
-           // link.click();
+            // var link=document.createElement('a');
+            // link.href = url;
+            // link.download = url.substr(url.lastIndexOf('/') + 1);
+            // link.click();
             var file_path = url;
             var a = document.createElement('A');
             a.href = file_path;

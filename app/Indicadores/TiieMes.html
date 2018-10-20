@@ -19,7 +19,7 @@
                                 <i class="fa fa-bar-chart-o fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="medium">Valor actual</div>
+                                <div class="medium">Valor del día</div>
                                 <div>{{primerValor}} %</div>
                                 <!-- <p>{{ documentosGetContadores[7].nuevos }}</p> -->
                             </div>
@@ -86,8 +86,8 @@
 
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="col-sm-12"> <input type="radio" ng-model="tipo" value="1" ng-click="cetesUno()"> <label>Tiie 28 días</label></div>
-                                <div class="col-sm-12"><input type="radio" ng-model="tipo" value="2" ng-click="cetesDos()"> <label>Tiie 91 días</label></div>
+                                <div class="col-sm-12"> <input type="radio" ng-model="tipo" value="1" ng-click="cetesUno()"> <label>TIIE 28 días</label></div>
+                                <div class="col-sm-12"><input type="radio" ng-model="tipo" value="2" ng-click="cetesDos()"> <label>TIIE 91 días</label></div>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
     <div class="x_panel">
         <div class="row">
             <div class="col-sm-4 text-center">
-                <h3>Datos historicos </h3>
+                <h3>Datos históricos </h3>
             </div>
             <div class="col-sm-8">
                 <div class="row">
@@ -170,6 +170,7 @@
                     </div>
                 </div>
             </div>
+            Fuente de información Banxico <br/> Datos históricos de TIIE a 28 días a partir de 1996 <br/> Datos históricos del TIIE a 91 días a partir de 1997
 
         </div>
     </div>
@@ -179,21 +180,21 @@
 
 
         <div ng-show="resultadosBusqueda.length > 0 ">
-            <table width="100%" class="table table-striped table-bordered table-hover dt-responsive" id="dolar" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions" dt-instance="dtInstance">
+            <table width="100%" class="table table-striped table-bordered table-hover dt-responsive" id="tiie" cellspacing="0" datatable="ng" width="100%" dt-options="dtOptions" dt-instance="dtInstance">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Fecha</th>
-                        <th>Valor</th>
-                        <th>% de diferencia</th>
+                        <th style="width: 33%; text-align: center;">Fecha</th>
+                        <th style="width: 33%; text-align: center;">Valor</th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="odd gradeX" ng-repeat="obj in resultadosBusqueda">
-                        <td style=" width: 1px;">{{obj.id}}</td>
-                        <td style="width: 33%"> {{obj.fecha}}</td>
-                        <td style="width: 33%">$ {{obj.valor}}</td>
-                        <td style="width: 33%">{{obj.difDiaAnterior}}</td>
+                        <td style=" width: 1px; ">{{obj.id}}</td>
+                        <td style="width: 49%; text-align: center;"> {{obj.fecha}}</td>
+                        <td style="width: 49%; text-align: center;"> {{obj.valor}} %</td>
+
 
                     </tr>
 

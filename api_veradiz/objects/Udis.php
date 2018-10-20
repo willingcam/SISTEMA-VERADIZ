@@ -69,7 +69,7 @@ class Udis{
 
 			// select all query
 			//$query = " SELECT valor, fecha FROM  cetes91 WHERE fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."' ";
-			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),4) as difDiaAnterior 
+			$query = " SELECT a.id, a.fecha, a.valor, TRUNCATE(a.valor-COALESCE(b.valor,a.valor),7) as difDiaAnterior 
 			FROM udis a 
 			LEFT JOIN udis b on a.id=b.id+1
 			WHERE a.fecha BETWEEN '".$this->fechaInicio."' AND '".$this->fechaTermino."'

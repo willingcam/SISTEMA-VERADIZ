@@ -94,7 +94,26 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
         }
 
 
+        $scope.updateState = function(obj) {
+            obj.activo = 0;
 
+            var registro = {
+                'id': obj.id,
+                'estatus': 0
+            }
+
+
+            UsuariosService.desactivaAsignacion(registro).then(
+                function(result) {
+
+                    toastr.success("Se eliminó al responsable asignado");
+                    $scope.usuariosAsignados();
+                },
+                function(err) {
+                    toastr.error("Fallo al eliminar al responsable asignado");
+                }
+            );
+        }
 
 
 

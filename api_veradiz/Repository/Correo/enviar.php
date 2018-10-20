@@ -27,27 +27,39 @@ $data = json_decode(file_get_contents("php://input"));
 //	$asunto = $data->asunto;
 //	$comentarios = $data->comentarios;
 	
-	$to = "jingramramirez@gmail.com";
-	$subject = "subject";
-	$message = "comentarios";
-	
 
-	$header = "MIME-Version: 1.0" . "\r\n";
-	$header .= "Content-type:text/html;charset=utf-8" . "\r\n";
-	$header .= "From: mail@mail.com" . "\r\n";
+$destinatario = "jwramz@hotmail.com"; 
+$asunto = "Este mensaje es de prueba"; 
+$cuerpo = ' 
+<html> 
+<head> 
+   <title>Prueba de correo</title> 
+</head> 
+<body> 
+<h1>Hola amigos!</h1> 
+<p> 
+<b>Bienvenidos a mi correo electrónico de prueba</b>. Estoy encantado de tener tantos lectores. Este cuerpo del mensaje es del artículo de envío de mails por PHP. Habría que cambiarlo para poner tu propio cuerpo. Por cierto, cambia también las cabeceras del mensaje. 
+</p> 
+</body> 
+</html> 
+'; 
 
-	$retval = mail($to,$subject,$message,$header);
+//para el envío en formato HTML 
+$headers = "MIME-Version: 1.0\r\n"; 
+$headers .= "Content-type: text/html; charset=iso-8859-1\r\n"; 
+
+//dirección del remitente 
+$headers .= "From: Miguel Angel Alvarez <jwramz@hotmail.com>\r\n"; 
+
+//dirección de respuesta, si queremos que sea distinta que la del remitente 
+$headers .= "Reply-To: jingramramirez@gmail.com\r\n"; 
+
+//ruta del mensaje desde origen a destino 
+$headers .= "Return-path: jwramz@hotmail.com\r\n"; 
 
 
-	if($retval){
-		echo '{';
-			echo '"message": "El mensaje fue enviado exitosamente."';
-		echo '}';
-	}else{
-		echo '{';
-			echo '"message": "Su mensaje no pudo ser enviado."';
-		echo '}';
-	}
 
-//}
+mail($destinatario,$asunto,$cuerpo,$headers) 
 ?>
+
+

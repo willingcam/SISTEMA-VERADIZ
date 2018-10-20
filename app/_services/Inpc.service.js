@@ -32,11 +32,26 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
         }
 
 
+        service.getValorAnterior = function(registro) {
+            var endPoint = API + "Repository/Inpc/read_mesanterior.php?anio=" + registro.anio + "&mes=" + registro.mes;
+            return $http.get(endPoint);
+        }
+
+
         service.Add = function(registro) {
-                return $http({
+            return $http({
                 method: 'POST',
                 data: registro,
                 url: API + 'Repository/Inpc/create.php'
+            });
+        };
+
+
+        service.AddAcumulada = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/Inpc/createacumulada.php'
             });
         };
 
@@ -57,6 +72,20 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
         };
 
 
+        service.deleteAcumulada = function(registro) {
+
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + "Repository/Inpc/deleteacumulada.php?anio=" + registro.anio + "&mes=" + registro.mes
+            });
+
+        };
+
+        service.updateAcumulada = function(registro) {
+            var endPoint = API + "Repository/Inpc/updateacumulada.php?anio=" + registro.anio + "&mes=" + registro.mes + "&mensual=" + registro.inflacionMensual + "&acumulada=" + registro.acumuladaAunual + "&anterior=" + registro.acumuladavsanioanterior;
+            return $http.get(endPoint);
+        };
 
         return service;
 

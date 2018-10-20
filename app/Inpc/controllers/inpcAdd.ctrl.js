@@ -17,6 +17,9 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
         $scope.anio = "";
         $scope.valor = "";
 
+        $scope.valorAnioAnterior = {};
+        $scope.valorMesAnterior = {};
+        $scope.valorMismoMesAAnterior = {};
 
         $scope.anioActual = (new Date()).getFullYear().toString();
         $scope.anios = [{
@@ -81,10 +84,6 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
 
         $scope.mesActual = ((new Date()).getMonth() + 1).toString();
         $scope.meses = [{
-                "id": "2016",
-                "descripcion": "2016"
-            },
-            {
                 "id": "1",
                 "descripcion": "Enero"
             },
@@ -137,6 +136,94 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
         ];
 
 
+
+        $scope.valoresInflacionAnteriores = function() {
+
+            $scope.aanterior = (new Date()).getFullYear() - 1;
+            //$scope.manterior = ((new Date()).getMonth() + 1) - 2;
+
+
+            var mesHoy1 = parseInt($scope.mesActual);
+            $scope.manterior = mesHoy1 - 1;
+
+
+            var reg2 = {
+                'anio': $scope.aanterior,
+                'mes': "12"
+            };
+
+
+
+            var reg3 = {
+                'anio': $scope.aanterior,
+                'mes': mesHoy1
+            };
+
+
+
+            InpcService.getValorAnterior(reg2).then(
+                function(result) {
+                    $scope.valorAnioAnterior = result.data;
+
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+
+
+
+
+            if (mesHoy1 == 1) {
+
+                var reg1 = {
+                    'anio': $scope.aanterior,
+                    'mes': "12"
+                };
+
+                InpcService.getValorAnterior(reg1).then(
+                    function(result) {
+                        $scope.valorMesAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+
+            } else {
+
+                var reg1 = {
+                    'anio': $scope.anioActual,
+                    'mes': $scope.manterior
+                };
+
+                InpcService.getValorAnterior(reg1).then(
+                    function(result) {
+                        $scope.valorMesAnterior = result.data;
+
+                    },
+                    function(err) {
+                        console.error(err);
+                    }
+                );
+            }
+
+            InpcService.getValorAnterior(reg3).then(
+                function(result) {
+                    $scope.valorMismoMesAAnterior = result.data;
+
+                },
+                function(err) {
+                    console.error(err);
+                }
+            );
+
+
+        }
+
+
+
         $scope.save = function() {
             if ($scope.anioActual == '' || $scope.anioActual == null || $scope.anioActual == undefined) {
                 toastr.error("Debe seleccionar el año");
@@ -158,21 +245,52 @@ FooEntitiesService nombre de factory en RolesAdd.service.js
                 'valor': $scope.valor
             }
 
+
+            var inflacionMensual = ((parseFloat($scope.valor) / parseFloat($scope.valorMesAnterior.valor)) - 1) * 100;
+            var acumuladaAunual = ((parseFloat($scope.valor) / parseFloat($scope.valorAnioAnterior.valor)) - 1) * 100;
+            var acumuladavsanioanterior = ((parseFloat($scope.valor) / parseFloat($scope.valorMismoMesAAnterior.valor)) - 1) * 100;
+
+
             InpcService.Add(registro).then(
                 function(result) {
                     toastr.success("Registro exitoso");
+
+                    var registroAcumulada = {
+                        'anio': $scope.anioActual,
+                        'mes': $scope.mesActual,
+                        'inflacionMensual': inflacionMensual.toFixed(2),
+                        'acumuladaAunual': acumuladaAunual.toFixed(2),
+                        'acumuladavsanioanterior': acumuladavsanioanterior.toFixed(2)
+
+                    }
+
+                    InpcService.AddAcumulada(registroAcumulada).then(
+                        function(result) {},
+                        function(err) {
+                            console.error(err);
+                        }
+                    );
+
                     $state.go("inpc");
                 },
                 function(err) {
                     console.error(err);
                 }
             );
+
         }
 
 
         $scope.regresar = function() {
             $state.go("inpc");
         }
+
+        $scope.recaulcula = function() {
+
+            $scope.valoresInflacionAnteriores();
+        }
+
+        $scope.valoresInflacionAnteriores();
 
 
     }

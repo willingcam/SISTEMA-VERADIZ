@@ -200,6 +200,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 'tipoAccesoId': 1,
                 'clienteId': $scope.clienteSeleccionado,
                 'tipoDocumentoId': $scope.documentoSeleccionado,
+                'comentarios': $scope.registro.comentarios,
                 'id': $scope.registro.id
             }
 

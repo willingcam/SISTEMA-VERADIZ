@@ -109,7 +109,13 @@ FooEntitiesService nombre de factory en ENTITIES.service.js
             });
         };
 
-
+        service.desactivaAsignacion = function(registro) {
+            return $http({
+                method: 'POST',
+                data: registro,
+                url: API + 'Repository/EncargadoCuenta/desactiva.php'
+            });
+        };
 
         return service;
 

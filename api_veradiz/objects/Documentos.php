@@ -19,6 +19,8 @@ class Documentos{
 	public $informedescargado;
 	public $fechadescarga;
 
+	public $comentarios;
+
 
 	public $descripcionTipoDoc;
 	public $nombreCliente;
@@ -380,7 +382,7 @@ public function read_documents_by_author(){
 	function readOne(){
 
 		// query to read single record
-		$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.clienteId, P.tipoAccesoId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga FROM " . $this->table_name . " P LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
+		$query = "SELECT P.id, P.descripcion, P.ubicacion, P.archivo, P.clienteId, P.tipoAccesoId, P.tipoDocumentoId, P.fechaRegistro, P.autorId, P.estadodocumento, P.informedescargado, P.fechadescarga, P.comentarios FROM " . $this->table_name . " P LEFT JOIN estado_documentos Q ON Q.id = P.estadodocumento
 				WHERE  P.id = ?
 				LIMIT 0,1";
 
@@ -410,6 +412,7 @@ public function read_documents_by_author(){
 		$this->estadodocumento = $row['estadodocumento'];
 		$this->informedescargado = $row['informedescargado'];
 		$this->fechadescarga = $row['fechadescarga'];
+		$this->comentarios = $row['comentarios'];
 	}
 	
 		
@@ -424,7 +427,8 @@ public function read_documents_by_author(){
 					ubicacion = :ubicacion,
 					tipoAccesoId = :tipoAccesoId,
 					clienteId = :clienteId,
-					tipoDocumentoId = :tipoDocumentoId					
+					tipoDocumentoId = :tipoDocumentoId,
+					comentarios = :comentarios					
 				WHERE
 					id = :id";
 
@@ -438,6 +442,7 @@ public function read_documents_by_author(){
 		$this->tipoAccesoId=htmlspecialchars(strip_tags($this->tipoAccesoId));
 		$this->clienteId=htmlspecialchars(strip_tags($this->clienteId));
 		$this->tipoDocumentoId=strip_tags($this->tipoDocumentoId);
+		$this->comentarios=strip_tags($this->comentarios);
 	
 		
 		$this->id=htmlspecialchars(strip_tags($this->id));
@@ -449,6 +454,7 @@ public function read_documents_by_author(){
 		$stmt->bindParam(':tipoAccesoId', $this->tipoAccesoId);
 		$stmt->bindParam(':clienteId', $this->clienteId);
 		$stmt->bindParam(':tipoDocumentoId', $this->tipoDocumentoId);
+		$stmt->bindParam(':comentarios', $this->comentarios);
 				 			
 		$stmt->bindParam(':id', $this->id);
 
@@ -497,6 +503,41 @@ public function read_documents_by_author(){
 	}
 
 
+	
+	function regresaaempleado(){
+
+		// update query
+		$query = "UPDATE " . $this->table_name . "
+				SET
+					estadodocumento=:estadodocumento,
+					comentarios=:comentarios,
+					fecharegistro=NOW()							
+				WHERE
+					id = :id";
+
+		// prepare query statement
+		$stmt = $this->conn->prepare($query);
+
+		// sanitize
+		
+
+		$this->estadodocumento=strip_tags($this->estadodocumento);
+		$this->comentarios=htmlspecialchars(strip_tags($this->comentarios));
+		$this->id=htmlspecialchars(strip_tags($this->id));
+
+		// bind new values
+		
+		$stmt->bindParam(':estadodocumento', $this->estadodocumento);
+		$stmt->bindParam(':comentarios', $this->comentarios);		
+		$stmt->bindParam(':id', $this->id);
+
+		// execute the query
+		if($stmt->execute()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 
 
 	function fueDescargado(){

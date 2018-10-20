@@ -78,6 +78,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 return false;
             }
 
+            /*
             if ($scope.registro.subtitulo == '' || $scope.registro.subtitulo == null || $scope.registro.subtitulo == undefined) {
                 toastr.error("Debe ingresar el subtitulo de la noticia");
                 return false;
@@ -87,6 +88,7 @@ FooEntitiesService nombre de factory en RolesEdit.service.js
                 toastr.error("Debe ingresar el contenido de la noticia");
                 return false;
             }
+            */
 
 
             NoticiasService.Update($scope.registro).then(

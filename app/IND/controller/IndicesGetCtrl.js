@@ -81,7 +81,7 @@
 
             IndicadoresService.getTodasLasNoticias().then(function(exito) {
                 $scope.TodasNoticias = exito.data.records;
-
+                console.log($scope.TodasNoticias);
             }, function(error) {
 
             });
@@ -110,8 +110,6 @@
 
             IndicadoresService.enviarCorreo(registro).then(
                 function(exito) {
-                    console.log(exito);
-
                     $scope.nombre = "";
                     $scope.correo = "";
                     $scope.telefono = "";
